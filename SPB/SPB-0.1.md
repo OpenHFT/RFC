@@ -40,3 +40,21 @@ The message length is a 30-bit unsigned length from 1 to 1006632960 bytes.  The 
 
  - 0x00000000 - invalid message
  - 0x3C000000 to 0x3FFFFFFF - reserved
+ 
+# ABNF description
+
+```
+stream              = header *blobs-with-length
+header              = 8OCTET
+blobs-with-length   = invalid | data | meta-data | not-ready-data | not-ready-meta-data | reserved
+invalid             = 4%x00
+data                = %x00 - %x3B 3OCTET message-body
+meta-data           = %x40 - %x7B 3OCTET message-body
+not-ready-data      = %x80 - %xBB 3OCTET message-body
+not-ready-meta-data = %xC0 - %xFB 3OCTET message-body
+message-body        = *OCTET
+```
+
+## References
+
+[ABNF Wikipedia](http://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_Form)
