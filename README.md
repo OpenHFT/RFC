@@ -8,3 +8,13 @@ It is prompted to version 1.0 when released followed by 1.1 for minor enhancemen
 Each standard must be backward compatible with previous versions.  For a breaking change, start a new specification.
 
 A version can be created or added by forking the repo and issuing a pull request for the changes made.
+
+# License
+
+Any contributions you make are on the understanding that this will be under an Apache 2.0 license.
+
+# References
+
+ZeroMQ RFCs http://rfc.zeromq.org/main:about
+
+Digistan Spec Template http://spec.digistan.org/
