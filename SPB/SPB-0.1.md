@@ -18,11 +18,13 @@ The file starts with a 64-bit value which can contain ASCII text and a version. 
 
 After the header, a series of messages are prefixed by a 32-bit value which contains a 30-bit size and two bits used to make parsing the stream easier.
 
+A length 32-bit word of 0x00000000 is defined as unset or invalid. To send a zero length message it must be a meta data message of 0 length.
+
 ## File Format bits
 In file format;
  
  - the bit 31 indicates whether the current size is ready, 0 = ready, 1 = not ready.  
- - the bit 30 indicates the message contains meta data. 0 = user data, 1 = meta data, 
+ - the bit 30 indicates the message contains meta data. 0 = user data, 1 = meta data,
 
 ### handling of incomplete messages
 
@@ -40,7 +42,6 @@ In a TCP socket connection;
 ## Message length
 The message length is a 30-bit unsigned length from 1 to 1006632960 bytes.  The following lengths have a special meaning.
 
- - 0x00000000 - invalid message
  - 0x3C000000 to 0x3FFFFFFF - reserved
  
 # ABNF description
