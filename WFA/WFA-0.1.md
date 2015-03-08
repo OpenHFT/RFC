@@ -1,10 +1,11 @@
 # Wire Format API
 
-URL: https://github.com/OpenHFT/RFC/blob/master/WFA/WFA-0.1.md
-Editor: Peter Lawrey
-License: Apache 2.0
-Change Process: Users issue Pull Requests for the Editor's consideration.
-Status: Raw.
+|:----|-----------------------------------------------------------|
+| URL | https://github.com/OpenHFT/RFC/blob/master/WFA/WFA-0.1.md |
+| Editor | Peter Lawrey |
+| License | Apache 2.0 |
+| Change Process | Users issue Pull Requests for the Editor's consideration. |
+| Status | Raw. |
 
 ## Goals
 WFA is designed to be high levell description for Wire Formats to comply with.  Any Wire Format which complies with this RFC can be accessed through the same API.
