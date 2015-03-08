@@ -1,7 +1,7 @@
 # RFC
 RFC's used by OpenHFT
 
-This repo holds the specifications which are to be used by OpenHFT projects.  
+This repo holds the specifications which can be used by OpenHFT projects.  
 
 Each Specification is held in a directory which has a file for each version. Each specification will have a short code awuth the first version being 0.1.  
 It is prompted to version 1.0 when released followed by 1.1 for minor enhancements and 2.0 for major enhancements.  
