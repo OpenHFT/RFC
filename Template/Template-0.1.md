@@ -1,4 +1,4 @@
-# Size Specified Blob format
+# RFC Template
 
 URL: https://github.com/OpenHFT/RFC/blob/master/Template/Template-0.1.md
 Editor: Peter Lawrey
