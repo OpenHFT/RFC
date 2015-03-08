@@ -9,6 +9,9 @@ Each standard must be backward compatible with previous versions.  For a breakin
 
 A version can be created or added by forking the repo and issuing a pull request for the changes made.
 
+# Template
+Refer to the latest version in the Template directory.
+
 # License
 
 Any contributions you make are on the understanding that this will be under an Apache 2.0 license.
