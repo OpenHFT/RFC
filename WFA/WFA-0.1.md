@@ -1,5 +1,6 @@
 # Wire Format API
 
+|      |                                                          |
 |:---- | -------------------------------------------------------- |
 | URL | https://github.com/OpenHFT/RFC/blob/master/WFA/WFA-0.1.md |
 | Editor | Peter Lawrey |
