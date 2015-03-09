@@ -8,8 +8,8 @@
 | Change Process | Users issue Pull Requests for the Editor's consideration. |
 | Status | Raw. |
 
-## Goals
-WFA is designed to be high levell description for Wire Formats to comply with.  Any Wire Format which complies with this RFC can be accessed through the same API.
+# Goals
+WFA is designed to be high level description for Wire Formats to comply with.  Any Wire Format which complies with this RFC can be accessed through the same API.
 
 The intent of the API is to produce a wire format which is;
  - human readable (or can be converted to a human readble format), 

@@ -8,7 +8,7 @@
 | Change Process | Users issue Pull Requests for the Editor's consideration. |
 | Status | Raw. |
 
-## Goals
+# Goals
 The Template can be used as a template for new RFC's
 
 ## Description
