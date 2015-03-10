@@ -7,7 +7,7 @@
 | Latest  | https://github.com/OpenHFT/RFC/blob/master/IPC-Executor/IPC-Executor-0.1.md |
 | Editor  | Ben Cotton                                                  |
 | License | Apache 2.0                                                  |
-| Change Process | Users issue Pull Requests for the Editor's consideration. |
+| Change Process | For the Editor's repo https://github.com/Cotton-Ben/RFC and issue Pull Requests for the Editor's consideration. |
 | Status  | Raw.                                                        |
 
 # Goals
