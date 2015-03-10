@@ -11,23 +11,23 @@
 # Goals
 A guide to describing how the naming of RFCs, names of terms, and common words used in APIs
 
-# Should a term be specific or deliberately ambiguous
+# A term should be specific or deliberately ambiguous
 In this section "term" may refer to a name of something, the name of an API, or it's acronym, a class name, a method name.
 
-Care should be taken to use either a
- - specific term of acronym which isn't similar but not the same as an established term or acronym.
+Care should be taken to use either
+ - specific term or acronym which isn't, similar but not the same as, an established term or acronym.
  - use a generic term when the term in a generic sense meant. i.e. don't attach a specific meaning to a generic term.
 
 In naming, where possible
-  - use a standard term as close as possible to how it is already used in other standard products or RFCs.
-  - if the functionality expected is different, use a new term so as it is not confused with an established term.
-  - if a term has a proprietary usage, associated with only one vendor, it many make sense to use a new generic term instead.
+  - use a standard term as closely as possible to how it is already used in other standard products or RFCs.
+  - if the meaning or functionality expected is different, use a new term so as it is not confused with an established term.
+  - if a term has a proprietary usage, associated with only one vendor, it many make sense to use a new generic term instead. A reference to the vendor specific term can be added to the RFC.
 
 Where there is a possible source of confusion, try to highlight this in each RFC.
 
-# Abbreviated Names of RFCs
-RFCs are made unique by their short identifiers.  These identifiers should be in TitleCase except for acronyms which are in UPPER-CASE.  
-The use of a minus/ASCII hyphen or "-" is preferred as a separator in the short name of an RFC
+# Abbreviated Names of OpenHFT's RFCs
+OpenHFT's RFCs are made unique by their short identifiers.  These identifiers should be in TitleCase except for acronyms which are in UPPER-CASE.
+The use of a minus/ASCII hyphen or "-" is preferred as a separator in the short name of an RFC, rather than space or any other symbol.
 
 # Action names in methods
 Where possible, the use of the following names should mean
