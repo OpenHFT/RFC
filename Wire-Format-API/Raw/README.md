@@ -3,9 +3,9 @@
 |         |                                                                         |
 |:------- | ----------------------------------------------------------------------- |
 | Title   | Raw Wire Format API                                                     |
-| Parent  | https://github.com/OpenHFT/RFC/blob/master/WFA/                         |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/WFA/Binary                   |
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/WFA/Binary/WFA-Binary-0.1.md |
+| Parent  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/                         |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary                   |
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary/WFA-Binary-0.1.md |
 | Editor  | Peter Lawrey                                                            |
 | License | Apache 2.0                                                              |
 | Change Process | Users issue Pull Requests for the Editor's consideration.        |
