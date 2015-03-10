@@ -3,7 +3,7 @@
 |         |                                                             |
 |:------- | ----------------------------------------------------------- |
 | Title   | General Template for RFCs                                   |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/Caching/         |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Caching          |
 | Latest  | https://github.com/OpenHFT/RFC/blob/master/Caching/Caching-0.1.md |
 | Editor  | Peter Lawrey                                                |
 | License | Apache 2.0                                                  |

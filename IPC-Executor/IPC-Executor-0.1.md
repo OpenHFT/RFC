@@ -2,7 +2,7 @@
 
 |         |                                                             |
 |:------- | ----------------------------------------------------------- |
-| Title   | Wire Format API                                             |
+| Title   | IPC Base Executor                                           |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/IPC-Executor/    |
 | Latest  | https://github.com/OpenHFT/RFC/blob/master/IPC-Executor/IPC-Executor-0.1.md |
 | Editor  | Ben Cotton                                                  |
