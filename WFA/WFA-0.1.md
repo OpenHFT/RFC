@@ -12,7 +12,7 @@
 WFA is designed to be high level description for Wire Formats to comply with.  Any Wire Format which complies with this RFC can be accessed through the same API.
 
 The intent of the API is to produce a wire format which is;
- - human readable (or can be converted to a human readble format), 
+ - human readable (or can be converted to a human readable format),
  - cross platform
  - resilient to schema changes in the data encoded.
 
@@ -22,7 +22,7 @@ Where possible, the format should be tolerant of
  - removing fields.
  - changing the order of fields.
  - changing the type of a scalar field.
- - using a different composite data type on the sender and reciever.
+ - using a different composite data type on the sender and receiver.
  
 ## Field based data
 Each piece of data is associated with a name, number or implicitly ordered field. 
