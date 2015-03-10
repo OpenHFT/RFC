@@ -1,4 +1,4 @@
-# Size Specified Blob format
+# Size Prefixed Blob format
 
 |      |                                                          |
 |:---- | -------------------------------------------------------- |

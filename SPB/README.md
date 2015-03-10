@@ -2,7 +2,7 @@
 
 |         |                                                             |
 |:------- | ----------------------------------------------------------- |
-| Title   | Size Specified Blob format                                  |
+| Title   | Size Prefixed Blob format                                  |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/SPB/             |
 | Latest  | https://github.com/OpenHFT/RFC/blob/master/SPB/SPB-0.1.md   |
 | Editor  | Peter Lawrey                                                |
