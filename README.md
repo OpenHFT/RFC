@@ -10,7 +10,7 @@ A guiding principle should be simplicity.  This make it easier to understand and
 | [Caching](https://github.com/OpenHFT/RFC/blob/master/Caching)             | Data Caching API          |
 | [IPC-Executor](https://github.com/OpenHFT/RFC/blob/master/IPC-Executor)   | IPC Base Executor         |
 | [SPB](https://github.com/OpenHFT/RFC/blob/master/SPB)                     | Size Prefix Blog          |
-| [WFA][https://github.com/OpenHFT/RFC/blob/master/WFA)                     | Wire Format API           |
+| [WFA](https://github.com/OpenHFT/RFC/blob/master/WFA)                     | Wire Format API           |
 
 # Meta RFCs
 
