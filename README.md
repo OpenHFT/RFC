@@ -9,8 +9,11 @@ Each standard must be backward compatible with previous versions.  For a breakin
 
 A version can be created or added by forking the repo and issuing a pull request for the changes made.
 
+# Naming of RFCs and terms
+Refer to the latest version in the RFC-Naming directory.
+
 # Template
-Refer to the latest version in the Template directory.
+Refer to the latest version in the RFC-Template directory.
 
 # License
 

@@ -3,8 +3,8 @@
 |         |                                                             |
 |:------- | ----------------------------------------------------------- |
 | Title   | Wire Format API                                             |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/IPC_Executor/    |
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/IPC_Executor/IPC_Executor-0.1.md |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/IPC-Executor/    |
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/IPC-Executor/IPC-Executor-0.1.md |
 | Editor  | Ben Cotton                                                  |
 | License | Apache 2.0                                                  |
 | Change Process | Users issue Pull Requests for the Editor's consideration. |
