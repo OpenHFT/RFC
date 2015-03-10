@@ -1,7 +1,7 @@
 # RFC
 RFC's proposed under the OpenHFT banner. They don't have to relate to HFT but they must be open.
 
-A guiding principle should be simplicity.  This make it easier to understand and implement, but is also more likely to be fast.
+A guiding principle should be simplicity.  This makes it easier to understand and implement, but is also more likely to be fast.
 
 # Raw RFCs
 
