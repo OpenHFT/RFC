@@ -34,7 +34,7 @@ The primary goal of the wire format is to transfer data rather than attempt to b
 
 ```
 stream              = optional-header *field-with-value optional-footer
-field-with-value    = field data
+field-with-value    = field data optional-separator
 data                = scalar | composite-data
 scalar              = text | number | date-time
 composite-data      = *field-with-value
