@@ -33,20 +33,23 @@ The primary goal of the wire format is to transfer data rather than attempt to b
 # ABNF description
 
 ```
-stream              = optional-header *field-with-value optional-footer
-field-with-value    = field data optional-separator
+document            = [document-header] composite-data [document-footer]
+composite-data      = [composite-header] *field-with-value [composite-footer]
+field-with-value    = [field] data [separator]
 data                = scalar | composite-data
-scalar              = text | number | date-time
-composite-data      = *field-with-value
+scalar              = binary | data-time | number | text | type | uuid
 ```
+Further specifics are covered by the individual formats.
 
-## Planned RFCs
-The following Wire Formats are plannd
- - Text Wire Format - a simplified Yaml format
- - JSon Wire Format - a format derived from JSon.
- - Binary Wire Format - a binary format of the Text Wire Format
- - RAW Wire Format - a terse binary value only format.
- - FIX Wire Format - a wire format based on FIX.
+## Specific Format RFCs
+
+|           |                                                               |
+|:--------- | ------------------------------------------------------------- |
+| Binary    | https://github.com/OpenHFT/RFC/blob/master/WFA/Binary         |
+| FIX       | https://github.com/OpenHFT/RFC/blob/master/WFA/FIX            |
+| JSON      | https://github.com/OpenHFT/RFC/blob/master/WFA/JSON           |
+| Raw       | https://github.com/OpenHFT/RFC/blob/master/WFA/Raw            |
+| Text      | https://github.com/OpenHFT/RFC/blob/master/WFA/Text           |
 
 ## References
 
