@@ -17,3 +17,13 @@ The intent of the API is to produce a wire format which is;
  - human readable (or can be converted to a human readble format),
  - cross platform
  - resilient to schema changes in the data encoded.
+
+## Specific Format RFCs
+
+|           |                                                               |
+|:--------- | ------------------------------------------------------------- |
+| Binary    | https://github.com/OpenHFT/RFC/blob/master/WFA/Binary         |
+| FIX       | https://github.com/OpenHFT/RFC/blob/master/WFA/FIX            |
+| JSON      | https://github.com/OpenHFT/RFC/blob/master/WFA/JSON           |
+| Raw       | https://github.com/OpenHFT/RFC/blob/master/WFA/Raw            |
+| Text      | https://github.com/OpenHFT/RFC/blob/master/WFA/Text           |

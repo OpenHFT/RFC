@@ -41,16 +41,6 @@ scalar              = binary | data-time | number | text | type | uuid
 ```
 Further specifics are covered by the individual formats.
 
-## Specific Format RFCs
-
-|           |                                                               |
-|:--------- | ------------------------------------------------------------- |
-| Binary    | https://github.com/OpenHFT/RFC/blob/master/WFA/Binary         |
-| FIX       | https://github.com/OpenHFT/RFC/blob/master/WFA/FIX            |
-| JSON      | https://github.com/OpenHFT/RFC/blob/master/WFA/JSON           |
-| Raw       | https://github.com/OpenHFT/RFC/blob/master/WFA/Raw            |
-| Text      | https://github.com/OpenHFT/RFC/blob/master/WFA/Text           |
-
 ## References
 
 [RFC:SPB - Size Prefixed Blob](https://github.com/OpenHFT/RFC/blob/master/SPB)
