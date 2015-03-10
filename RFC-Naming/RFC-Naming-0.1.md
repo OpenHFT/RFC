@@ -25,6 +25,19 @@ In naming, where possible
 
 Where there is a possible source of confusion, try to highlight this in each RFC.
 
+# Abbreviated Names of RFCs
+RFCs are made unique by their short identifiers.  These identifiers should be in TitleCase except for acronyms which are in UPPER-CASE.  
+The use of a minus/ASCII hyphen or "-" is preferred as a separator in the short name of an RFC
+
+# Action names in methods
+Where possible, the use of the following names should mean
+
+ - "get" To get a value, possibly associated with a key or index.  This should not create a new object or alter the underlying data structure, unless mimicking a container which virtually has more data than is actually stored.
+ - "set" this should set a field, or a value associated with a key or index. A "set" method might validate the argument provided.
+ - "create" To always create a new object.
+ - "acquire" to get or create as required.
+ - "on" handle an event.
+
 ## Other terms used which have similar meaning in other documented use.
 
 ## Terms which used elsewhere for a different meaning.
