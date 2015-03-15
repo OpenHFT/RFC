@@ -3,8 +3,7 @@
 |         |                                                                     |
 |:------- | ------------------------------------------------------------------- |
 | Title   | Simple Services RFC                                                 |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/Simple-Services/         |
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/Simple-Services/Simple-Service-0.1.md |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Services/                |
 | Editor  | Peter Lawrey                                                        |
 | License | Apache 2.0                                                          |
 | Change Process | Users issue Pull Requests for the Editor's consideration.    |

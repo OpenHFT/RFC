@@ -4,7 +4,6 @@
 |:------- | ------------------------------------------------------------------- |
 | Title   | General Template for RFCs                                           |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Chronicle                |
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Chronicle-0.1.md |
 | Editor  | Peter Lawrey                                                        |
 | License | Apache 2.0                                                          |
 | Change Process | Users issue Pull Requests for the Editor's consideration.    |
