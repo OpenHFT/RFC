@@ -13,3 +13,18 @@
 
 # Goals
 An RFC for library specific requirements for Chronicle Engine. See the parent RFC for cross library requirements.
+
+## Use of Chronicle Service Protocol
+All services in Chronicle Engine can be identified by the use of URIs and relative URIs to identify it's services. [Service URI](https://github.com/OpenHFT/RFC/blob/master/Services/URI/)
+The access mechanism for this service can be identified via `csp://` though the Service URI makes this optional. e.g. The following URIs are valid addresses
+```
+csp://hostname:12345/services/service-name
+csp://hostname/services/service-name
+csp:///services/service-name
+/services/service-name
+services/service-name
+service-name
+```
+
+When a relative service name is provided, the context should provide the prefix of the address, hostname and/or port.
+
