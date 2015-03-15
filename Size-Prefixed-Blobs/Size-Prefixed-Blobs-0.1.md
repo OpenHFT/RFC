@@ -33,6 +33,26 @@ A message can start with two possible lengths as bits
  - 0b1M00 0000 0000 0000 0000 0000 0000 0000 - the length is not yet known.
  - 0b1MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - the message is not complete, however the length is known.   
 
+## Allocation and update lifecycle.
+
+### Writing a blob
+When appending a new entry, a writer must first find free space.
+It can scan the file, examining the length of each record until it find a 0x00000000 32-bit value.
+Using a CAS (Compare-And-Swap) it can reserve the use space.
+
+The writer can use two approaches.
+- write the known length with the not ready flag set. In this case, a concurrent writer can skip to the end and try again.
+- write a length of 0 with the not ready flag set. In this case, a concurrent writer must wait until the length is known.
+
+After putting a place holder at the start of a blob, it can write the blob.
+Once it is finished it can go back and put the known length and clear the not ready flag.
+
+### Reading a blob.
+When reading a blob, the reader can check the first 32-bit for the length.  The reader can either;
+ - read every blob, waiting for it to be ready before reading.
+ - read only meta-data or only non-meta data blobs.  This reader can skip blobs it is not reading even if the  blob is not ready (provided the length is known)
+
+
 ## TCP Connection Format bit
 In a TCP socket connection;
 

@@ -1,15 +1,15 @@
 # Specification
 
-|         |                                                                         |
-|:------- | ----------------------------------------------------------------------- |
-| Title   | Binary Wire Format API                                                  |
-| Parent  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/                         |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary                   |
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary/WFA-Binary-0.1.md |
-| Editor  | Peter Lawrey                                                            |
-| License | Apache 2.0                                                              |
-| Change Process | Users issue Pull Requests for the Editor's consideration.        |
-| Status  | Raw.                                                                    |
+|         |                                                                             |
+|:------- | --------------------------------------------------------------------------- |
+| Title   | Binary Wire Format API                                                      |
+| Parent  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/                 |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary           |
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary/Binary-Wire-Format-API-0.1.md |
+| Editor  | Peter Lawrey                                                                |
+| License | Apache 2.0                                                                  |
+| Change Process | Users issue Pull Requests for the Editor's consideration.            |
+| Status  | Raw.                                                                        |
 
 # Goals
 The Binary WFA is a binary WFA format based the Text format.

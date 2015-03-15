@@ -5,7 +5,7 @@
 | Title   | JSON Wire Format API                                                    |
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/                         |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/FIX                      |
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/FIX/WFA-FIX-0.1.md       |
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/FIX/FIX-Wire-Format-API-0.1.md       |
 | Editor  | Peter Lawrey                                                            |
 | License | Apache 2.0                                                              |
 | Change Process | Users issue Pull Requests for the Editor's consideration.        |

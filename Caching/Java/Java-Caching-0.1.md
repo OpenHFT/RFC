@@ -4,7 +4,7 @@
 |:------- | ----------------------------------------------------------- |
 | Title   | General Template for RFCs                                   |
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Caching/Caching-0.1.md |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/Caching/Java/Caching-Java-0.1.md |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Caching/Java/Java-Caching-0.1.md |
 | Editor  | Peter Lawrey                                                |
 | License | Apache 2.0                                                  |
 | Change Process | Users issue Pull Requests for the Editor's consideration. |
