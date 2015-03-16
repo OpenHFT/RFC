@@ -29,7 +29,7 @@ service-name
 When a relative service name is provided, the context should provide the prefix of the address, hostname and/or port.
 
 ## Session level messages
-Session messages don't need meta-data as they are sent directly to the session.
+Session messages are [Size Prefixed Blobs](https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/ ) which don't need meta-data as they are sent directly to the session.
 
 If meta data has been sent, this can be reset by sending an empty meta data message.  This message can be used as a heartbeat.
 
