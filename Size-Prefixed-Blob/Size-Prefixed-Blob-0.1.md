@@ -26,6 +26,12 @@ In file format;
  - the bit 31 indicates whether the current size is ready, 0 = ready, 1 = not ready.  
  - the bit 30 indicates the message contains meta data. 0 = user data, 1 = meta data,
 
+## Empty message
+To send an empty message, send a zero length, ready, meta data message
+```
+0x40000000
+```
+
 ### Documentation of message headers
 For illustration in documentation and based on how [YAML](http://yaml.org/spec/1.2/spec.html) represents the start of a message, this header can be described in terms of the directive
 
