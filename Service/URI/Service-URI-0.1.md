@@ -31,6 +31,14 @@ csp://host1:9876/dir/group/service-name
 tcp://host2:58796/services/group/service-name
 ```
 
+## Lenient format.
+To support embedding the URI in a YAML style message, an optional space is allowed after the first colon.
+```
+csp: //host1:9876/dir/group/service-name
+tcp: //host2:58796/services/group/service-name
+```
+The space should be ignored and can be dropped.
+
 ## Future use
 In the future, use of the `user-name@`, `?query` and `#fragment` notation may be used.
 
