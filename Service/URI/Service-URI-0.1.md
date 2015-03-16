@@ -2,8 +2,8 @@
 
 |         |                                                                     |
 |:------- | ------------------------------------------------------------------- |
-| Title   | Simple Services RFC                                                 |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/Services/URI/Services-URI-0.1.md |
+| Title   | Service URI RFC                                                     |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Service/URI/Service-URI-0.1.md |
 | Editor  | Peter Lawrey                                                        |
 | License | Apache 2.0                                                          |
 | Change Process | Users issue Pull Requests for the Editor's consideration.    |
@@ -30,6 +30,9 @@ and the resource is specified as `group/service-name`, the resulting search path
 csp://host1:9876/dir/group/service-name
 tcp://host2:58796/services/group/service-name
 ```
+
+## Future use
+In the future, use of the `user-name@`, `?query` and `#fragment` notation may be used.
 
 # References
 

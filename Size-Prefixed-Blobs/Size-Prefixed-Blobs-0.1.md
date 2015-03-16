@@ -29,27 +29,27 @@ In file format;
 ### Documentation of message headers
 For illustration in documentation and based on how [YAML](http://yaml.org/spec/1.2/spec.html) represents the start of a message, this header can be described in terms of the directive
 
-The following block is meta data
+The following block is meta-data (See the ABNF section)
 ```yaml
-%META-DATA
+%TAG !meta-data!
 ---
 ```
 
-The following block is meta data which is not ready
+The following block is not-ready-meta-data (See the ABNF section)
 ```yaml
-%META-DATA NOT-READY
+%TAG !meta-data! #not ready
 ---
 ```
 
-The following block is data
+The following block is data (See the ABNF section)
 ```yaml
-%DATA
+%TAG !data!
 ---
 ```
 
-The following block is data which is not ready
+The following block is not-ready-data (See the ABNF section)
 ```yaml
-%DATA NOT-READY
+%TAG !data! #not ready
 ---
 ```
 
