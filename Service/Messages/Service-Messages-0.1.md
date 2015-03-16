@@ -23,7 +23,7 @@ Each message is prefixed by a length.  The length can include whether the conten
 Large blocks of data can be fragmented into multiple sections
 
 ## ABNF representation
-See [Size Prefixed Blog RFC](https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/)
+See [Size Prefixed Blob RFC](https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/)
 ```abnf
 stream              = *messages
 messages            = meta-data *(*not-ready-data data)

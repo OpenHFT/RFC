@@ -5,12 +5,12 @@ A guiding principle should be simplicity.  This makes it easier to understand an
 
 # Raw RFCs
 
-| RFC Code                                                                  | Description               |
-|:------------------------------------------------------------------------- | ------------------------- |
-| [Caching](https://github.com/OpenHFT/RFC/blob/master/Caching)             | Data Caching API          |
-| [IPC-Executor](https://github.com/OpenHFT/RFC/blob/master/IPC-Executor)   | IPC Base Executor         |
-| [SPB](https://github.com/OpenHFT/RFC/blob/master/SPB)                     | Size Prefix Blog          |
-| [WFA](https://github.com/OpenHFT/RFC/blob/master/WFA)                     | Wire Format API           |
+| RFC Code                                                                              | Description                       |
+|:------------------------------------------------------------------------------------- | --------------------------------- |
+| [Caching](https://github.com/OpenHFT/RFC/blob/master/Caching)                         | Data Caching API                  |
+| [IPC-Executor](https://github.com/OpenHFT/RFC/blob/master/IPC-Executor)               | IPC Base Executor                 |
+| [Size Prefixed Blob](https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob)   | Messages with Size Prefix Blob    |
+| [Wire Format API](https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API)         | Wire Format API                   |
 
 # Meta RFCs
 

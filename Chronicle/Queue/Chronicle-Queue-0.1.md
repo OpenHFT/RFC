@@ -20,7 +20,7 @@ This Queue can also be thought of as a Journal.
 ## Related RFCs
 The file format uses;
 
- - [Size Prefixed Blobs](https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/) for the overall file structure
+ - [Size Prefixed Blob](https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/) for the overall file structure
  - [Wire Format API](https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/) for individual messages and meta data
 
 # Meta data wire messages.
