@@ -39,7 +39,7 @@ This is an example of a service lookup message
 %TAG !meta-data!
 ---
 csp:///service-lookup
-tid: 149873598325
+tid: 149873598325 # unique transaction id to a reply to on the channel sending the request.
 ...
 %TAG !data!
 ---

@@ -28,3 +28,193 @@ service-name
 
 When a relative service name is provided, the context should provide the prefix of the address, hostname and/or port.
 
+## Session level messages
+Session messages don't need meta-data as they are sent directly to the session.
+
+If meta data has been sent, this can be reset by sending an empty meta data message.  This message can be used as a heartbeat.
+
+```
+# clear the meta data routing
+%TAG !meta-data!
+---
+# nothing.
+...
+```
+
+## Header
+When a TCP connection is established a `header` and `header-reply` is sent as hand shaking.
+
+```
+# no meta-data selected as this is session level data.
+%TAG !data!
+---
+header: {
+    engine-version: 3.0.0-alpha-SNAPSHOT
+    wire-formats: [ Raw, Binary, Text ]
+}
+...
+```
+
+If the engine versions match, the first matching `wire-formats` can be used.
+If the versions don't match, `Raw` cannot be used as it is not schema change tolerant.
+
+```
+%TAG !data!
+---
+header-reply: {
+    wire-format: Binary
+}
+```
+
+## Service lookup
+To get the URI for a relative URI name, you can contact the service-lookup service.
+
+```
+%TAG !meta-data!
+---
+csp:///service-lookup
+tid: 1426502826520
+...
+%TAG !data!
+---
+lookup: { relative-uri: myMap, view: !Map }
+...
+```
+
+The reply may lookup like
+```
+%TAG !meta-data!
+---
+tid: 1426502826520
+...
+%TAG !data!
+---
+lookup-reply: { relative-uri: myMap, view: !Map, uri: "csp://server1/myMap" }
+...
+```
+
+The underlying API in Java could lookup like
+```java
+public interface ServiceLookup {
+    public Future<LookupReply> lookup(Lookup lookupRequest);
+}
+
+public interface Lookup {
+    public String getRelativeUri();
+    public void setRelativeUri(String relativeUri);
+    public String getView();
+    public void setView(String view);
+}
+
+public interface LookupReply {
+    public String getRelativeUri();
+    public void setRelativeUri(String relativeUri);
+    public String getView();
+    public void setView(String view);
+    public URI getUri();
+    public void setUri(URI uri);
+}
+```
+
+To use this service, the meta data block would look like
+```
+%TAG !meta-data!
+---
+csp://server1/myMap
+tid: 1426502826525
+...
+%TAG !data!
+---
+keySet:
+...
+```
+
+to which the reply could be
+```
+%TAG !meta-data!
+---
+tid: 1426502826525
+...
+%TAG !data!
+--- !Proxy
+csp://server1/myMap#keySet
+type: !Set
+...
+```
+
+The `!proxy` specifies the reply is a `Proxy` of type `Set` which points to the `keySet` of the map.
+
+# The Context API
+Each of these messages call the service lookup and expect to return the actual service if performed locally,
+or a proxy if performed remotely.  Whether the code is run remotely or locally, it should appear to behave the same way.
+
+```java
+public interface ChronicleContext {
+
+    <K, V> ChronicleMap<K, V> getMap(String name, Class<K> kClass, Class<V> vClass);
+
+    <E> ChronicleSet<E> getSet(String name, Class<E> eClass);
+
+    <I> I getService(Class<I> iClass, String name, Class... args);
+}
+```
+
+## Example
+This code results in two requests.  One to get the service, if it is not already cached, and one to perform the action.
+```java
+ChronicleMap<Integer, String> map = context.getMap("test", Integer.class, String.class);
+
+map.put(1, "hello");
+map.put(2, "world");
+map.put(3, "bye");
+```
+
+The service lookup, client to server
+```
+%TAG !meta-data!
+---
+csp:///service-lookup
+tid: 1426502826520
+...
+%TAG !data!
+---
+lookup: { relative-uri: test, view: !Map, types: [ !Integer, !String ] }
+...
+```
+... and the reply server to client.
+
+```
+%TAG !meta-data!
+---
+tid: 1426502826520
+...
+%TAG !data!
+---
+lookup-reply: { relative-uri: myMap, view: !Map, types: [ !Integer, !String ], uri: "csp://server1/test", cid: 1 }
+...
+```
+In this case, the `cid` is the channelId.  This can be used as a short hand of the `uri`
+
+```
+%TAG !meta-data!
+---
+cid: 1
+# or
+csp://server1/test
+tid: 1426502826525
+...
+%TAG !data!
+---
+put: [ 1, hello ]
+...
+%TAG !data!
+---
+put: [ 2, world ]
+...
+%TAG !data!
+---
+put: [ 3, bye ]
+...
+```
+
+This `put` assumes a reply for each put in order.  An `async-put` may be required for avoid a reply.
