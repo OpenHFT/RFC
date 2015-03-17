@@ -25,11 +25,11 @@ The Text WFA should be able to handle all schema changes in the WFA document.
 Yaml doesn't define a field type which is suitable as for atomic operations.  For this reason a composite type is needed which supports locking.
 
 ```
-!!atomic { locked: false, value: !!int 01234567890123456789 }
+!!atomic { locked: false, value: 01234567890123456789 }
 ```
 To read or write this value, first the lock must be obtained by CAS on the `locked:` field. Note: this cannot change the length of the entry.
 ```
-!!atomic { locked:  true, value: !!int 01234567890123456789 }
+!!atomic { locked:  true, value: 01234567890123456789 }
 ```
 Once the lock is held the value can be read and optionally updated with a suitable level of padding.
 Finally the lock must be released with a CAS.
