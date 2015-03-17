@@ -77,7 +77,7 @@ tid: 1426502826520
 ...
 %TAG !data!
 ---
-lookup: { relative-uri: myMap, view: !Map }
+lookup: { relativeUri: myMap, view: !Map }
 ...
 ```
 
@@ -89,7 +89,7 @@ tid: 1426502826520
 ...
 %TAG !data!
 ---
-lookup-reply: { relative-uri: myMap, view: !Map, uri: "csp://server1/myMap" }
+lookup-reply: { relativeUri: myMap, view: !Map, uri: "csp://server1/myMap" }
 ...
 ```
 
@@ -178,7 +178,7 @@ tid: 1426502826520
 ...
 %TAG !data!
 ---
-lookup: { relative-uri: test, view: !Map, types: [ !Integer, !String ] }
+lookup: { relativeUri: test, view: !Map, types: [ !Integer, !String ] }
 ...
 ```
 ... and the reply server to client.
@@ -190,7 +190,7 @@ tid: 1426502826520
 ...
 %TAG !data!
 ---
-lookup-reply: { relative-uri: myMap, view: !Map, types: [ !Integer, !String ], uri: "csp://server1/test", cid: 1 }
+lookup-reply: { relativeUri: myMap, view: !Map, types: [ !Integer, !String ], uri: "csp://server1/test", cid: 1 }
 ...
 ```
 In this case, the `cid` is the channelId.  This can be used as a short hand of the `uri`

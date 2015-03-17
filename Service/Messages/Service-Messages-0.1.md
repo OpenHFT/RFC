@@ -43,7 +43,7 @@ tid: 149873598325 # unique transaction id to a reply to on the channel sending t
 ...
 %TAG !data!
 ---
-lookup: { relative-uri: Colours }
+lookup: { relativeUri: Colours }
 ...
 ```
 
@@ -56,7 +56,7 @@ tid: 149873598325
 ...
 %TAG !data!
 ---
-lookup-reply: { relative-uri: Colours, uri: "csp://my-hostname:port//Colours" }
+lookup-reply: { relativeUri: Colours, uri: "csp://my-hostname:port//Colours" }
 ...
 ```
 
