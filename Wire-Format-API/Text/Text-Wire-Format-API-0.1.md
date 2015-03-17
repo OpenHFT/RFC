@@ -21,9 +21,23 @@ This format should be automatically translatable to the Binary format.
 # Schema changes
 The Text WFA should be able to handle all schema changes in the WFA document.
 
-## Atomic Long
-Yaml doesn't define a field type which is suitable as for atomic operations.  For this reason a composite type is needed which supports locking.
+# Atomic Operations
+YAML doesn't define a field type which is suitable as for atomic operations.  For this reason a composite type is needed which supports locking.
 
+Note: this is expected to be dramatically slower than the same operation on a binary format.
+
+## Atomic Int (32-bit)
+```
+!!atomic { locked: false, value: 0123456789 }
+```
+To read or write this value, first the lock must be obtained by CAS on the `locked:` field. Note: this cannot change the length of the entry.
+```
+!!atomic { locked:  true, value: 0123456789 }
+```
+Once the lock is held the value can be read and optionally updated with a suitable level of padding.
+Finally the lock must be released with a CAS.
+
+## Atomic Long (64-bit)
 ```
 !!atomic { locked: false, value: 01234567890123456789 }
 ```
@@ -34,4 +48,3 @@ To read or write this value, first the lock must be obtained by CAS on the `lock
 Once the lock is held the value can be read and optionally updated with a suitable level of padding.
 Finally the lock must be released with a CAS.
 
-Note: this is expected to be dramatically slower than the same operation on a binary format.
