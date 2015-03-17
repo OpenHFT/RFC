@@ -36,13 +36,11 @@ A typical message contains `meta-data` followed by a stream of `data` messages.
 This is an example of a service lookup message
 
 ```YAML
-%TAG !meta-data!
----
+--- !!meta-data
 csp:///service-lookup
 tid: 149873598325 # unique transaction id to a reply to on the channel sending the request.
 ...
-%TAG !data!
----
+--- !!data
 lookup: { relativeUri: Colours }
 ...
 ```
@@ -50,12 +48,10 @@ lookup: { relativeUri: Colours }
 The response could look like.
 
 ```YAML
-%TAG !meta-data!
----
+--- !!meta-data
 tid: 149873598325
 ...
-%TAG !data!
----
+--- !!data
 lookup-reply: { relativeUri: Colours, uri: "csp://my-hostname:port//Colours" }
 ...
 ```

@@ -37,26 +37,22 @@ For illustration in documentation and based on how [YAML](http://yaml.org/spec/1
 
 The following block is meta-data (See the ABNF section)
 ```yaml
-%TAG !meta-data!
----
+--- !!meta-data
 ```
 
 The following block is not-ready-meta-data (See the ABNF section)
 ```yaml
-%TAG !meta-data! #not ready
----
+--- !!not-ready-meta-data
 ```
 
 The following block is data (See the ABNF section)
 ```yaml
-%TAG !data!
----
+--- !!data
 ```
 
 The following block is not-ready-data (See the ABNF section)
 ```yaml
-%TAG !data! #not ready
----
+--- !!not-ready-data
 ```
 
 ### handling of incomplete messages

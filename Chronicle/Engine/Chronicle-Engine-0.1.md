@@ -35,8 +35,7 @@ If meta data has been sent, this can be reset by sending an empty meta data mess
 
 ```
 # clear the meta data routing
-%TAG !meta-data!
----
+--- !!meta-data
 # nothing.
 ...
 ```
@@ -46,8 +45,7 @@ When a TCP connection is established a `header` and `header-reply` is sent as ha
 
 ```
 # no meta-data selected as this is session level data.
-%TAG !data!
----
+--- !!data
 header: {
     engine-version: 3.0.0-alpha-SNAPSHOT
     wire-formats: [ Raw, Binary, Text ]
@@ -59,8 +57,7 @@ If the engine versions match, the first matching `wire-formats` can be used.
 If the versions don't match, `Raw` cannot be used as it is not schema change tolerant.
 
 ```
-%TAG !data!
----
+--- !!data
 header-reply: {
     wire-format: Binary
 }
@@ -70,25 +67,21 @@ header-reply: {
 To get the URI for a relative URI name, you can contact the service-lookup service.
 
 ```
-%TAG !meta-data!
----
+--- !!meta-data
 csp:///service-lookup
 tid: 1426502826520
 ...
-%TAG !data!
----
+--- !!data
 lookup: { relativeUri: myMap, view: !Map }
 ...
 ```
 
 The reply may lookup like
 ```
-%TAG !meta-data!
----
+--- !!meta-data
 tid: 1426502826520
 ...
-%TAG !data!
----
+--- !!data
 lookup-reply: { relativeUri: myMap, view: !Map, uri: "csp://server1/myMap" }
 ...
 ```
@@ -118,25 +111,21 @@ public interface LookupReply {
 
 To use this service, the meta data block would look like
 ```
-%TAG !meta-data!
----
+--- !!meta-data
 csp://server1/myMap
 tid: 1426502826525
 ...
-%TAG !data!
----
+--- !!data
 keySet:
 ...
 ```
 
 to which the reply could be
 ```
-%TAG !meta-data!
----
+--- !!meta-data
 tid: 1426502826525
 ...
-%TAG !data!
---- !Proxy
+--- !!data !Proxy
 csp://server1/myMap#keySet
 type: !Set
 ...
@@ -171,48 +160,40 @@ map.put(3, "bye");
 
 The service lookup, client to server
 ```
-%TAG !meta-data!
----
+--- !!meta-data
 csp:///service-lookup
 tid: 1426502826520
 ...
-%TAG !data!
----
+--- !!data
 lookup: { relativeUri: test, view: !Map, types: [ !Integer, !String ] }
 ...
 ```
 ... and the reply server to client.
 
 ```
-%TAG !meta-data!
----
+--- !!meta-data
 tid: 1426502826520
 ...
-%TAG !data!
----
+--- !!data
 lookup-reply: { relativeUri: myMap, view: !Map, types: [ !Integer, !String ], uri: "csp://server1/test", cid: 1 }
 ...
 ```
 In this case, the `cid` is the channelId.  This can be used as a short hand of the `uri`
 
 ```
-%TAG !meta-data!
----
+--- !!meta-data
 cid: 1
 # or
 csp://server1/test
 tid: 1426502826525
 ...
-%TAG !data!
----
+--- !!data
 put: [ 1, hello ]
 ...
-%TAG !data!
----
+--- !!data
 put: [ 2, world ]
 ...
-%TAG !data!
----
+--- !!data
 put: [ 3, bye ]
 ...
 ```
