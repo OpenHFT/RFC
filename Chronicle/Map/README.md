@@ -2,7 +2,7 @@
 
 |         |                                                                         |
 |:------- | ----------------------------------------------------------------------- |
-| Title   | General Template for RFCs                                               |
+| Title   | Chronicle Map RFC                                                       |
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Chronicle                    |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map                |
 | Latest  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Chronicle-Map-0.1.md |
@@ -12,4 +12,4 @@
 | Status  | Raw.                                                                    |
 
 # Goals
-An RFC for library specific requirements for Chronicle Queue. See the parent RFC for cross library requirements.
+An RFC for library specific requirements for Chronicle Map. See the parent RFC for cross library requirements.
