@@ -141,7 +141,7 @@ cid: 1212
 tid: 123456789
 ...
 --- !!data
-hasNext: { }
+hasNext: { index: 1286348638468324, batch: 4 }
 ...
 ```
 
@@ -151,11 +151,12 @@ The server replies with a batch
 tid: 123456789
 ...
 --- !!data
+index: 1286348638468324 # the actual index read.
 reply: 
   - { field1: one, field2: two }
-  - !!binary 981273ka2jduy81e2hkjhsd=
   - !!binary 981273kwajduy81e2hkjhsd=
-  - !!binary 981273kajduy81e32hkjhsd=
+  - { field1: three, field2: four }
+  - !!binary jsagdiy981273kajduy81e32hkjhsd==
 ...
 ```
 
