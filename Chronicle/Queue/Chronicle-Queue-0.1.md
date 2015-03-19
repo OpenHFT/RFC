@@ -61,7 +61,7 @@ This means there is at least non cached 2 page accesses to find a random message
 
 ### Queue Appender
 If the client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/queue-name#Queue
 # or
@@ -74,7 +74,7 @@ createAppender: { }
 ```
 
 The server replies with a proxy
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -85,7 +85,7 @@ reply: !!queue-appender { csp://server/path/map-name#appender, cid: 1234 }
 
 ### Queue Tailer
 If the client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/queue-name#Queue
 # or
@@ -98,7 +98,7 @@ createTailer: { }
 ```
 
 The server replies with a proxy
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...

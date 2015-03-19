@@ -32,7 +32,7 @@ In all the examples below the `csp:` can be replaced with a `cid:` which is a sh
 
 #### Map proxies
 For entrySet(), the client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 # or
@@ -45,7 +45,7 @@ entrySet: { }
 ```
 
 The server replies
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -55,7 +55,7 @@ reply: !!set-proxy { csp://server/path/map-name#entrySet, cid: 1234 }
 ```
 
 For keySet(), the client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 # or
@@ -68,7 +68,7 @@ keySet: { }
 ```
 
 The server replies
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -80,7 +80,7 @@ The sample applies to `values()` returning `csp://server/path/map-name#values`
 
 #### Map get
 The client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
@@ -91,7 +91,7 @@ get: { key: 1 }
 ```
 
 The server replies with the payload.
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -102,7 +102,7 @@ reply: Bonjour
 
 #### Map put
 If the client expects a reply
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
@@ -113,7 +113,7 @@ getAndPut: { key: 1, value: Hello }
 ```
 
 The server sends back
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -123,7 +123,7 @@ reply: !!null     # for no return
 ```
 
 Or if the server gets an error
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -134,7 +134,7 @@ reply: !IllegalArgumentException "Invalid key type"
 
 
 or the server sends back the previous value
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -144,7 +144,7 @@ reply: Bonjour
 ```
 
 If the client doesn't expect a reply
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 ...
@@ -157,7 +157,7 @@ The server doesn't send anything.
 
 #### Map putAll
 Client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 ...
@@ -182,7 +182,7 @@ The server doesn't send back a reply.
 #### Map putAll of a proxy
 
 Client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
@@ -198,7 +198,7 @@ The server doesn't send back a reply.
 To determine the size of the map or if the map is empty. `isEmpty()` can test `size() > 0`
 
 Client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
@@ -209,7 +209,7 @@ size: { }
 ```
 
 The server replies with
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -220,7 +220,7 @@ reply: 1212121
 
 #### Map toString()
 Client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
@@ -231,7 +231,7 @@ toString: { }
 ```
 
 For short replies, the server replies with
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -241,7 +241,7 @@ reply: "{ 1=Hello, 2=World }"
 ```
 
 For long replies, the server replies with
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -257,7 +257,7 @@ reply-append: "3=Bye }"
 ```
 #### Map remove
 Client sends
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
 ...
@@ -268,7 +268,7 @@ remove: { key: 12, reply: false }
 
 or using the keySet()
 
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#keySet()
 tid: 123456789
@@ -279,7 +279,7 @@ remove: { element: 12, reply: true }
 ```
 
 and the server replies
-```YAML
+```yaml
 --- !!meta-data
 tid: 123456789
 ...
@@ -290,7 +290,7 @@ reply: "{ 1=Hello, 2=World }"
 
 #### Replication
 The sender pushes an update
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#replication
 # or
@@ -302,7 +302,7 @@ update: { key: 12, value: "Crazy", timestamp: 1438276872, id: 5 }
 ```
 
 The sender pushes a remove
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#replication
 # or
@@ -314,7 +314,7 @@ remove: { key: 12, timestamp: 1438276872, id: 5 }
 ```
 
 The sender requests being notified of updates.
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#replication
 # or
@@ -326,7 +326,7 @@ subscribe: { all: true }
 ```
 
 or to unsubscribe All
-```YAML
+```yaml
 --- !!meta-data
 csp://server/path/map-name#replication
 # or

@@ -33,7 +33,7 @@ Session messages are [Size Prefixed Blob](https://github.com/OpenHFT/RFC/blob/ma
 
 If meta data has been sent, this can be reset by sending an empty meta data message.  This message can be used as a heartbeat.
 
-```
+```yaml
 # clear the meta data routing
 --- !!meta-data
 # nothing.
@@ -43,7 +43,7 @@ If meta data has been sent, this can be reset by sending an empty meta data mess
 ## Header
 When a TCP connection is established a `header` and `header-reply` is sent as hand shaking.
 
-```
+```yaml
 # no meta-data selected as this is session level data.
 --- !!data
 header: {
@@ -56,7 +56,7 @@ header: {
 If the engine versions match, the first matching `wire-formats` can be used.
 If the versions don't match, `Raw` cannot be used as it is not schema change tolerant.
 
-```
+```yaml
 --- !!data
 header-reply: {
     wire-format: Binary
@@ -65,7 +65,7 @@ header-reply: {
 
 ### Connection footer
 A connection can disconnect gracefully and give a message for logging purposes.
-```
+```yaml
 --- !!meta-data
 # no meta data indicate that this is a session message
 ....
@@ -77,7 +77,7 @@ bye: { message: Timed out }
 ## Service lookup
 To get the URI for a relative URI name, you can contact the service-lookup service.
 
-```
+```yaml
 --- !!meta-data
 csp:///service-lookup
 tid: 1426502826520
@@ -88,7 +88,7 @@ lookup: { relativeUri: myMap, view: !Map }
 ```
 
 The reply may lookup like
-```
+```yaml
 --- !!meta-data
 tid: 1426502826520
 ...
@@ -121,7 +121,7 @@ public interface LookupReply {
 ```
 
 To use this service, the meta data block would look like
-```
+```yaml
 --- !!meta-data
 csp://server1/myMap
 tid: 1426502826525
@@ -132,7 +132,7 @@ keySet:
 ```
 
 to which the reply could be
-```
+```yaml
 --- !!meta-data
 tid: 1426502826525
 ...
@@ -170,7 +170,7 @@ map.put(3, "bye");
 ```
 
 The service lookup, client to server
-```
+```yaml
 --- !!meta-data
 csp:///service-lookup
 tid: 1426502826520
@@ -181,7 +181,7 @@ lookup: { relativeUri: test, view: !Map, types: [ !Integer, !String ] }
 ```
 ... and the reply server to client.
 
-```
+```yaml
 --- !!meta-data
 tid: 1426502826520
 ...
@@ -191,7 +191,7 @@ lookup-reply: { relativeUri: myMap, view: !Map, types: [ !Integer, !String ], ur
 ```
 In this case, the `cid` is the channelId.  This can be used as a short hand of the `uri`
 
-```
+```yaml
 --- !!meta-data
 cid: 1
 # or
