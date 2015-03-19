@@ -2,7 +2,7 @@
 
 |         |                                                             |
 |:------- | ----------------------------------------------------------- |
-| Title   | General Template for RFCs                                   |
+| Title   | Chronicle Queue RFC                                         |
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Chronicle-0.1.md |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Queue/Chronicle-Queue-0.1.md |
 | Editor  | Peter Lawrey                                                |
@@ -50,117 +50,6 @@ To perform a random lookup of a message,
 
 The "header" and "index2index" message should be in cache after performing a random access.
 This means there is at least non cached 2 page accesses to find a random message.
-
-## Services
-| Service              | Relative URI                  |
-| -------------------- | ----------------------------- |
-| Unqualified Queue    | queue-name                    |
-| Qualified Queue      | queue-name#Queue              |
-| Appender for a queue | queue-name#appender           |
-| Tailer for a queue   | queue-name#tailer             |
-
-### Queue Appender
-If the client sends
-```yaml
---- !!meta-data
-csp://server/path/queue-name#Queue
-# or
-cid: 1212
-tid: 123456789
-...
---- !!data
-createAppender: { }
-...
-```
-
-The server replies with a proxy
-```yaml
---- !!meta-data
-tid: 123456789
-...
---- !!data
-reply: !!queue-appender { csp://server/path/map-name#appender, cid: 1234 }
-...
-```
-
-#### Appending the next
-If the client sends
-```yaml
---- !!meta-data
-csp://server/path/queue-name#appender
-# or
-cid: 1212
-tid: 123456789
-...
---- !!data
-submit: { field1: one, field2: two }
-...
-```
-
-The server replies with the index of the entry.
-```yaml
---- !!meta-data
-tid: 123456789
-...
---- !!data
-index: 1286348638468324
-...
-```
-### Queue Tailer
-If the client sends
-```yaml
---- !!meta-data
-csp://server/path/queue-name#Queue
-# or
-cid: 1212
-tid: 123456789
-...
---- !!data
-createTailer: { }
-...
-```
-
-The server replies with a proxy
-```yaml
---- !!meta-data
-tid: 123456789
-...
---- !!data
-reply: !!queue-tailer { csp://server/path/map-name#tailer, cid: 12345, start: 1286348000000000, end: 1286348638469999 }
-...
-```
-Note: a unique tailer is required for each 
-
-#### getting the next
-If the client sends
-```yaml
---- !!meta-data
-csp://server/path/queue-name#tailer/12345
-# or
-cid: 1212
-tid: 123456789
-...
---- !!data
-hasNext: { index: 1286348638468324, batch: 4 }
-...
-```
-
-The server replies with a batch
-```yaml
---- !!meta-data
-tid: 123456789
-...
---- !!data
-index: 1286348638468324 # the actual index read.
-reply: 
-  - { field1: one, field2: two }
-  - !!binary 981273kwajduy81e2hkjhsd=
-  - { field1: three, field2: four }
-  - !!binary jsagdiy981273kajduy81e32hkjhsd==
-...
-```
-
-Once the client has consumed these messages it can call `hasNext:` again.
 
 ## References
 [RFC Home](https://github.com/OpenHFT/RFC/blob/master/)

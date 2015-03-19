@@ -2,7 +2,7 @@
 
 |         |                                                                         |
 |:------- | ----------------------------------------------------------------------- |
-| Title   | General Template for RFCs                                               |
+| Title   | Chronicle Engine RFC                                                    |
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Chronicle                    |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Engine             |
 | Latest  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Engine/Chronicle-Engine-0.1.md |
