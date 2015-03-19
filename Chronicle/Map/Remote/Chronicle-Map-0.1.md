@@ -77,7 +77,7 @@ The client sends
 csp://server/path/map-name#Map
 tid: 123456789
 --- !!data
-get: { key: 1 }
+get: 1
 ```
 
 The server replies with the payload.
@@ -164,7 +164,7 @@ Client sends
 csp://server/path/map-name#Map
 tid: 123456789
 --- !!not-ready-data
-putAll: { csp://server/path/map-name2#Map, cid: 2233 }
+putAll: csp://server/path/map-name2#Map
 ```
 
 The server doesn't send back a reply.
@@ -177,7 +177,7 @@ Client sends
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
---- !!not-ready-data
+--- !!data
 size: { }
 ```
 
@@ -242,7 +242,7 @@ and the server replies
 --- !!meta-data
 tid: 123456789
 --- !!data
-reply: "{ 1=Hello, 2=World }"
+reply: { 1=Hello, 2=World }
 ```
 
 #### iterator()
