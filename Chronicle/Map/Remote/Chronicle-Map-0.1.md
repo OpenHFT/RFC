@@ -38,20 +38,16 @@ csp://server/path/map-name#Map
 # or
 cid: 1212
 tid: 123456789
-...
 --- !!data
 entrySet: { }
-...
 ```
 
 The server replies
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: !!set-proxy { csp://server/path/map-name#entrySet, cid: 1234 }
-...
 ```
 
 For keySet(), the client sends
@@ -61,20 +57,16 @@ csp://server/path/map-name#Map
 # or
 cid: 1212
 tid: 123456789
-...
 --- !!data
 keySet: { }
-...
 ```
 
 The server replies
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: !!proxy { csp://server/path/map-name#keySet, cid: 1235 }
-...
 ```
 The sample applies to `values()` returning `csp://server/path/map-name#values`
 
@@ -84,20 +76,16 @@ The client sends
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
-...
 --- !!data
 get: { key: 1 }
-...
 ```
 
 The server replies with the payload.
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: Bonjour
-...
 ```
 
 #### Map put
@@ -106,30 +94,24 @@ If the client expects a reply
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
-...
 --- !!data
 getAndPut: { key: 1, value: Hello }
-...
 ```
 
 The server sends back
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: !!null     # for no return
-...
 ```
 
 Or if the server gets an error
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: !IllegalArgumentException "Invalid key type"
-...
 ```
 
 
@@ -137,20 +119,16 @@ or the server sends back the previous value
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: Bonjour
-...
 ```
 
 If the client doesn't expect a reply
 ```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
-...
 --- !!data
 put: { key: 1, value: Hello }
-...
 ```
 
 The server doesn't send anything.
@@ -160,7 +138,6 @@ Client sends
 ```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
-...
 --- !!not-ready-data
 put: 
  - { key: 1, value: Hello1 }
@@ -168,7 +145,6 @@ put:
  - { key: 3, value: Hello3 }
  - { key: 4, value: Hello4 }
  - { key: 5, value: Hello5 }
-...
 --- !!data
 put:
  - { key: 6, value: Hello6 }
@@ -176,7 +152,6 @@ put:
  - { key: 8, value: Hello8 }
  - { key: 9, value: Hello9 }
  -  { key: 10, value: Hello10 }
-...
 ```
 
 The server doesn't send back a reply.
@@ -188,10 +163,8 @@ Client sends
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
-...
 --- !!not-ready-data
 putAll: { csp://server/path/map-name2#Map, cid: 2233 }
-...
 ```
 
 The server doesn't send back a reply.
@@ -204,20 +177,16 @@ Client sends
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
-...
 --- !!not-ready-data
 size: { }
-...
 ```
 
 The server replies with
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: 1212121
-...
 ```
 
 #### Map toString()
@@ -226,46 +195,36 @@ Client sends
 --- !!meta-data
 csp://server/path/map-name#Map
 tid: 123456789
-...
 --- !!data
 toString: { }
-...
 ```
 
 For short replies, the server replies with
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: "{ 1=Hello, 2=World }"
-...
 ```
 
 For long replies, the server replies with
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!not-ready-data
 reply: "{ 1=Hello,"
-...
 --- !!not-ready-data
 reply-append: "2=World,"
-...
 --- !!data
 reply-append: "3=Bye }"
-...
 ```
 #### Map remove
 Client sends
 ```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
-...
 --- !!data
 remove: { key: 12, reply: false }
-...
 ```
 
 or using the keySet()
@@ -274,20 +233,16 @@ or using the keySet()
 --- !!meta-data
 csp://server/path/map-name#keySet()
 tid: 123456789
-...
 --- !!data
 remove: { element: 12, reply: true }
-...
 ```
 
 and the server replies
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: "{ 1=Hello, 2=World }"
-...
 ```
 
 #### iterator()
@@ -296,16 +251,13 @@ When the client starts a stream, it must tell the server when it is ready for mo
 --- !!meta-data
 csp://server/path/map-name#entrySet
 tid: 123456789
-...
 --- !!not-ready-data
 iterator: { }
-...
 ```
 The server replies with
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 entry:
  - { key: 1, value: Hello1 }
@@ -313,22 +265,18 @@ entry:
  - { key: 3, value: Hello3 }
  - { key: 4, value: Hello4 }
  - { key: 5, value: Hello5 }
-...
 ```
 Once the client has received this:
 ```yaml
 --- !!meta-data
 csp://server/path/map-name#entrySet
-...
 --- !!data
 iterator-continue: { tid: 123456789 }
-...
 ```
 And the server give some more.
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 entry:
  - { key: 6, value: Hello6 }
@@ -336,7 +284,6 @@ entry:
  - { key: 8, value: Hello8 }
  - { key: 9, value: Hello9 }
  - { key: 10, value: Hello10 }
-...
 ```
 
 The client could prefetch an additional block from the start.
@@ -344,11 +291,9 @@ The client could prefetch an additional block from the start.
 --- !!meta-data
 csp://server/path/map-name#entrySet
 tid: 123456789
-...
 --- !!not-ready-data
 iterator: { }
 iterator-continue: { tid: 123456789 }
-...
 ```
 This causes two blocks to be in flight at once reducing the stop-start behaviour for downloading.
 
@@ -356,11 +301,9 @@ Once the iteration has finished, the server sends
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 entry: { key: 11, value: Hello11 }
 hasNext: true
-...
 ```
 
 #### Replication
@@ -370,10 +313,8 @@ The sender pushes an update
 csp://server/path/map-name#replication
 # or
 cid: 2121
-...
 --- !!data
 update: { key: 12, value: "Crazy", timestamp: 1438276872, id: 5 }
-...
 ```
 
 The sender pushes a remove
@@ -382,10 +323,8 @@ The sender pushes a remove
 csp://server/path/map-name#replication
 # or
 cid: 2121
-...
 --- !!data
 remove: { key: 12, timestamp: 1438276872, id: 5 }
-...
 ```
 
 The sender requests being notified of updates.
@@ -394,10 +333,8 @@ The sender requests being notified of updates.
 csp://server/path/map-name#replication
 # or
 cid: 2121
-...
 --- !!data
 subscribe: { all: true }
-...
 ```
 
 or to unsubscribe All
@@ -406,10 +343,8 @@ or to unsubscribe All
 csp://server/path/map-name#replication
 # or
 cid: 2121
-...
 --- !!data
 unsubscribe: { all: true }
-...
 ```
 
 Future versions will need to subscribe selectively.

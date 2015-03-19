@@ -39,20 +39,16 @@ csp://server/path/queue-name#Queue
 # or
 cid: 1212
 tid: 123456789
-...
 --- !!data
 createAppender: { }
-...
 ```
 
 The server replies with a proxy
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: !!queue-appender { csp://server/path/map-name#appender, cid: 1234 }
-...
 ```
 
 #### Appending the next
@@ -63,20 +59,16 @@ csp://server/path/queue-name#appender
 # or
 cid: 1212
 tid: 123456789
-...
 --- !!data
 submit: { field1: one, field2: two }
-...
 ```
 
 The server replies with the index of the entry.
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 index: 1286348638468324
-...
 ```
 ### Queue Tailer
 If the client sends
@@ -86,20 +78,16 @@ csp://server/path/queue-name#Queue
 # or
 cid: 1212
 tid: 123456789
-...
 --- !!data
 createTailer: { }
-...
 ```
 
 The server replies with a proxy
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 reply: !!queue-tailer { csp://server/path/map-name#tailer, cid: 12345, start: 1286348000000000, end: 1286348638469999 }
-...
 ```
 Note: a unique tailer is required for each 
 
@@ -111,17 +99,14 @@ csp://server/path/queue-name#tailer/12345
 # or
 cid: 1212
 tid: 123456789
-...
 --- !!data
 hasNext: { index: 1286348638468324, batch: 4 }
-...
 ```
 
 The server replies with a batch
 ```yaml
 --- !!meta-data
 tid: 123456789
-...
 --- !!data
 index: 1286348638468324 # the actual index read.
 reply: 
@@ -129,7 +114,6 @@ reply:
   - !!binary 981273kwajduy81e2hkjhsd=
   - { field1: three, field2: four }
   - !!binary jsagdiy981273kajduy81e32hkjhsd==
-...
 ```
 
 Once the client has consumed these messages it can call `hasNext:` again.

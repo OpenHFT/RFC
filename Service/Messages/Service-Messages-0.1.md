@@ -42,7 +42,6 @@ tid: 149873598325 # unique transaction id to a reply to on the channel sending t
 ...
 --- !!data
 lookup: { relativeUri: Colours }
-...
 ```
 
 The response could look like.
@@ -53,7 +52,6 @@ tid: 149873598325
 ...
 --- !!data
 lookup-reply: { relativeUri: Colours, uri: "csp://my-hostname:port//Colours" }
-...
 ```
 
 ## Implementation

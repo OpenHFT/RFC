@@ -23,7 +23,6 @@ If meta data has been sent, this can be reset by sending an empty meta data mess
 # clear the meta data routing
 --- !!meta-data
 # nothing.
-...
 ```
 
 ## Header
@@ -36,7 +35,6 @@ header: {
     engine-version: 3.0.0-alpha-SNAPSHOT
     wire-formats: [ Raw, Binary, Text ]
 }
-...
 ```
 
 If the engine versions match, the first matching `wire-formats` can be used.
@@ -54,10 +52,8 @@ A connection can disconnect gracefully and give a message for logging purposes.
 ```yaml
 --- !!meta-data
 # no meta data indicate that this is a session message
-....
 --- !!data
 bye: { message: Timed out }
-...
 ```
 
 ## Service lookup
@@ -67,20 +63,16 @@ To get the URI for a relative URI name, you can contact the service-lookup servi
 --- !!meta-data
 csp:///service-lookup
 tid: 1426502826520
-...
 --- !!data
 lookup: { relativeUri: myMap, view: !Map }
-...
 ```
 
 The reply may lookup like
 ```yaml
 --- !!meta-data
 tid: 1426502826520
-...
 --- !!data
 lookup-reply: { relativeUri: myMap, view: !Map, uri: "csp://server1/myMap" }
-...
 ```
 
 The underlying API in Java could lookup like
@@ -111,21 +103,17 @@ To use this service, the meta data block would look like
 --- !!meta-data
 csp://server1/myMap
 tid: 1426502826525
-...
 --- !!data
 keySet:
-...
 ```
 
 to which the reply could be
 ```yaml
 --- !!meta-data
 tid: 1426502826525
-...
 --- !!data !Proxy
 csp://server1/myMap#keySet
 type: !Set
-...
 ```
 
 The `!proxy` specifies the reply is a `Proxy` of type `Set` which points to the `keySet` of the map.
@@ -160,20 +148,16 @@ The service lookup, client to server
 --- !!meta-data
 csp:///service-lookup
 tid: 1426502826520
-...
 --- !!data
 lookup: { relativeUri: test, view: !Map, types: [ !Integer, !String ] }
-...
 ```
 ... and the reply server to client.
 
 ```yaml
 --- !!meta-data
 tid: 1426502826520
-...
 --- !!data
 lookup-reply: { relativeUri: myMap, view: !Map, types: [ !Integer, !String ], uri: "csp://server1/test", cid: 1 }
-...
 ```
 In this case, the `cid` is the channelId.  This can be used as a short hand of the `uri`
 
@@ -183,16 +167,12 @@ cid: 1
 # or
 csp://server1/test
 tid: 1426502826525
-...
 --- !!data
 put: { key: 1, value: hello }
-...
 --- !!data
 put: { key: 2, value: world }
-...
 --- !!data
 put: { key: 3, value: bye }
-...
 ```
 
 This `put` assumes a reply for each put in order.  An `async-put` may be required for avoid a reply.
