@@ -162,18 +162,20 @@ Client sends
 csp://server/path/map-name#Map
 ...
 --- !!not-ready-data
-put: { key: 1, value: Hello1 }
-put: { key: 2, value: Hello2 }
-put: { key: 3, value: Hello3 }
-put: { key: 4, value: Hello4 }
-put: { key: 5, value: Hello5 }
+put: 
+ - { key: 1, value: Hello1 }
+ - { key: 2, value: Hello2 }
+ - { key: 3, value: Hello3 }
+ - { key: 4, value: Hello4 }
+ - { key: 5, value: Hello5 }
 ...
 --- !!data
-put: { key: 6, value: Hello6 }
-put: { key: 7, value: Hello7 }
-put: { key: 8, value: Hello8 }
-put: { key: 9, value: Hello9 }
-put: { key: 10, value: Hello10 }
+put:
+ - { key: 6, value: Hello6 }
+ - { key: 7, value: Hello7 }
+ - { key: 8, value: Hello8 }
+ - { key: 9, value: Hello9 }
+ -  { key: 10, value: Hello10 }
 ...
 ```
 
@@ -285,6 +287,79 @@ tid: 123456789
 ...
 --- !!data
 reply: "{ 1=Hello, 2=World }"
+...
+```
+
+#### iterator()
+When the client starts a stream, it must tell the server when it is ready for more data.
+```yaml
+--- !!meta-data
+csp://server/path/map-name#entrySet
+tid: 123456789
+...
+--- !!not-ready-data
+iterator: { }
+...
+```
+The server replies with
+```yaml
+--- !!meta-data
+tid: 123456789
+...
+--- !!data
+entry:
+ - { key: 1, value: Hello1 }
+ - { key: 2, value: Hello2 }
+ - { key: 3, value: Hello3 }
+ - { key: 4, value: Hello4 }
+ - { key: 5, value: Hello5 }
+...
+```
+Once the client has received this:
+```yaml
+--- !!meta-data
+csp://server/path/map-name#entrySet
+...
+--- !!data
+iterator-continue: { tid: 123456789 }
+...
+```
+And the server give some more.
+```yaml
+--- !!meta-data
+tid: 123456789
+...
+--- !!data
+entry:
+ - { key: 6, value: Hello6 }
+ - { key: 7, value: Hello7 }
+ - { key: 8, value: Hello8 }
+ - { key: 9, value: Hello9 }
+ - { key: 10, value: Hello10 }
+...
+```
+
+The client could prefetch an additional block from the start.
+```yaml
+--- !!meta-data
+csp://server/path/map-name#entrySet
+tid: 123456789
+...
+--- !!not-ready-data
+iterator: { }
+iterator-continue: { tid: 123456789 }
+...
+```
+This causes two blocks to be in flight at once reducing the stop-start behaviour for downloading.
+
+Once the iteration has finished, the server sends
+```yaml
+--- !!meta-data
+tid: 123456789
+...
+--- !!data
+entry: { key: 11, value: Hello11 }
+hasNext: true
 ...
 ```
 

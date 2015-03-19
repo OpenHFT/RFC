@@ -83,6 +83,29 @@ reply: !!queue-appender { csp://server/path/map-name#appender, cid: 1234 }
 ...
 ```
 
+#### Appending the next
+If the client sends
+```yaml
+--- !!meta-data
+csp://server/path/queue-name#appender
+# or
+cid: 1212
+tid: 123456789
+...
+--- !!data
+submit: { field1: one, field2: two }
+...
+```
+
+The server replies with the index of the entry.
+```yaml
+--- !!meta-data
+tid: 123456789
+...
+--- !!data
+index: 1286348638468324
+...
+```
 ### Queue Tailer
 If the client sends
 ```yaml
@@ -107,6 +130,36 @@ reply: !!queue-tailer { csp://server/path/map-name#taielr/12345, cid: 12345 }
 ...
 ```
 Note: a unique tailer is required for each 
+
+#### getting the next
+If the client sends
+```yaml
+--- !!meta-data
+csp://server/path/queue-name#tailer/12345
+# or
+cid: 1212
+tid: 123456789
+...
+--- !!data
+hasNext: { }
+...
+```
+
+The server replies with a batch
+```yaml
+--- !!meta-data
+tid: 123456789
+...
+--- !!data
+reply: 
+  - { field1: one, field2: two }
+  - !!binary 981273ka2jduy81e2hkjhsd=
+  - !!binary 981273kwajduy81e2hkjhsd=
+  - !!binary 981273kajduy81e32hkjhsd=
+...
+```
+
+Once the client has consumed these messages it can call `hasNext:` again.
 
 ## References
 [RFC Home](https://github.com/OpenHFT/RFC/blob/master/)
