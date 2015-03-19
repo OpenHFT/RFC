@@ -98,7 +98,7 @@ The message length is a 30-bit unsigned length from 1 to 1006632960 bytes.  The 
 ```
 stream              = header *blobs-with-length
 header              = 8OCTET
-blobs-with-length   = invalid | data | meta-data | not-ready-data | not-ready-meta-data | reserved
+blobs-with-length   = invalid / data / meta-data / not-ready-data / not-ready-meta-data / reserved
 invalid             = 4%x00
 data                = %x00 - %x3B 3OCTET message-body
 meta-data           = %x40 - %x7B 3OCTET message-body
