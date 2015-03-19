@@ -63,6 +63,17 @@ header-reply: {
 }
 ```
 
+### Connection footer
+A connection can disconnect gracefully and give a message for logging purposes.
+```
+--- !!meta-data
+# no meta data indicate that this is a session message
+....
+--- !!data
+bye: { message: Timed out }
+...
+```
+
 ## Service lookup
 To get the URI for a relative URI name, you can contact the service-lookup service.
 

@@ -50,7 +50,7 @@ The server replies
 tid: 123456789
 ...
 --- !!data
-reply: !!proxy { csp://server/path/map-name#entrySet, cid: 1234 }
+reply: !!set-proxy { csp://server/path/map-name#entrySet, cid: 1234 }
 ...
 ```
 
@@ -312,3 +312,29 @@ cid: 2121
 remove: { key: 12, timestamp: 1438276872, id: 5 }
 ...
 ```
+
+The sender requests being notified of updates.
+```YAML
+--- !!meta-data
+csp://server/path/map-name#replication
+# or
+cid: 2121
+...
+--- !!data
+subscribe: { all: true }
+...
+```
+
+or to unsubscribe All
+```YAML
+--- !!meta-data
+csp://server/path/map-name#replication
+# or
+cid: 2121
+...
+--- !!data
+unsubscribe: { all: true }
+...
+```
+
+Future versions will need to subscribe selectively.

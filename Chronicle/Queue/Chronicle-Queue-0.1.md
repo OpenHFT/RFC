@@ -51,18 +51,64 @@ To perform a random lookup of a message,
 The "header" and "index2index" message should be in cache after performing a random access.
 This means there is at least non cached 2 page accesses to find a random message.
 
-# ABNF description
-{Add an ABNF description if appropriate}
+## Services
+| Service              | Relative URI                  |
+| -------------------- | ----------------------------- |
+| Unqualified Queue    | queue-name                    |
+| Qualified Queue      | queue-name#Queue              |
+| Appender for a queue | queue-name#appender           |
+| Tailer for a queue   | queue-name#tailer/12345       |
 
-## Other terms used which have similar meaning in other documented use.
+### Queue Appender
+If the client sends
+```YAML
+--- !!meta-data
+csp://server/path/queue-name#Queue
+# or
+cid: 1212
+tid: 123456789
+...
+--- !!data
+createAppender: { }
+...
+```
 
-## Terms which used elsewhere for a different meaning.
+The server replies with a proxy
+```YAML
+--- !!meta-data
+tid: 123456789
+...
+--- !!data
+reply: !!queue-appender { csp://server/path/map-name#appender, cid: 1234 }
+...
+```
+
+### Queue Tailer
+If the client sends
+```YAML
+--- !!meta-data
+csp://server/path/queue-name#Queue
+# or
+cid: 1212
+tid: 123456789
+...
+--- !!data
+createTailer: { }
+...
+```
+
+The server replies with a proxy
+```YAML
+--- !!meta-data
+tid: 123456789
+...
+--- !!data
+reply: !!queue-tailer { csp://server/path/map-name#taielr/12345, cid: 12345 }
+...
+```
+Note: a unique tailer is required for each 
 
 ## References
 [RFC Home](https://github.com/OpenHFT/RFC/blob/master/)
 
 [RFC Naming](https://github.com/OpenHFT/RFC/blob/master/RFC-Naming/)
-
-[ABNF Wikipedia](http://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_Form)
-
-{Add any references or related RFC's here}
