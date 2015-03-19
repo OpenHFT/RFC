@@ -188,13 +188,13 @@ csp://server1/test
 tid: 1426502826525
 ...
 --- !!data
-put: [ 1, hello ]
+put: { key: 1, value: hello }
 ...
 --- !!data
-put: [ 2, world ]
+put: { key: 2, value: world }
 ...
 --- !!data
-put: [ 3, bye ]
+put: { key: 3, value: bye }
 ...
 ```
 
