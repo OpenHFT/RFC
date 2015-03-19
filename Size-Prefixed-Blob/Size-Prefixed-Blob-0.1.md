@@ -11,7 +11,7 @@
 ## Goals
 SPB is designed to be a portable wire-framing format for opaque blobs of data carried over streaming protocols such as TCP/IP.
 
-This format is intend to be used for streaming data such as TCP connections and streaming files.
+This format is intended to be used for streaming data such as TCP connections and streaming files.
 
 ## Format description
 The file starts with a 64-bit value which can contain ASCII text and a version.  The value 0x0000000000000000 is defined to be invalid or unset.
