@@ -57,7 +57,7 @@ This means there is at least non cached 2 page accesses to find a random message
 | Unqualified Queue    | queue-name                    |
 | Qualified Queue      | queue-name#Queue              |
 | Appender for a queue | queue-name#appender           |
-| Tailer for a queue   | queue-name#tailer/12345       |
+| Tailer for a queue   | queue-name#tailer             |
 
 ### Queue Appender
 If the client sends
@@ -126,7 +126,7 @@ The server replies with a proxy
 tid: 123456789
 ...
 --- !!data
-reply: !!queue-tailer { csp://server/path/map-name#taielr/12345, cid: 12345 }
+reply: !!queue-tailer { csp://server/path/map-name#tailer, cid: 12345, start: 1286348000000000, end: 1286348638469999 }
 ...
 ```
 Note: a unique tailer is required for each 
