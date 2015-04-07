@@ -51,6 +51,16 @@ tid: 123456789
 reply: !!queue-appender { csp://server/path/map-name#appender, cid: 1234 }
 ```
 
+get the last index of the appender
+
+```yaml
+cid: 1234
+tid: 123456789
+--- !!data
+lastWrittenIndex: { }  // gets the last index of the appender not the chronicle
+```
+
+
 #### Appending the next
 If the client sends
 ```yaml
