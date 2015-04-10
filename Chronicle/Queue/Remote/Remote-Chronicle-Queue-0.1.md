@@ -70,7 +70,7 @@ csp://server/path/queue-name#appender
 cid: 1212
 tid: 123456789
 --- !!data
-submit: { field1: one, field2: two }
+submit: !net.openhft.MyObject{ field1: one, field2: two }
 ```
 
 The server replies with the index of the entry.
