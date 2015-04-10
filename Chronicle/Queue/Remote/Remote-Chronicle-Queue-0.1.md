@@ -48,7 +48,7 @@ The server replies with a proxy
 --- !!meta-data
 tid: 123456789
 --- !!data
-reply: !!queue-appender { csp://server/path/map-name#appender, cid: 1234 }
+reply: !<fully_qualified_path>.queue-appender { csp://server/path/map-name#appender, cid: 1234 }
 ```
 
 get the last index of the appender
@@ -97,7 +97,7 @@ The server replies with a proxy
 --- !!meta-data
 tid: 123456789
 --- !!data
-reply: !!queue-tailer { csp://server/path/map-name#tailer, cid: 12345, start: 1286348000000000, end: 1286348638469999 }
+reply: !<fully_qualified_path>queue-tailer { csp://server/path/map-name#tailer, cid: 12345, start: 1286348000000000, end: 1286348638469999 }
 ```
 Note: a unique tailer is required for each 
 
