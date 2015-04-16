@@ -47,7 +47,7 @@ The server replies
 --- !!meta-data
 tid: 123456789
 --- !!data
-reply: !!set-proxy { csp://server/path/map-name#entrySet, cid: 1234 }
+reply: !set-proxy { csp://server/path/map-name#entrySet, cid: 1234 }
 ```
 
 For keySet(), the client sends
