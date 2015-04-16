@@ -212,7 +212,15 @@ Client sends
 --- !!meta-data
 csp://server/path/map-name#Map
 --- !!data
-remove: { key: 12, reply: false }
+remove: 12
+```
+or this if they want to send the data back
+
+```yaml
+--- !!meta-data
+csp://server/path/map-name#Map
+--- !!data
+getAndremove: 12
 ```
 
 or using the keySet()
@@ -222,7 +230,7 @@ or using the keySet()
 csp://server/path/map-name#keySet()
 tid: 123456789
 --- !!data
-remove: { element: 12, reply: true }
+getAndremove: 12
 ```
 
 and the server replies
