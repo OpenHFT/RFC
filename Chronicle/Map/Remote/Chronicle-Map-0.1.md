@@ -139,7 +139,9 @@ Client sends
 --- !!meta-data
 csp://server/path/map-name#Map
 --- !!data
-putAll: [ { key: 1, value: hello } ][ { key: 2, value: world } ]
+putAll: 
+  - { key: 1, value: hello }
+  - { key: 2, value: world }
 ```
  
 The server doesn't send back a reply.
