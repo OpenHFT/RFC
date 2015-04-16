@@ -138,22 +138,10 @@ Client sends
 ```yaml
 --- !!meta-data
 csp://server/path/map-name#Map
---- !!not-ready-data
-put: 
- - { key: 1, value: Hello1 }
- - { key: 2, value: Hello2 }
- - { key: 3, value: Hello3 }
- - { key: 4, value: Hello4 }
- - { key: 5, value: Hello5 }
 --- !!data
-put:
- - { key: 6, value: Hello6 }
- - { key: 7, value: Hello7 }
- - { key: 8, value: Hello8 }
- - { key: 9, value: Hello9 }
- -  { key: 10, value: Hello10 }
+put: [ { key: 1, value: hello } ][ { key: 2, value: world } ]
 ```
-
+ 
 The server doesn't send back a reply.
 
 #### Map putAll of a proxy
