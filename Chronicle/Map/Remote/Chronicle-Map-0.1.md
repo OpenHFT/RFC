@@ -295,15 +295,6 @@ iterator-continue: { tid: 123456789 }
 ```
 This causes two blocks to be in flight at once reducing the stop-start behaviour for downloading.
 
-Once the iteration has finished, the server sends
-```yaml
---- !!meta-data
-tid: 123456789
---- !!data
-entry: { key: 11, value: Hello11 }
-hasNext: true
-```
-
 #### Replication
 The sender pushes an update
 ```yaml
