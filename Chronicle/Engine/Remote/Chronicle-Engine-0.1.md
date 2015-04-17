@@ -149,7 +149,9 @@ The service lookup, client to server
 csp:///service-lookup
 tid: 1426502826520
 --- !!data
-lookup: { relativeUri: test, view: !Map, types: [ !Integer, !String ] }
+lookup: { relativeUri: test, view: !Map, types: { keyType: !Integer, valueType: !String } }
+lookup: { relativeUri: test, view: !Map, types: { elementType: !Integer } }
+
 ```
 ... and the reply server to client.
 
