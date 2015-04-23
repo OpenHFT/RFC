@@ -260,7 +260,7 @@ tid: 123456789
 entry:
  - { key: 1, value: Hello1 }
  - { key: 2, value: Hello2 }
- - { key: 3, value: Hello3 }
+ - { key: 3, value: Hello3 }pu
  - { key: 4, value: Hello4 }
  - { key: 5, value: Hello5 }
 ```
@@ -337,3 +337,23 @@ unsubscribe: { all: true }
 ```
 
 Future versions will need to subscribe selectively.
+
+#### Key and Values as Maps
+
+example using getAndPut :
+
+```yaml
+--- !!meta-data
+csp://server/path/map-name#Map
+tid: 123456789
+--- !!data
+getAndPut: { key: 1, value: !!cmap
+  - { key: key1, value: value1 }
+  - { key: key2, value: value2 }
+  - { key: key3, value: value3 }
+  - { key: key4, value: value4 }
+}
+```
+
+
+
