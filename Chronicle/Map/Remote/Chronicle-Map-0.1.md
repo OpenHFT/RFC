@@ -244,8 +244,7 @@ reply: { 1=Hello, 2=World }
 ```
 
 #### iterator()
-The client ask the server for the number of segments, the server will then provide all the data in the segment requested
-In this example below the server has just one segment ( however this is relistically over simplified )
+The client asks the server for the number of segments, the client will then ask for all the data in each segment calling iterator(<segment number>), typically a server will have more than one segment however for this example we have simplified the server to a single segment.
 
 client writes:
 
