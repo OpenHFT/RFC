@@ -244,7 +244,49 @@ reply: { 1=Hello, 2=World }
 ```
 
 #### iterator()
-When the client starts a stream, it must tell the server when it is ready for more data.
+The client ask the server for the number of segments, the server will then provide all the data in the segment requested
+In this example below the server has just one segment ( however this is relistically over simplified )
+
+client writes:
+
+```yaml
+--- !!meta-data
+cid: 1
+tid: 1430233660656
+--- !!data
+numberOfSegements: {  }
+```
+server writes '1' ( the number of segments ) :
+
+```yaml
+--- !!meta-data
+tid: 1430233660656
+--- !!data
+reply: 1  
+```
+
+client the subsribes the requests all the records in the first segment:
+```yaml
+--- !!meta-data
+cid: 1
+tid: 1430233660660
+--- !!data
+iterator: 1
+``` 
+
+server replies:
+```yaml
+--- !!meta-data
+tid: 1430233660660
+--- !!data
+reply: 
+  - { key:2 value:B }
+  - { key:1 value:A }
+  - { key:3 value:C }
+  - { key:5 value:E }
+  - { key:4 value:D }
+``` 
+
 ```yaml
 --- !!meta-data
 csp://server/path/map-name#entrySet
