@@ -276,7 +276,7 @@ And the server give some more.
 --- !!meta-data
 tid: 123456789
 --- !!data
-entry:
+reply:
  - { key: 6, value: Hello6 }
  - { key: 7, value: Hello7 }
  - { key: 8, value: Hello8 }
