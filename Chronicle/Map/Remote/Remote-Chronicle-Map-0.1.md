@@ -3,7 +3,7 @@
 |         |                                                                         |
 |:------- | ----------------------------------------------------------------------- |
 | Title   | Remote access for Chronicle Map RFC                                     |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Chronicle-Map-0.1.md |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Remote-Chronicle-Map-0.1.md |
 | Editor  | Peter Lawrey                                                            |
 | License | Apache 2.0                                                              |
 | Change Process | Users issue Pull Requests for the Editor's consideration.        |

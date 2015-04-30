@@ -5,7 +5,7 @@
 | Title   | Chronicle Map RFC                                                       |
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Remote             |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote         |
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Chronicle-Map-0.1.md |
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Remote-Chronicle-Map-0.1.md |
 | Editor  | Peter Lawrey                                                            |
 | License | Apache 2.0                                                              |
 | Change Process | Users issue Pull Requests for the Editor's consideration.        |
