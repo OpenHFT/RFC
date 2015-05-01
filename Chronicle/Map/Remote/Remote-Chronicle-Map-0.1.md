@@ -70,6 +70,25 @@ reply: !!proxy { csp://server/path/map-name#keySet, cid: 1235 }
 ```
 The sample applies to `values()` returning `csp://server/path/map-name#values`
 
+
+#### Map exmaple of a Void method reply
+```yaml
+--- !!meta-data
+csp://marshallable-keys#MAP
+tid: 1430477448916
+--- !!data
+clear: {  }
+```
+
+server responds
+
+```yaml
+--- !!meta-data
+tid: 1430477448916
+--- !!data
+reply: {}
+```
+
 #### Map get
 The client sends
 ```yaml
