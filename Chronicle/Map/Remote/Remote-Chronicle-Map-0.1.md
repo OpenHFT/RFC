@@ -416,4 +416,45 @@ getAndPut: { key: 1, value: !!cmap
 ```
 
 
+#### Exceptions
 
+and example of a Java exception in YAML
+
+```yaml
+--- !!meta-data
+tid: 1430670110759
+--- !!data
+ exception: { !java.lang.NullPointerException { message: !!null, stackTrace: 
+  - { class: net.openhft.chronicle.hash.impl.VanillaChronicleHash, method: checkKey, file: VanillaChronicleHash.java, lineNumber: 286 }
+  - { class: net.openhft.chronicle.hash.impl.HashContext, method: initKey0, file: HashContext.java, lineNumber: 408 }
+  - { class: net.openhft.chronicle.hash.impl.HashContext, method: initKey, file: HashContext.java, lineNumber: 396 }
+  - { class: net.openhft.chronicle.map.VanillaChronicleMap, method: context, file: VanillaChronicleMap.java, lineNumber: 181 }
+  - { class: net.openhft.chronicle.map.AbstractChronicleMap, method: containsKey, file: AbstractChronicleMap.java, lineNumber: 47 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor$2, method: lambda$accept$10, file: MapWireHandlerProcessor.java, lineNumber: 300 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor$2$$Lambda$27/1469537239, method: accept, file: !!null, lineNumber: -1 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor, method: lambda$writeData$12, file: MapWireHandlerProcessor.java, lineNumber: 443 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor$$Lambda$28/915862515, method: accept, file: !!null, lineNumber: -1 }
+  - { class: net.openhft.chronicle.wire.Wires, method: writeData, file: Wires.java, lineNumber: 57 }
+  - { class: net.openhft.chronicle.wire.WireOut, method: writeDocument, file: WireOut.java, lineNumber: 70 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor, method: writeData, file: MapWireHandlerProcessor.java, lineNumber: 439 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor, method: access$200, file: MapWireHandlerProcessor.java, lineNumber: 52 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor$2, method: accept, file: MapWireHandlerProcessor.java, lineNumber: 208 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor$2, method: accept, file: MapWireHandlerProcessor.java, lineNumber: 197 }
+  - { class: net.openhft.chronicle.wire.Wires, method: lambda$readData$6, file: Wires.java, lineNumber: 102 }
+  - { class: net.openhft.chronicle.wire.Wires$$Lambda$25/1190453908, method: accept, file: !!null, lineNumber: -1 }
+  - { class: net.openhft.chronicle.bytes.StreamingCommon, method: withLength, file: StreamingCommon.java, lineNumber: 52 }
+  - { class: net.openhft.chronicle.wire.Wires, method: readData, file: Wires.java, lineNumber: 102 }
+  - { class: net.openhft.chronicle.wire.WireIn, method: readDocument, file: WireIn.java, lineNumber: 77 }
+  - { class: net.openhft.chronicle.map.MapWireHandlerProcessor, method: process, file: MapWireHandlerProcessor.java, lineNumber: 74 }
+  - { class: net.openhft.chronicle.engine.server.internal.EngineWireHandler, method: process, file: EngineWireHandler.java, lineNumber: 118 }
+  - { class: net.openhft.chronicle.network.WireTcpHandler, method: process, file: WireTcpHandler.java, lineNumber: 68 }
+  - { class: net.openhft.chronicle.network.TcpEventHandler, method: invokeHandler, file: TcpEventHandler.java, lineNumber: 88 }
+  - { class: net.openhft.chronicle.network.TcpEventHandler, method: runOnce, file: TcpEventHandler.java, lineNumber: 76 }
+  - { class: net.openhft.chronicle.network.event.VanillaEventLoop, method: runAllHighHandlers, file: VanillaEventLoop.java, lineNumber: 123 }
+  - { class: net.openhft.chronicle.network.event.VanillaEventLoop, method: run, file: VanillaEventLoop.java, lineNumber: 94 }
+  - { class: java.util.concurrent.Executors$RunnableAdapter, method: call, file: Executors.java, lineNumber: 511 }
+  - { class: java.util.concurrent.FutureTask, method: run, file: FutureTask.java, lineNumber: 266 }
+  - { class: java.util.concurrent.ThreadPoolExecutor, method: runWorker, file: ThreadPoolExecutor.java, lineNumber: 1142 }
+  - { class: java.util.concurrent.ThreadPoolExecutor$Worker, method: run, file: ThreadPoolExecutor.java, lineNumber: 617 }
+  - { class: java.lang.Thread, method: run, file: Thread.java, lineNumber: 745 } } }
+```
