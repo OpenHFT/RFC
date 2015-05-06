@@ -30,6 +30,17 @@ These proxies can be returned by methods and should be serialized when sending t
 ### Method calls
 In all the examples below the `csp:` can be replaced with a `cid:` which is a short token to improve the efficiency of the routing logic.
 
+### Temporary Map
+If the csp starts with //tmp then the map is deemed to be a temporary map which is not persisted or replicated.
+
+```yaml
+--- !!meta-data
+csp://tmp/path/map-name#Map
+# or
+cid: 1212
+tid: 123456789
+```
+
 #### Map proxies
 For entrySet(), the client sends
 ```yaml
