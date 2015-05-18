@@ -11,7 +11,7 @@ For short fields, the first byte denotes the type of the field, for small number
 | comment                               | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | top three bits denotes a three Type   | x   | x   | x   |  x  |     |     |     |    |
-| remaining bits dente the size         |     |     |     |     | x   | x  |  x   | x  |
+| remaining bits dontes the size/value  |     |     |     |     | x   | x  |  x   | x  |
 
 
 ## Types
