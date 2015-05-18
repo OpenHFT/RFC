@@ -157,19 +157,27 @@ using the encodings abouve, the following YAML
 csp: //path/service
 tid: 123456789
 --- !!data
-put: {
-  key: key-1,
-  value: value-1
+entrySet: [
+    {
+    key: key-1,
+    value: value-1
+},
+    {
+    key: key-2,
+    value: value-2
 }
+]
 ``` 
 
 sent as binary wire would, would encode to :
 ```
 00000000 1C 00 00 40 C3 63 73 70  EE 2F 2F 70 61 74 68 2F ···@·csp ·//path/
 00000010 73 65 72 76 69 63 65 C3  74 69 64 A3 15 CD 5B 07 service· tid···[·
-00000020 21 00 00 00 C3 70 75 74  82 18 00 00 00 C3 6B 65 !····put ······ke
-00000030 79 E5 6B 65 79 2D 31 C5  76 61 6C 75 65 E7 76 61 y·key-1· value·va
-00000040 6C 75 65 2D 31                                   lue-1       
+00000020 48 00 00 00 C8 65 6E 74  72 79 53 65 74 82 3A 00 H····ent rySet·:·
+00000030 00 00 82 18 00 00 00 C3  6B 65 79 E5 6B 65 79 2D ········ key·key-
+00000040 31 C5 76 61 6C 75 65 E7  76 61 6C 75 65 2D 31 82 1·value· value-1·
+00000050 18 00 00 00 C3 6B 65 79  E5 6B 65 79 2D 32 C5 76 ·····key ·key-2·v
+00000060 61 6C 75 65 E7 76 61 6C  75 65 2D 32             alue·val ue-2    
 ```
 
 this is the java code that created this data 
@@ -193,8 +201,13 @@ private void writeMessage(Wire wire) {
             .write(() -> "csp").text("//path/service")
             .write(() -> "tid").int64(123456789));
     wire.writeDocument(false, w -> w
-            .write(() -> "put").marshallable(m -> m
-                    .write(() -> "key").text("key-1")
-                    .write(() -> "value").text("value-1")));
+            .write(() -> "entrySet").sequence(s -> {
+                s.marshallable(m -> m
+                        .write(() -> "key").text("key-1")
+                        .write(() -> "value").text("value-1"));
+                s.marshallable(m -> m
+                        .write(() -> "key").text("key-2")
+                        .write(() -> "value").text("value-2"));
+            }));
 }
 ```
