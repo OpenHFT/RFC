@@ -92,7 +92,7 @@ the types use the Control Messages
 # Example
 
 using the encodings abouve, the following YAML 
-
+``` yaml
 --- !!meta-data
 csp: //path/service
 tid: 123456789
@@ -101,6 +101,7 @@ put: {
   key: key-1,
   value: value-1
 }
+``` 
 
 sent as binary wire would, would encode to :
 ```
