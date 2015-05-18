@@ -13,11 +13,6 @@ these examples are based on bits
 | top three bits denotes  a string | 1 | 1 | 1 |   |   |   |   |   |
 
 
-| comment           | Relative URI                  |
-| ----------------- | ----------------------------- |
-|   top three bits denotes  a string  | map-name                      |
-|      | map-name#Map                  |
-|        | map-name#keySet               |
-|     | map-name#entrySet             |
-|       | map-name#values               |
-|      | map-name#replication          |
+| comment                             | Relative URI                  |
+| ----------------------------------- | ----------------------------- |
+|   top three bits denotes  a string  | 1                             |
