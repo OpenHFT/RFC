@@ -89,6 +89,32 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 | (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
 | (0xBB) - NULL              | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 
+# Sequences 
+
+the sequence area encoded using 
+
+```
+0x82 <four byte unsigned len, this is the length in bytes of the encoded block of preceeing data>
+```
+
+so if we were going to encode these simple 4 entries ( shown below in text yaml )
+[a,b,c,de]
+
+they word encode to 
+```
+0x82 0x09 0x00 0x00 0x00 0xE1 0x61 0xE1 0x62 0xE1 0x63 0xE2 0x64 0x65
+```
+
+| 0x82 | denoting a string |
+| 0x09 0x00 0x00 0x00 | the number of bytes of data to follow ( in little endian ) |
+| 0xE1 | next element is a string of len 1 |
+| 0x61 | 'a' |
+| 0xE1 | next element is a string of len 1 |
+| 0x61 | 'b' |
+| 0xE1 | next element is a string of len 1 |
+| 0x61 | 'c' |
+| 0xE2 | next element is a string of len 2 |
+| 0x61 | 'cd' |
 
 
 # Example
