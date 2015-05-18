@@ -13,11 +13,11 @@ these examples are based on bits
 | top three bits denotes  a string | 1 | 1 | 1 |   |   |   |   |   |
 
 
-| Service           | Relative URI                  |
+| comment           | Relative URI                  |
 | ----------------- | ----------------------------- |
-| Unqualified Map   | map-name                      |
-| Qualified Map     | map-name#Map                  |
-| Keys of Map       | map-name#keySet               |
-| Entries of Map    | map-name#entrySet             |
-| Values of Map     | map-name#values               |
-| Replication       | map-name#replication          |
+|   top three bits denotes  a string  | map-name                      |
+|      | map-name#Map                  |
+|        | map-name#keySet               |
+|     | map-name#entrySet             |
+|       | map-name#values               |
+|      | map-name#replication          |
