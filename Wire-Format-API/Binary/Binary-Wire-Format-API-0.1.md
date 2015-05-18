@@ -41,7 +41,7 @@ the types use the Control Messages
 
 | Control message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
-|                                       | 1   | 0   | 0   | 0   |     |     |     |    | 
+| ( all higher bits )                   | 1   | 0   | 0   | 0   |     |     |     |    | 
 | (0x82) - Nested Block 32bit len 82    | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0 | 
 | (0x8A) - byte[]                       | 1   | 0   | 0   | 0   | 1   | 0   | 1   |  0 | 
 | (0x8D) - long[]                       | 1   | 0   | 0   | 0   | 1   | 1   | 0   |  1 | 
@@ -55,7 +55,7 @@ the types use the Control Messages
 
 | Decimal message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
-|                                       | 1   | 0   | 0   | 1   |     |     |     |    | 
+| ( all higher bits )                   | 1   | 0   | 0   | 1   |     |     |     |    | 
 | (0x90) - 32bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  0 | 
 | (0x91) - 64bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  1 | 
 
