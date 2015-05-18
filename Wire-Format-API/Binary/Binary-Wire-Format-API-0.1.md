@@ -103,7 +103,7 @@ so if we were going to encode these simple 4 entries ( shown below in text yaml 
 [a,b,c,de]
 ``` 
 
-they as binnart wire this would encode to 
+they as binary wire this would encode to 
 
 ```
 0x82 0x09 0x00 0x00 0x00 0xE1 0x61 0xE1 0x62 0xE1 0x63 0xE2 0x64 0x65
@@ -115,11 +115,11 @@ they as binnart wire this would encode to
 | 0xE1 | next element is a string of len 1 |
 | 0x61 | 'a' |
 | 0xE1 | next element is a string of len 1 |
-| 0x61 | 'b' |
+| 0x62 | 'b' |
 | 0xE1 | next element is a string of len 1 |
-| 0x61 | 'c' |
+| 0x63 | 'c' |
 | 0xE2 | next element is a string of len 2 |
-| 0x61 | 'cd' |
+| 0x64 0x65 | 'de' |
 
 
 # Example
