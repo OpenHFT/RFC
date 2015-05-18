@@ -100,10 +100,8 @@ the sequence area encoded using
 so if we were going to encode these simple 4 entries ( shown below in text yaml )
 
 ``` yaml
-[a,b,c,de] or {a,b,c,de}
+[a,b,c,de] 
 ``` 
- 
-NOTE: althought YAML teats theses diffently for binary wire we treat them the same.
 
 they as binary wire this would encode to 
 
@@ -112,7 +110,7 @@ they as binary wire this would encode to
 ```
 | byte | description |
 | ---- | ------------------- |
-| 0x82 | denoting a string |
+| 0x82 | denoting a nested structure  |
 | 0x09 0x00 0x00 0x00 | the number of bytes of data to follow ( in little endian ) |
 | 0xE1 | next element is a string of len 1 |
 | 0x61 | 'a' |
@@ -122,6 +120,33 @@ they as binary wire this would encode to
 | 0x63 | 'c' |
 | 0xE2 | next element is a string of len 2 |
 | 0x64 0x65 | 'de' |
+
+
+NOTE: althought YAML teats sequences or map diffently for binary wire we ue simualar encoding, its just they will hold diffent information
+
+``` yaml
+{f1: a, f2: de} 
+``` 
+
+they as binary wire this would encode to 
+
+```
+0x82 0x0B 0x00 0x00 0x00 0xE1 0x61 0xE1 0x62 0xE1 0x63 0xE2 0x64 0x65
+```
+| byte | description |
+| ---- | ------------------- |
+| 0x82 | denoting a nested structure |
+| 0x0B 0x00 0x00 0x00 | the number of bytes of data to follow ( in little endian ) |
+| 0xC2 |  next element is a feild of len 2 |
+| 0x66 0x31 | 'f1' |
+| 0xE1 | next element is a string of len 1 |
+| 0x62 | 'b' |
+| 0xC2 | next element is a feild of len 2 |
+| 0x66 0x32 | 'f2' |
+| 0xE2 | next element is a string of len 2 |
+| 0x64 0x65 | 'de' |
+
+
 
 
 # Example
