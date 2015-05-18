@@ -1,8 +1,6 @@
 # Goals
 
-A compact encoding that both desicrbes the the length of the fields and the type of the fields.
-
-See example below
+A compact encoding that both encodes the length of the fields and the type of the fields.
 
 # Encoding Byte
 
@@ -73,6 +71,8 @@ the types use the Control Messages
 
 ## Special
 
+Note for\<string\> the string encode by default is a stop bit encoded len folloed by a ISO-8851-9 string, see more on this at https://github.com/OpenHFT/RFC/blob/master/Stop-Bit-Encoding/
+
 | Special message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | ( all higher bits are the same )                  | 1   | 0   | 1   | 1   |     |     |     |    | 
@@ -81,11 +81,62 @@ the types use the Control Messages
 | (0xB2) - time UTC (long)              | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  0 |
 | (0xB3) - Date (joda UTF8-Str)      | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  1 |
 | (0xB4) - DateTime (joda UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  0 |
-| (0xB5) - ZonedDateTime (joda UTF8-Str) | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  1 |
-| (0xB6) - type ( \<type\> + UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  0 |
-| (0xB7) - field (\<field\> + UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  1 |
-| (0xB8) - string (\<string\> +  UTF8-Str) | 1   | 0   | 1   | 1   | 1   | 0   | 0   |  1 |
-| (0xB9) - eventname (\<eventname\> +  UTF8-Str)        | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  0 |
+| (0xB5) - ZonedDateTime (joda  \<string\>) | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  1 |
+| (0xB6) - type ( \<type\> +  \<string\>)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  0 |
+| (0xB7) - field (\<field\> +  \<string\>)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  1 |
+| (0xB8) - string (\<string\> +   \<string\>) | 1   | 0   | 1   | 1   | 1   | 0   | 0   |  1 |
+| (0xB9) - eventname (\<eventname\> +  \<string\>)        | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  0 |
 | (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
 | (0xBB) - NULL              | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 
+
+
+# Example
+
+using the encodings abouve, the following YAML 
+``` yaml
+--- !!meta-data
+csp: //path/service
+tid: 123456789
+--- !!data
+put: {
+  key: key-1,
+  value: value-1
+}
+``` 
+
+sent as binary wire would, would encode to :
+```
+00000000 1C 00 00 40 C3 63 73 70  EE 2F 2F 70 61 74 68 2F ···@·csp ·//path/
+00000010 73 65 72 76 69 63 65 C3  74 69 64 A3 15 CD 5B 07 service· tid···[·
+00000020 21 00 00 00 C3 70 75 74  82 18 00 00 00 C3 6B 65 !····put ······ke
+00000030 79 E5 6B 65 79 2D 31 C5  76 61 6C 75 65 E7 76 61 y·key-1· value·va
+00000040 6C 75 65 2D 31                                   lue-1       
+```
+
+this is the java code that created this data 
+
+``` java
+@Test
+public void testSequence() {
+    Wire wire = createWire();
+    writeMessage(wire);
+    wire.flip();
+    System.out.println(wire.bytes().toHexString());
+
+    Wire twire = new TextWire(Bytes.elasticByteBuffer());
+    writeMessage(twire);
+    twire.flip();
+    System.out.println(Wires.fromSizePrefixedBlobs(twire.bytes()));
+}
+
+private void writeMessage(Wire wire) {
+    wire.writeDocument(true, w -> w
+            .write(() -> "csp").text("//path/service")
+            .write(() -> "tid").int64(123456789));
+    wire.writeDocument(false, w -> w
+            .write(() -> "put").marshallable(m -> m
+                    .write(() -> "key").text("key-1")
+                    .write(() -> "value").text("value-1")));
+}
+```
