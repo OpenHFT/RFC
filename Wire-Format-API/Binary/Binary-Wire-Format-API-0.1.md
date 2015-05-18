@@ -39,7 +39,7 @@ For short fields, the first byte denotes the type of the field, for small number
 
 the types use the Control Messages
 
-| Control message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| Control message                       | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | ( all higher bits )                   | 1   | 0   | 0   | 0   |     |     |     |    | 
 | (0x82) - Nested Block 32bit len 82    | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0 | 
@@ -51,7 +51,7 @@ the types use the Control Messages
 
 ## Decimal
 
-| Decimal message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| Decimal message                       | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | ( all higher bits )                   | 1   | 0   | 0   | 1   |     |     |     |    | 
 | (0x90) - 32bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  0 | 
@@ -59,7 +59,7 @@ the types use the Control Messages
 
 ## Integer
 
-| Decimal message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| Decimal message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | ( all higher bits )                   | 1   | 0   | 1   | 0   |     |     |     |    | 
 | (0xA0) - 128bit uuid                  | 1   | 0   | 1   | 0   | 0   | 0   | 0   |  0 | 
@@ -71,7 +71,7 @@ the types use the Control Messages
 | (0xA6) - signed 32bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  0 |
 | (0xA7) - signed 64bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  1 |
 
-| Special message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| Special message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | ( all higher bits )                   | 1   | 0   | 1   | 1   |     |     |     |    | 
 | (0xB0) - FALSE                        | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  0 | 
