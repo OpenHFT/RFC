@@ -59,7 +59,7 @@ the types use the Control Messages
 
 ## Integer
 
-| Decimal message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
+| Integer message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | ( all higher bits )                   | 1   | 0   | 1   | 0   |     |     |     |    | 
 | (0xA0) - 128bit uuid                  | 1   | 0   | 1   | 0   | 0   | 0   | 0   |  0 | 
@@ -70,6 +70,8 @@ the types use the Control Messages
 | (0xA5) - signed 16bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 0   |  1 |
 | (0xA6) - signed 32bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  0 |
 | (0xA7) - signed 64bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  1 |
+
+## Special
 
 | Special message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
