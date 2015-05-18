@@ -8,7 +8,7 @@ See example below
 
 For short fields, the first byte denotes the type of the field, for small numbers the value is encoded in the later 4 bits. For strings and fields the later 4 bits denote the length of the preceeding data. For large numerics or string/fields the special type is used see section below :
 
-| comment                               | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| comment                               | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | top three bits denotes a three Type   | x   | x   | x   |  x  |     |     |     |    |
 | remaining bits denotes the size/value |     |     |     |     | x   | x  |  x   | x  |
@@ -16,7 +16,7 @@ For short fields, the first byte denotes the type of the field, for small number
 
 ## Types ( for small values )
 
-| type (\<value or length in bytes\>)   | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| type (\<value or length in bytes\>)   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | Num (0-15)                            | 0   | 0   | 0   | 0   |     |     |     |    | 
 | Num (16-31)                           | 0   | 0   | 0   | 1   |     |     |     |    | 
