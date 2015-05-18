@@ -51,11 +51,24 @@ the types use the Control Messages
 
 ## Decimal
 
-the types use the Control Messages
-
 | Decimal message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | ( all higher bits )                   | 1   | 0   | 0   | 1   |     |     |     |    | 
 | (0x90) - 32bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  0 | 
 | (0x91) - 64bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  1 | 
+
+## Integer
+
+| Decimal message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
+| ( all higher bits )                   | 1   | 0   | 1   | 0   |     |     |     |    | 
+| (0xA0) - 128bit uuid                  | 1   | 0   | 1   | 0   | 0   | 0   | 0   |  0 | 
+| (0xA1) - unsigned 8bit int            | 1   | 0   | 1   | 0   | 0   | 0   | 0   |  1 |
+| (0xA2) - unsigned 16bit int           | 1   | 0   | 1   | 0   | 0   | 0   | 1   |  0 |
+| (0xA3) - unsigned 32bit int           | 1   | 0   | 1   | 0   | 0   | 0   | 1   |  1 |
+| (0xA4) - signed 8bit int              | 1   | 0   | 1   | 0   | 0   | 1   | 0   |  0 |
+| (0xA5) - signed 16bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 0   |  1 |
+| (0xA6) - signed 32bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  0 |
+| (0xA7) - signed 64bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  1 |
+
 
