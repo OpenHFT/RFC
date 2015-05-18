@@ -41,7 +41,7 @@ the types use the Control Messages
 
 | Control message                       | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
-| ( all higher bits )                   | 1   | 0   | 0   | 0   |     |     |     |    | 
+| ( all higher bits are the same )                   | 1   | 0   | 0   | 0   |     |     |     |    | 
 | (0x82) - Nested Block 32bit len 82    | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0 | 
 | (0x8A) - byte[]                       | 1   | 0   | 0   | 0   | 1   | 0   | 1   |  0 | 
 | (0x8D) - long[]                       | 1   | 0   | 0   | 0   | 1   | 1   | 0   |  1 | 
@@ -53,7 +53,7 @@ the types use the Control Messages
 
 | Decimal message                       | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
-| ( all higher bits )                   | 1   | 0   | 0   | 1   |     |     |     |    | 
+| ( all higher bits are the same )                    | 1   | 0   | 0   | 1   |     |     |     |    | 
 | (0x90) - 32bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  0 | 
 | (0x91) - 64bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  1 | 
 
@@ -61,7 +61,7 @@ the types use the Control Messages
 
 | Integer message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
-| ( all higher bits )                   | 1   | 0   | 1   | 0   |     |     |     |    | 
+| ( all higher bits are the same )                    | 1   | 0   | 1   | 0   |     |     |     |    | 
 | (0xA0) - 128bit uuid                  | 1   | 0   | 1   | 0   | 0   | 0   | 0   |  0 | 
 | (0xA1) - unsigned 8bit int            | 1   | 0   | 1   | 0   | 0   | 0   | 0   |  1 |
 | (0xA2) - unsigned 16bit int           | 1   | 0   | 1   | 0   | 0   | 0   | 1   |  0 |
@@ -75,7 +75,7 @@ the types use the Control Messages
 
 | Special message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
-| ( all higher bits )                   | 1   | 0   | 1   | 1   |     |     |     |    | 
+| ( all higher bits are the same )                  | 1   | 0   | 1   | 1   |     |     |     |    | 
 | (0xB0) - FALSE                        | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  0 | 
 | (0xB1) - TRUE                         | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  1 |
 | (0xB2) - time UTC (long)              | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  0 |
