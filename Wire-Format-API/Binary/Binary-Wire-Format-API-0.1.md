@@ -13,6 +13,6 @@ these examples are based on bits
 | top three bits denotes  a string | 1 | 1 | 1 |   |   |   |   |   |
 
 
-| comment                             | Relative URI                  |
-| ----------------------------------- | ----------------------------- |
-|   top three bits denotes  a string  | 1                             |
+| comment                             | 7 |
+| ----------------------------------- | -- |
+|   top three bits denotes  a string  | 1  |
