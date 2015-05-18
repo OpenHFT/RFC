@@ -85,5 +85,5 @@ the types use the Control Messages
 | (0xB8) - string (\<string\> +  UTF8-Str) | 1   | 0   | 1   | 1   | 1   | 0   | 0   |  1 |
 | (0xB9) - eventname (\<eventname\> +  UTF8-Str)        | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  0 |
 | (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
-| (0xBB) - null              | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
+| (0xBB) - NULL              | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 
