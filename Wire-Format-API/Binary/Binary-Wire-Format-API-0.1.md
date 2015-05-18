@@ -48,3 +48,14 @@ the types use the Control Messages
 | (0x8E) - paddding with 32bit length   | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  0 | 
 | (0x8E) - single padded byte           | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  1 | 
 
+
+## Decimal
+
+the types use the Control Messages
+
+| Decimal message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
+|                                       | 1   | 0   | 0   | 1   |     |     |     |    | 
+| (0x90) - 32bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  0 | 
+| (0x91) - 64bit floating point         | 1   | 0   | 0   | 1   | 0   | 0   | 0   |  1 | 
+
