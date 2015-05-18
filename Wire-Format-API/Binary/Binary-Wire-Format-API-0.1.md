@@ -98,9 +98,13 @@ the sequence area encoded using
 ```
 
 so if we were going to encode these simple 4 entries ( shown below in text yaml )
-[a,b,c,de]
 
-they word encode to 
+``` yaml
+[a,b,c,de]
+``` 
+
+they as binnart wire this would encode to 
+
 ```
 0x82 0x09 0x00 0x00 0x00 0xE1 0x61 0xE1 0x62 0xE1 0x63 0xE2 0x64 0x65
 ```
