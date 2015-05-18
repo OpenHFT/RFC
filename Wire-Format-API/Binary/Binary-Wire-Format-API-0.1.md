@@ -4,7 +4,7 @@ A compact encoding that both desicrbes the the length of the fields and the type
 
 See example below
 
-# First byte
+# Encoding Byte
 
 For short fields, the first byte denotes the type of the field, for small numbers the value is encoded in the later 4 bits. For strings and fields the later 4 bits denote the length of the preceeding data. For large numerics or string/fields the special type is used see section below :
 
