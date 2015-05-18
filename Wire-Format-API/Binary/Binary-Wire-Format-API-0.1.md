@@ -77,8 +77,8 @@ the types use the Control Messages
 | (0xB0) - FALSE                        | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  0 | 
 | (0xB1) - TRUE                         | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  1 |
 | (0xB2) - time UTC (long)              | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  0 |
-| (0xB3) - Date (joda UTF8-String)      | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  1 |
-| (0xB4) - DateTime (joda UTF8-String)  | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  0 |
+| (0xB3) - Date (joda UTF8-Str)      | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  1 |
+| (0xB4) - DateTime (joda UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  0 |
 | (0xB5) - ZonedDateTime (joda UTF8-Str) | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  1 |
 | (0xB6) - type ( \<type\> + UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  0 |
 | (0xB7) - field (\<field\> + UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  1 |
