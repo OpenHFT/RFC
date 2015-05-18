@@ -26,9 +26,11 @@ these examples are based on bits
 | Num (80-95)                           | 0   | 1   | 0   | 1   |     |     |     |    | 
 | Num (96-111)                          | 0   | 1   | 1   | 0   |     |     |     |    | 
 | Num (112-127)                         | 0   | 1   | 1   | 1   |     |     |     |    | 
-| Control Message                       | 1   | 0   | 0   |     |     |     |     |    | 
-| Decimal                               | 1   | 1   | 1   |     |     |     |     |    | 
-| Integer                               | 1   | 1   | 0   |     |     |     |     |    | 
-| Special                               | 1   | 1   | 0   |     |     |     |     |    | 
-| String                                | 1   | 1   | 1   |     |     |     |     |    |
-| Field                                 | 1   | 0   | 0   |     |     |     |     |    | 
+| Control Message                       | 1   | 0   | 0   | 0   |     |     |     |    | 
+| Decimal                               | 1   | 0   | 0   | 1   |     |     |     |    | 
+| Integer                               | 1   | 0   | 1   | 0   |     |     |     |    | 
+| Special                               | 1   | 0   | 1   | 1   |     |     |     |    | 
+| Field (0-15)                          | 1   | 1   | 0   | 0   |     |     |     |    |
+| Field (16-31)                         | 1   | 1   | 0   | 1   |     |     |     |    |
+| String (0-15)                         | 1   | 1   | 1   | 0   |     |     |     |    |
+| String (0-31)                         | 1   | 1   | 1   | 1   |     |     |     |    | 
