@@ -15,4 +15,4 @@ these examples are based on bits
 
 | comment                             | 7  |
 | ----------------------------------- | ----- |
-|   top three bits denotes  a string  | 1   df |
+|   top three bits denotes  a string  | 1    |
