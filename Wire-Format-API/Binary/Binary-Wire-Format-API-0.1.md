@@ -89,7 +89,7 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 | (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
 | (0xBB) - NULL              | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 
-# Sequences 
+# Sequences, Maps and Marshables
 
 the sequence area encoded using 
 
@@ -102,6 +102,14 @@ so if we were going to encode these simple 4 entries ( shown below in text yaml 
 ``` yaml
 [a,b,c,de]
 ``` 
+
+or
+
+``` yaml
+{a,b,c,de}
+``` 
+
+NOTE: althought YAML teats theses diffently for binary wire we treat them the same.
 
 they as binary wire this would encode to 
 
