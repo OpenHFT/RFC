@@ -124,7 +124,7 @@ they as binary wire this would encode to
 
 NOTE: althought YAML teats sequences or map diffently for binary wire we ue simualar encoding, its just they will hold diffent information
 
-``` yaml
+```yaml
 {f1: a, f2: de} 
 ``` 
 
