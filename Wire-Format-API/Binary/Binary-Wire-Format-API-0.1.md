@@ -6,7 +6,7 @@ See example below
 
 # First byte
 
-For short fields, the first byte denotes the type of the field, for small numbers the value is encoded in the later 4 bytes. For strings and fields the later 4 bytes denote the length of the preceeding data.
+For short fields, the first byte denotes the type of the field, for small numbers the value is encoded in the later 4 bits. For strings and fields the later 4 bits denote the length of the preceeding data.
 
 | comment                               | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
