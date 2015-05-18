@@ -8,9 +8,9 @@ See example below
 
 these examples are based on bits
 
-| comment                          | 7 | 6 | 5 | 4 | 3 | 2 | 1 |
-| -------------------------------- | - | - | - | - | - | - | - |
-| top three bits denotes  a string | 1 | 1 | 1 |   |   |  |    |
+| comment                          | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| -------------------------------- | -- | -- | -- | -- | -- | -- | -- | -- |
+| top three bits denotes  a string | 1 | 1 | 1 |   |   |   |   |   |
 
 
 | Service           | Relative URI                  |
