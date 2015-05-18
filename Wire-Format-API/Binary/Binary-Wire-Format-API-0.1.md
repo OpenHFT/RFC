@@ -89,7 +89,7 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 | (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
 | (0xBB) - NULL              | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 
-# Sequences, Maps and Marshables
+## Sequences, Maps and Marshables
 
 the sequence area encoded using 
 
