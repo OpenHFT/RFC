@@ -34,3 +34,17 @@ For short fields, the first byte denotes the type of the field, for small number
 | Field (16-31)                         | 1   | 1   | 0   | 1   |     |     |     |    |
 | String (0-15)                         | 1   | 1   | 1   | 0   |     |     |     |    |
 | String (0-31)                         | 1   | 1   | 1   | 1   |     |     |     |    | 
+
+## Types ( for larger values )
+
+the types use the Control Messages
+
+| Control message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
+|                                       | 1   | 0   | 0   | 0   |     |     |     |    |
+| (0x82) - Nested Block 32bit len 82    | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0 | 
+| (0x8A) - byte[]                       | 1   | 0   | 0   | 0   | 1   | 0   | 1   |  0 | 
+| (0x8D) - long[]                       | 1   | 0   | 0   | 0   | 1   | 1   | 0   |  1 | 
+| (0x8E) - paddding with 32bit length   | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  0 | 
+| (0x8E) - single padded byte           | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  1 | 
+
