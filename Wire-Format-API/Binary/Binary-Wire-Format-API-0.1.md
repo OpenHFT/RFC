@@ -1,6 +1,6 @@
 # Goals
 
-A compact encoding that both desicrbes the the length of the fields and the type of the fields.
+A compact encoding that both describes the the length of the fields and the type of the fields.
 
 See example below
 
