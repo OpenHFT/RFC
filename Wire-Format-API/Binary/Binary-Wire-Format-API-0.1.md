@@ -16,7 +16,7 @@ For short fields, the first byte denotes the type of the field, for small number
 
 ## Types ( for small values )
 
-| type (\<value or length in bytes\>)   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
+| type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | Num (0-15)                            | 0   | 0   | 0   | 0   |     |     |     |    | 
 | Num (16-31)                           | 0   | 0   | 0   | 1   |     |     |     |    | 
