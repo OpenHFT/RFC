@@ -11,7 +11,7 @@ For short fields, the first byte denotes the type of the field, for small number
 | comment                               | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
 | ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
 | top three bits denotes a three Type   | x   | x   | x   |  x  |     |     |     |    |
-| remaining bits dontes the size/value  |     |     |     |     | x   | x  |  x   | x  |
+| remaining bits denotes the size/value |     |     |     |     | x   | x  |  x   | x  |
 
 
 ## Types ( for small values )
@@ -71,4 +71,19 @@ the types use the Control Messages
 | (0xA6) - signed 32bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  0 |
 | (0xA7) - signed 64bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  1 |
 
+| Special message                       | 7   | 6   | 5   | 4   | 3   | 2   | 1   | 0  |
+| ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
+| ( all higher bits )                   | 1   | 0   | 1   | 1   |     |     |     |    | 
+| (0xB0) - FALSE                        | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  0 | 
+| (0xB1) - TRUE                         | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  1 |
+| (0xB2) - time UTC (long)              | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  0 |
+| (0xB3) - Date (joda UTF8-String)      | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  1 |
+| (0xB4) - DateTime (joda UTF8-String)  | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  0 |
+| (0xB5) - ZonedDateTime (joda UTF8-Str) | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  1 |
+| (0xB6) - type ( \<type\> + UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  0 |
+| (0xB7) - field (\<field\> + UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  1 |
+| (0xB8) - string (\<string\> +  UTF8-Str) | 1   | 0   | 1   | 1   | 1   | 0   | 0   |  1 |
+| (0xB9) - eventname(\<eventname\> +  UTF8-Str)        | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  0 |
+| (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
+| (0xBB) - null              | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 
