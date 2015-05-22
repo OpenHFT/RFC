@@ -166,7 +166,7 @@ they as binary wire this would encode to
 
 # Example
 
-using the encodings abouve, the following YAML 
+using this encoding descibed above, the following YAML 
 ``` yaml
 --- !!meta-data
 csp: //path/service
@@ -184,7 +184,7 @@ entrySet: [
 ]
 ``` 
 
-sent as binary wire would, would encode to :
+When encoded with BinaryWire would appear as:
 ```
 00000000 1C 00 00 40 C3 63 73 70  EE 2F 2F 70 61 74 68 2F ···@·csp ·//path/
 00000010 73 65 72 76 69 63 65 C3  74 69 64 A3 15 CD 5B 07 service· tid···[·
@@ -195,7 +195,7 @@ sent as binary wire would, would encode to :
 00000060 61 6C 75 65 E7 76 61 6C  75 65 2D 32             alue·val ue-2    
 ```
 
-this is the java code that created this data 
+this is the java code that created this this binary output above 
 
 ``` java
 @Test
