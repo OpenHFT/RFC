@@ -31,7 +31,22 @@ For short fields, the first byte denotes the type of the field, for small number
 | Field (0-15)                          | 1   | 1   | 0   | 0   |     |     |     |    |
 | Field (16-31)                         | 1   | 1   | 0   | 1   |     |     |     |    |
 | String (0-15)                         | 1   | 1   | 1   | 0   |     |     |     |    |
-| String (0-31)                         | 1   | 1   | 1   | 1   |     |     |     |    | 
+| String (16-31)                        | 1   | 1   | 1   | 1   |     |     |     |    | 
+
+
+### Definition of a field and a string
+
+In the following uri
+
+```yaml
+csp: //a-uri?view=map
+```
+
+'csp' is the Field. 
+
+And '//a-uri?view=map' is the String 
+
+
 
 ## Types ( for larger values )
 
@@ -73,21 +88,21 @@ the types use the Control Messages
 
 Note for\<string\> the string encode by default is a stop bit encoded len folloed by a ISO-8851-9 string, see more on this at https://github.com/OpenHFT/RFC/blob/master/Stop-Bit-Encoding/
 
-| Special message                      | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
-| ------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
-| ( all higher bits are the same )                  | 1   | 0   | 1   | 1   |     |     |     |    | 
-| (0xB0) - FALSE                        | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  0 | 
-| (0xB1) - TRUE                         | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  1 |
-| (0xB2) - time UTC (long)              | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  0 |
-| (0xB3) - Date (joda UTF8-Str)      | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  1 |
-| (0xB4) - DateTime (joda UTF8-Str)  | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  0 |
-| (0xB5) - ZonedDateTime (joda  \<string\>) | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  1 |
-| (0xB6) - type ( \<type\> +  \<string\>)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  0 |
-| (0xB7) - field (\<field\> +  \<string\>)  | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  1 |
+| Special message                             | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
+| ------------------------------------------- | --- | --- | --- | --- | --- | --- | --- | ---|
+| ( all higher bits are the same )            | 1   | 0   | 1   | 1   |     |     |     |    | 
+| (0xB0) - FALSE                              | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  0 | 
+| (0xB1) - TRUE                               | 1   | 0   | 1   | 1   | 0   | 0   | 0   |  1 |
+| (0xB2) - time UTC (long)                    | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  0 |
+| (0xB3) - Date (joda UTF8-Str)               | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  1 |
+| (0xB4) - DateTime (joda UTF8-Str)           | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  0 |
+| (0xB5) - ZonedDateTime (joda  \<string\>)   | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  1 |
+| (0xB6) - type ( \<type\> +  \<string\>)     | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  0 |
+| (0xB7) - field (\<field\> +  \<string\>)    | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  1 |
 | (0xB8) - string (\<string\> +   \<string\>) | 1   | 0   | 1   | 1   | 1   | 0   | 0   |  1 |
 | (0xB9) - eventname (\<eventname\> +  \<string\>)        | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  0 |
 | (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
-| (0xBB) - NULL              | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
+| (0xBB) - NULL                               | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 
 ## Sequences, Maps and Marshables
 
