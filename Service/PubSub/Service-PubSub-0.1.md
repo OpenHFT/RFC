@@ -31,12 +31,12 @@ Note: the group "group-A" must exist.
 
 ### Example
 ```java
-Map<String, String> map = acquireMap("map-name", String.class, String.class);
+Map<String, String> map = acquireMap("group-A", String.class, String.class);
 map.put("Key-1", "Value-1");
 map.put("Key-1", "Value-2");
 map.remove("Key-1");
 ```
-Will produce the events
+The above *subscriber* will produce the events
 ```
 Value-1
 Value-2
@@ -55,12 +55,12 @@ This registers to all inserted, updated and removed events with the *current* va
 
 ### Example
 ```java
-Map<String, String> map = acquireMap("map-name", String.class, String.class);
+Map<String, String> map = acquireMap("group-A", String.class, String.class);
 map.put("Key-1", "Value-1");
 map.put("Key-1", "Value-2");
 map.remove("Key-1");
 ```
-Will produce the events
+The above *subscriber* will produce the events
 ```
 name: Key-1, message: Value-1
 name: Key-1, message: Value-2
@@ -79,12 +79,13 @@ This registers to all inserted, updated and removed events with previous values.
 
 ### Example
 ```java
-Map<String, String> map = acquireMap("map-name", String.class, String.class);
+Map<String, String> map = acquireMap("group-A", String.class, String.class);
 map.put("Key-1", "Value-1");
 map.put("Key-1", "Value-2");
 map.remove("Key-1");
 ```
-Will produce the events
+The above *subscriber* will produce the events
+
 ```
 InsertedEvent{ key: Key-1, value: Value-1 }
 UpdatedEvent{ key: Key-1, oldValue: Value-1, value: Value-2 }
@@ -101,12 +102,13 @@ registerSubscriber("group-A?bootstrap=true", String.class, subscriber);
 
 ### Example
 ```java
-Map<String, String> map = acquireMap("map-name", String.class, String.class);
+Map<String, String> map = acquireMap("group-A", String.class, String.class);
 map.put("Key-1", "Value-1");
 map.put("Key-1", "Value-2");
 map.remove("Key-1");
 ```
-Will produce the events
+The above *subscriber* will produce the events
+
 ```
 Key-1
 Key-1
@@ -129,7 +131,8 @@ Publisher<String> publisher = acquirePublisher("group/topic", String.class);
 Subscriber<String> subscriber = System.out::println; 
 registerPublisher("group/topic", String.class, subscriber);
 
-// subscriber will print Message-1
+// subscriber will print
+// Message-1
 publisher.publish("Message-1");
 
 assertEquals("Message-1", map.get("topic-1"));
@@ -145,7 +148,7 @@ TopicSubscriber<String, String> subscriber = (topic, message) -> System.out.prin
 registerTopicSubscriber("group", String.class, subscriber);
 
 // subscriber will print
- // topic: topic-1, message: Message-1
+// topic: topic-1, message: Message-1
 publisher.publish("topic-1", "Message-1");
 
 assertEquals("Message-1", map.get("topic-1"));
