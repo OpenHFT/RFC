@@ -166,7 +166,7 @@ map.put("topic-1", "Message-1");
 assertEquals("Message-1", map.get("topic"));
 
 // subscriber will print
-// topic: topic-1, message: Message-1
+// topic: topic-1, message: null
 map.remove("topic-1");
 
 assertEquals(null, map.get("topic-1"));
