@@ -14,7 +14,7 @@ RFC on to publish and subscribe to named topics.
 
 Publishing and Subscription can be to a fix name, or a collection of names.  This should be integrated with the Key Value Store. 
 
-# Publish and Subscription types.
+# Subscription types.
 
 ## Subscription to a topic.
 You can register to a message
@@ -118,6 +118,60 @@ To get the latest value you can poll it with
 String current = map.get("Key-1");
 ```
 
-## Topic Subscription
+# Publishing types
+
+## Publish to a set topic
+You can publish to a specific topic with a Publisher.
+
+```java
+Map<String, String> map = acquireMap("group", String.class, String.class);
+Publisher<String> publisher = acquirePublisher("group/topic", String.class);
+Subscriber<String> subscriber = System.out::println; 
+registerPublisher("group/topic", String.class, subscriber);
+
+// subscriber will print Message-1
+publisher.publish("Message-1");
+
+assertEquals("Message-1", map.get("topic-1"));
+```
+
+## Publish to any topic in a group
+You can publish to any topic in a group.
+
+```java
+Map<String, String> map = acquireMap("group", String.class, String.class);
+TopicPublisher<String> publisher = acquireTopicPublisher("group", String.class);
+TopicSubscriber<String, String> subscriber = (topic, message) -> System.out.println("name: "+ topic + ", message: "+message);
+registerTopicSubscriber("group", String.class, subscriber);
+
+// subscriber will print
+ // topic: topic-1, message: Message-1
+publisher.publish("topic-1", "Message-1");
+
+assertEquals("Message-1", map.get("topic-1"));
+```
+
+## Update the map view
+You can manipulate topics as a map.
+
+```java
+Map<String, String> map = acquireMap("group", String.class, String.class);
+TopicSubscriber<String, String> subscriber = (topic, message) -> System.out.println("name: "+ topic + ", message: "+message);
+registerTopicSubscriber("group", String.class, subscriber);
+
+// subscriber will print
+// topic: topic-1, message: Message-1
+map.put("topic-1", "Message-1");
+
+assertEquals("Message-1", map.get("topic"));
+
+// subscriber will print
+// topic: topic-1, message: Message-1
+map.remove("topic-1");
+
+assertEquals(null, map.get("topic-1"));
+```
+
+
 # References
 [URI Wikipedia](http://en.wikipedia.org/wiki/Uniform_resource_identifier)
