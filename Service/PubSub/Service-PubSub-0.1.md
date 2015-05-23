@@ -17,7 +17,7 @@ Publishing and Subscription can be to a fix name, or a collection of names.  Thi
 # Subscription types.
 
 ## Subscription to a topic.
-You can register to a message
+You can register to a message. In this example, the *subscriber* will print all messages after a bootstrap of the previous message if it exists. 
 
 ```java
 Subscriber<String> subscriber = System.out::println; // prints all messages
@@ -48,7 +48,7 @@ When you register a TopicSubscriber, it will listen to all the events for a spec
 
 ```java
 TopicSubscriber<String, String> subscriber = (topic, message) -> System.out.println("name: "+ topic + ", message: "+message);
-registerTopicSubscriber("group-A?bootstrap=true", String.class, subscriber);
+registerTopicSubscriber("group-A", String.class, subscriber);
 ```
 
 This registers to all inserted, updated and removed events with the *current* values.  The current value on a remove is a *null*.
@@ -68,11 +68,11 @@ name: Key-1, message: null
 ```
 
 ## Subscription to changes in entries key-value store.
-When you register a subscriber, it will listen to all the events for a specific topic.
+When you register a subscriber, it will listen to all the events for a specific topic. In this example, the subscriber prints the events 
 
 ```java
 Subscriber<MapEvent<String, String>> subscriber = System.out::println; // prints all entries
-registerSubscriber("group-A?bootstrap=true", MapEntry.class, (Subscriber) subscriber);
+registerSubscriber("group-A", MapEntry.class, (Subscriber) subscriber);
 ```
 
 This registers to all inserted, updated and removed events with previous values.
@@ -93,11 +93,11 @@ RemovedEvent{ key: Key-1, value: Value-2 }
 ```
 
 ## Subscription to topics changed
-When you subscribe to the topic names, you just the changes to those topics.  This means you need to get() an updated value if needed.
+When you subscribe to the topic names, you just the changes to those topics.  This means you need to *get()* the latest value if needed.
 
 ```java
 Subscriber<String> subscriber = System.out::println; // prints all entries
-registerSubscriber("group-A?bootstrap=true", String.class, subscriber);
+registerSubscriber("group-A", String.class, subscriber);
 ```
 
 ### Example
@@ -123,7 +123,7 @@ String current = map.get("Key-1");
 # Publishing types
 
 ## Publish to a set topic
-You can publish to a specific topic with a Publisher.
+You can publish to a specific topic with a Publisher. In this example, the *Publisher* is bound to *topic* is "topic" in the *group* "group"
 
 ```java
 Map<String, String> map = acquireMap("group", String.class, String.class);
@@ -139,7 +139,7 @@ assertEquals("Message-1", map.get("topic-1"));
 ```
 
 ## Publish to any topic in a group
-You can publish to any topic in a group.
+You can publish to any topic in a group. In this example, the *TopicPublisher* is bound to the *group*.
 
 ```java
 Map<String, String> map = acquireMap("group", String.class, String.class);
@@ -155,7 +155,7 @@ assertEquals("Message-1", map.get("topic-1"));
 ```
 
 ## Update the map view
-You can manipulate topics as a map.
+You can manipulate topics as a map.  In this example, the group is viewed as a *Map* and *put* performs the publish.
 
 ```java
 Map<String, String> map = acquireMap("group", String.class, String.class);
