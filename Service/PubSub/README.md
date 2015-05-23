@@ -1,0 +1,18 @@
+# Specification
+
+|         |                                                                     |
+|:------- | ------------------------------------------------------------------- |
+| Title   | Service Messages RFC                                                |
+| Parent  | https://github.com/OpenHFT/RFC/blob/master/Service/                 |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Service/Messages/        |
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Service/Messages/Service-PubSub-0.1.md |
+| Editor  | Peter Lawrey                                                        |
+| License | Apache 2.0                                                          |
+| Change Process | Users issue Pull Requests for the Editor's consideration.    |
+| Status  | Raw.                                                                |
+
+# Goals
+RFC on to publish and subscribe to named topics.
+
+Publishing and Subscription can be to a fix name, or a collection of names.  This should be integrated with the Key Value Store. 
+
