@@ -226,3 +226,19 @@ private void writeMessage(Wire wire) {
             }));
 }
 ```
+
+# Layout
+
+The expected format is
+
+4 bytes length with the meta-data bit set.
+3-byte field + "csp"
+N-byte string + string
+3-bytes field + "tid"
+integer value as a int64.
+
+In the future we will make the tid to be smaller. possibly just a byte or 3 (uint16).
+
+Q.Where would the nested be involved? 
+A.You might consider the whole document with its length a "nested" structure.
+
