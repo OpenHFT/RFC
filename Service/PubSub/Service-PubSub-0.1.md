@@ -23,6 +23,12 @@ You can register to a message. In this example, the *subscriber* will print all 
 Subscriber<String> subscriber = System.out::println; // prints all messages
 registerSubscriber("group-A/name-1?bootstrap=true", String.class, subscriber);
 ```
+
+```C#
+Subscriber<string> subscriber = obj => { Console.WriteLine(obj); }; // prints all messages
+registerSubscriber<string>("group-A/name-1?bootstrap=true", subscriber);
+```
+
 This will give one update, if a message has been sent before.
 
 This registers to a specific topic "name-1" in the "group-A".  It also optionally bootstraps the data with the last message sent.
@@ -30,13 +36,23 @@ This registers to a specific topic "name-1" in the "group-A".  It also optionall
 Note: the group "group-A" must exist.
 
 ### Example
+
 ```java
 Map<String, String> map = acquireMap("group-A", String.class, String.class);
 map.put("Key-1", "Value-1");
 map.put("Key-1", "Value-2");
 map.remove("Key-1");
 ```
+
+```C#
+var map = acquireMap<string, string>("group-A");
+map.Add("Key-1", "Value-1");
+map.Add("Key-1", "Value-2");
+map.Remove("Key-1");
+```
+
 The above *subscriber* will produce the events
+
 ```
 Value-1
 Value-2
@@ -51,6 +67,13 @@ TopicSubscriber<String, String> subscriber = (topic, message) -> System.out.prin
 registerTopicSubscriber("group-A", String.class, String.class, subscriber);
 ```
 
+```C#
+TopicSubscriber<string, string> subscriber = (topic, message) => { 
+	Console.WriteLine("name: "+ topic + ", message: "+message);
+};
+registerTopicSubscriber<string, string>("group-A", subscriber);
+```
+
 This registers to all inserted, updated and removed events with the *current* values.  The current value on a remove is a *null*.
 
 ### Example
@@ -60,6 +83,14 @@ map.put("Key-1", "Value-1");
 map.put("Key-1", "Value-2");
 map.remove("Key-1");
 ```
+
+```C#
+var map = acquireMap<string, string>("group-A");
+map.Add("Key-1", "Value-1");
+map.Add("Key-1", "Value-2");
+map.Remove("Key-1");
+```
+
 The above *subscriber* will produce the events
 ```
 name: Key-1, message: Value-1
@@ -75,6 +106,13 @@ Subscriber<MapEvent<String, String>> subscriber = System.out::println; // prints
 registerSubscriber("group-A", MapEntry.class, (Subscriber) subscriber);
 ```
 
+```C#
+Subscriber<MapEvent<string, string>> subscriber = obj => { 
+	Console.WriteLine(obj.ToString());
+};
+registerSubscriber<MapEvent>("group-A", subscriber);
+```
+
 This registers to all inserted, updated and removed events with previous values.
 
 ### Example
@@ -84,6 +122,14 @@ map.put("Key-1", "Value-1");
 map.put("Key-1", "Value-2");
 map.remove("Key-1");
 ```
+
+```C#
+var map = acquireMap<string, string>("group-A");
+map.Add("Key-1", "Value-1");
+map.Add("Key-1", "Value-2");
+map.Remove("Key-1");
+```
+
 The above *subscriber* will produce the events
 
 ```
@@ -100,6 +146,13 @@ Subscriber<String> subscriber = System.out::println; // prints all entries
 registerSubscriber("group-A", String.class, subscriber);
 ```
 
+```C#
+Subscriber<string> subscriber = obj => { 
+	Console.WriteLine(obj.ToString());
+};
+registerSubscriber<string>("group-A", subscriber);
+```
+
 ### Example
 ```java
 Map<String, String> map = acquireMap("group-A", String.class, String.class);
@@ -107,6 +160,14 @@ map.put("Key-1", "Value-1");
 map.put("Key-1", "Value-2");
 map.remove("Key-1");
 ```
+
+```C#
+var map = acquireMap<string, string>("group-A");
+map.Add("Key-1", "Value-1");
+map.Add("Key-1", "Value-2");
+map.Remove("Key-1");
+```
+
 The above *subscriber* will produce the events
 
 ```
@@ -118,6 +179,10 @@ To get the latest value you can poll it with
 
 ```java
 String current = map.get("Key-1");
+```
+
+```C#
+var current = map["Key-1"];
 ```
 
 # Publishing types
@@ -140,6 +205,23 @@ assertEquals("Message-1", map.get("topic"));
 publisher.publish("Message-2");
 
 assertEquals("Message-2", map.get("topic"));
+```
+
+```C#
+var map = acquireMap<string, string>("group");
+var publisher = acquirePublisher<string>("group/topic");
+Subscriber<String> subscriber = obj => { ConsoleWriteLine(obj); };
+registerPublisher<string>("group/topic", subscriber);
+
+// subscriber will print
+// Message-1
+publisher.publish("Message-1");
+
+Assert.AreEqual("Message-1", map["topic"]);
+
+publisher.publish("Message-2");
+
+Assert.AreEqual("Message-2", map["topic"]);
 ```
 
 ## Publish to any topic in a group
@@ -165,6 +247,26 @@ assertEquals("[{name: topic-1, message: Message-1}, {name: topic-1, message: Mes
 assertEquals("[{name: topic-1, message: Message-1}, {name: topic-1, message: Message-2}]", values2.toString());
 ```
 
+```C#
+var map = acquireMap<string, string>("group");
+var publisher = acquireTopicPublisher<string, string>("group");
+var values = new List<string>();
+TopicSubscriber<string, string> subscriber = (topic, message) => {values.add("{name: " + topic + ", message: " + message + "}"); };
+registerTopicSubscriber<string, string>("group", subscriber);
+
+var values2 = new List<string>();
+TopicSubscriber<string, string> subscriber2 = (topic, message) => { values2.add("{name: " + topic + ", message: " + message + "}"); };
+publisher.registerSubscriber(subscriber2);
+
+publisher.publish("topic-1", "Message-1");
+Assert.AreEqual("Message-1", map["topic-1"]);
+
+publisher.publish("topic-1", "Message-2");
+Assert.AreEqual("Message-2", map["topic-1"]);
+Assert.AreEqual("[{name: topic-1, message: Message-1}, {name: topic-1, message: Message-2}]", values.ToString());
+Assert.AreEqual("[{name: topic-1, message: Message-1}, {name: topic-1, message: Message-2}]", values2.ToString());
+```
+
 ## Update the map view
 You can manipulate topics as a map.  In this example, the group is viewed as a *Map* and *put* performs the publish.
 
@@ -184,6 +286,25 @@ assertEquals("Message-1", map.get("topic-1"));
 map.remove("topic-1");
 
 assertEquals(null, map.get("topic-1"));
+```
+
+```C#
+var map = acquireMap<string, string>("group");
+TopicSubscriber<string, string> subscriber = (topic, message) => {Console.WriteLine("name: "+ topic + ", message: "+message); };
+registerTopicSubscriber<string, string>("group", subscriber);
+
+// subscriber will print
+// topic: topic-1, message: Message-1
+map.Add("topic-1", "Message-1");
+
+Assert.AreEqual("Message-1", map.get("topic-1"));
+
+// subscriber will print
+// topic: topic-1, message: null
+map.Remove("topic-1");
+
+string value;
+Assert.IsFalse(map.TryGet("topic-1", out value));
 ```
 
 ## Reference to a topic.
@@ -211,6 +332,30 @@ assertEquals("Message-2", reference.get());
 assertEquals("Message-2", map.get("topic"));
 assertEquals("[Message-1, Message-2]", values.toString());
 assertEquals("[Message-1, Message-2]", values2.toString());
+```
+
+```C#
+var map = acquireMap<string, string>("group");
+var reference = acquireReference<string>("group/topic");
+
+var values = new List<string>();
+Subscriber<string> subscriber = obj => { values.Add(obj); };
+registerSubscriber<string>("group/topic", subscriber);
+
+var values2 = new List<string>();
+Subscriber<String> subscriber2 = obj => { values2.Add(obj); };
+reference.registerSubscriber(subscriber2);
+
+reference.set("Message-1");
+Assert.AreEqual("Message-1", reference.get());
+
+Assert.AreEqual("Message-1", map["topic"]);
+
+reference.publish("Message-2");
+Assert.AreEqual("Message-2", reference.get());
+Assert.AreEqual("Message-2", map["topic"]);
+Assert.AreEqual("[Message-1, Message-2]", values.ToString());
+Assert.AreEqual("[Message-1, Message-2]", values2.ToString());
 ```
 
 
