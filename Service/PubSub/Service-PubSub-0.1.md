@@ -43,12 +43,12 @@ Value-2
 null
 ```
 
-## Subscription to multiple topics in a group.
+## Subscription to a group of topics.
 When you register a TopicSubscriber, it will listen to all the events for a specific group of topics.
 
 ```java
 TopicSubscriber<String, String> subscriber = (topic, message) -> System.out.println("name: "+ topic + ", message: "+message);
-registerTopicSubscriber("group-A", String.class, subscriber);
+registerTopicSubscriber("group-A", String.class, String.class, subscriber);
 ```
 
 This registers to all inserted, updated and removed events with the *current* values.  The current value on a remove is a *null*.
@@ -135,7 +135,11 @@ registerPublisher("group/topic", String.class, subscriber);
 // Message-1
 publisher.publish("Message-1");
 
-assertEquals("Message-1", map.get("topic-1"));
+assertEquals("Message-1", map.get("topic"));
+
+publisher.publish("Message-2");
+
+assertEquals("Message-2", map.get("topic"));
 ```
 
 ## Publish to any topic in a group
@@ -143,9 +147,9 @@ You can publish to any topic in a group. In this example, the *TopicPublisher* i
 
 ```java
 Map<String, String> map = acquireMap("group", String.class, String.class);
-TopicPublisher<String> publisher = acquireTopicPublisher("group", String.class);
+TopicPublisher<String, String> publisher = acquireTopicPublisher("group", String.class, String.class);
 TopicSubscriber<String, String> subscriber = (topic, message) -> System.out.println("name: "+ topic + ", message: "+message);
-registerTopicSubscriber("group", String.class, subscriber);
+registerTopicSubscriber("group", String.class, String.class, subscriber);
 
 // subscriber will print
 // topic: topic-1, message: Message-1
@@ -160,13 +164,13 @@ You can manipulate topics as a map.  In this example, the group is viewed as a *
 ```java
 Map<String, String> map = acquireMap("group", String.class, String.class);
 TopicSubscriber<String, String> subscriber = (topic, message) -> System.out.println("name: "+ topic + ", message: "+message);
-registerTopicSubscriber("group", String.class, subscriber);
+registerTopicSubscriber("group", String.class, String.class, subscriber);
 
 // subscriber will print
 // topic: topic-1, message: Message-1
 map.put("topic-1", "Message-1");
 
-assertEquals("Message-1", map.get("topic"));
+assertEquals("Message-1", map.get("topic-1"));
 
 // subscriber will print
 // topic: topic-1, message: null
