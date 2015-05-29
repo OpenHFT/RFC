@@ -103,6 +103,13 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 | (0xB9) - eventname (\<eventname\> +  \<string\>)        | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  0 |
 | (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
 | (0xBB) - NULL                               | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
+| (0xBC) - Type                               | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
+
+
+## Type
+0xBC <prefix len ecoded string, len is encoded using stop bits>  
+
+
 
 ## Sequences, Maps and Marshables
 
