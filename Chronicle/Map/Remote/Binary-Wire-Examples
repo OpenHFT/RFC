@@ -268,21 +268,6 @@ receives:
 ```
 
 
-java.lang.NullPointerException
-	at net.openhft.chronicle.map.ClientWiredStatelessChronicleMap.putIfAbsent(ClientWiredStatelessChronicleMap.java:127)
-	at net.openhft.chronicle.engine.map.RemoteChronicleMapBinaryWireTest.lambda$testPutIfAbsent1_NullPointerException$33(RemoteChronicleMapBinaryWireTest.java:554)
-	at net.openhft.chronicle.engine.map.RemoteChronicleMapBinaryWireTest$$Lambda$115/776528306.run(Unknown Source)
-	at net.openhft.chronicle.engine.Utils.yamlLoggger(Utils.java:37)
-	at net.openhft.chronicle.engine.map.RemoteChronicleMapBinaryWireTest.testPutIfAbsent1_NullPointerException(RemoteChronicleMapBinaryWireTest.java:554)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.FailOnTimeout$StatementThread.run(FailOnTimeout.java:74)
 ### Replace Value 2
 example of replace where the value is known
 
@@ -413,8 +398,6 @@ receives:
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 B1             ······re ply·    
 ```
 
-
-Test 'net.openhft.chronicle.engine.map.RemoteChronicleMapBinaryWireTest.testValuesToArray' ignored (broken tests)
 ### Contains
 when the key exists
 
