@@ -30,7 +30,7 @@ These proxies can be returned by methods and should be serialized when sending t
 ### Method calls
 In all the examples below the `csp:` can be replaced with a `cid:` which is a short token to improve the efficiency of the routing logic.
 
-### Async Mehtods
+### Async Methods
 
 All the methods are Synchronous, accept for put(<key>,<value) and remove(<key>,<value>) which for performance reasons are asynchronous.
 
