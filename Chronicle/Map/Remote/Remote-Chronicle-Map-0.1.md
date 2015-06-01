@@ -38,7 +38,7 @@ All the methods are Synchronous, accept for put(<key>,<value) and remove(<key>,<
 
 The following examples below are identical, showing the same examples in the same order, the only difference is tthe encoding format.
  
-| Encoding Format    | URL                                  |
-| ------- | ----------------------------------------------------------------------- |
-| Text Wire     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Text-Wire-Examples.md |
-| Binary Wire  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Binary-Wire-Examples.md                                                            |
+| Encoding Format  | URL                                                                                      |
+| ---------------- | ---------------------------------------------------------------------------------------- |
+| Text Wire        | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Text-Wire-Examples.md    |
+| Binary Wire      | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Binary-Wire-Examples.md  |
