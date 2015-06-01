@@ -4,7 +4,7 @@
 |:------- | ----------------------------------------------------------------------- |
 | Title   | Remote access for Chronicle Map RFC                                     |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Remote-Chronicle-Map-0.1.md |
-| Editor  | Peter Lawrey                                                            |
+| Editor  | Rob Austin                                                            |
 | License | Apache 2.0                                                              |
 | Change Process | Users issue Pull Requests for the Editor's consideration.        |
 | Status  | Raw.                                                                    |
@@ -34,5 +34,12 @@ In all the examples below the `csp:` can be replaced with a `cid:` which is a sh
 
 All the methods are Synchronous, accept for put(<key>,<value) and remove(<key>,<value>) which for performance reasons are asynchronous.
 
+### Examples
 
+The following examples below are identical, showing the same examples in the same order, the only difference is tthe encoding format.
 
+|         |                                                                         |
+|:------- | ----------------------------------------------------------------------- |
+| Encoding Format    | URL                                  |
+| Text Wire     | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Text-Wire-Examples.md |
+| Binary Wire  | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Binary-Wire-Examples.md                                                            |
