@@ -1,3 +1,5 @@
+#Binary Wire Examples
+
 ### Get
 example of get(<key>) returning null, when the keys is not present in the map
 
