@@ -736,17 +736,7 @@ putAll: [
 }
 ]
 ```
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 68, lim: 88, cap: 1TiB ] (٠٠@csp: //test?view=MAP⒑tid: 1433164159095⒑´٠٠٠putAll: [⒑    {⒑    ‖key: 4,⒑    value: D
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 75, lim: 88, cap: 1TiB ] (٠٠@csp: //test?view=MAP⒑tid: 1433164159095⒑´٠٠٠putAll: [⒑    {⒑    key: 4,‖⒑    value: D
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 102, lim: 122, cap: 1TiB ] (٠٠@csp: //test?view=MAP⒑tid: 1433164159095⒑´٠٠٠putAll: [⒑    {⒑    key: 4,⒑    value: D⒑},⒑    {⒑    ‖key: 2,⒑    value: B
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 109, lim: 122, cap: 1TiB ] (٠٠@csp: //test?view=MAP⒑tid: 1433164159095⒑´٠٠٠putAll: [⒑    {⒑    key: 4,⒑    value: D⒑},⒑    {⒑    key: 2,‖⒑    value: B
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 136, lim: 156, cap: 1TiB ]  //test?view=MAP⒑tid: 1433164159095⒑´٠٠٠putAll: [⒑    {⒑    key: 4,⒑    value: D⒑},⒑    {⒑    key: 2,⒑    value: B⒑},⒑    {⒑    ‖key: 3,⒑    value: C
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 143, lim: 156, cap: 1TiB ] ?view=MAP⒑tid: 1433164159095⒑´٠٠٠putAll: [⒑    {⒑    key: 4,⒑    value: D⒑},⒑    {⒑    key: 2,⒑    value: B⒑},⒑    {⒑    key: 3,‖⒑    value: C
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 170, lim: 190, cap: 1TiB ] 5⒑´٠٠٠putAll: [⒑    {⒑    key: 4,⒑    value: D⒑},⒑    {⒑    key: 2,⒑    value: B⒑},⒑    {⒑    key: 3,⒑    value: C⒑},⒑    {⒑    ‖key: 5,⒑    value: E
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 177, lim: 190, cap: 1TiB ] utAll: [⒑    {⒑    key: 4,⒑    value: D⒑},⒑    {⒑    key: 2,⒑    value: B⒑},⒑    {⒑    key: 3,⒑    value: C⒑},⒑    {⒑    key: 5,‖⒑    value: E
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 204, lim: 224, cap: 1TiB ]     value: D⒑},⒑    {⒑    key: 2,⒑    value: B⒑},⒑    {⒑    key: 3,⒑    value: C⒑},⒑    {⒑    key: 5,⒑    value: E⒑},⒑    {⒑    ‖key: 1,⒑    value: A
-[core-event-loop] INFO net.openhft.chronicle.engine.map.MapWireHandler - [pos: 211, lim: 224, cap: 1TiB ] ue: D⒑},⒑    {⒑    key: 2,⒑    value: B⒑},⒑    {⒑    key: 3,⒑    value: C⒑},⒑    {⒑    key: 5,⒑    value: E⒑},⒑    {⒑    key: 1,‖⒑    value: A
-
+ 
 receives:
 
 ```yaml
@@ -830,7 +820,3 @@ receives:
 reply: 5
 ```
 
-
-Disconnected from the target VM, address: '127.0.0.1:54478', transport: 'socket'
-
-Process finished with exit code 0
