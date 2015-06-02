@@ -16,14 +16,18 @@ An RFC for library specific requirements for Remote access to a Chronicle Map. S
 This section details the services a Chronicle Map exposes and wire protocol for the methods.
 
 ### Services
-| Service           | Relative URI                  |
+| Service             | Relative URI                  |
 | ----------------- | ----------------------------- |
-| Unqualified Map   | map-name                      |
-| Qualified Map     | map-name#Map                  |
-| Keys of Map       | map-name#keySet               |
-| Entries of Map    | map-name#entrySet             |
-| Values of Map     | map-name#values               |
-| Replication       | map-name#replication          |
+| Unqualified Map  | map-name                      |
+| Qualified Map     | map-name?view=Map                  |
+| Keys of Map       | map-name?view=keySet               |
+| Entries of Map    | map-name?view=entrySet             |
+| Values of Map     | map-name?view=values               |
+| Replication        | map-name?view=replication          |
+| Publisher          | map-name/{key}?view=Publisher&elementType={keyType} |
+| TopicPublisher   | map-name?view=TopicPublisher&keyType={keyType}&valueType |
+| Subscription for a Map | map-name?view=Subscription        |
+| Subscription for an Entry or Topic | map-name/{key}?view=Subscription |
 
 These proxies can be returned by methods and should be serialized when sending to the server
 
@@ -40,5 +44,5 @@ The following examples below are identical, showing the same examples in the sam
  
 | Encoding Format  | URL                                                                                      |
 | ---------------- | ---------------------------------------------------------------------------------------- |
-| Text Wire        | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Text-Wire-Examples.md    |
-| Binary Wire      | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Binary-Wire-Examples.md  |
+| Text Wire        | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Text-Wire-Examples-0.1.md    |
+| Binary Wire      | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Binary-Wire-Examples-0.1.md  |

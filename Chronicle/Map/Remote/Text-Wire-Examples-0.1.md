@@ -7,7 +7,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164086110
 --- !!data
 get: 42
@@ -28,7 +28,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164090328
 --- !!data
 containsKey: !!null ""
@@ -80,7 +80,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164092575
 --- !!data
 entrySet: {
@@ -163,7 +163,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164097049
 --- !!data
 replaceForOld: {
@@ -186,7 +186,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164099285
 --- !!data
 clear: {
@@ -209,7 +209,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164110010
 --- !!data
 size: {
@@ -230,7 +230,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164110016
 --- !!data
 size: {
@@ -252,7 +252,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164116483
 --- !!data
 containsKey: 1
@@ -271,7 +271,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164118718
 --- !!data
 putIfAbsent: {
@@ -295,7 +295,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164120965
 --- !!data
 containsValue: A
@@ -317,7 +317,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164123194
 --- !!data
 containsValue: A
@@ -337,7 +337,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164123195
 --- !!data
 containsValue: Z
@@ -358,7 +358,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164125428
 --- !!data
 replace: {
@@ -382,7 +382,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164129903
 --- !!data
 putIfAbsent: {
@@ -406,7 +406,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164138968
 --- !!data
 replace: {
@@ -430,7 +430,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164143432
 --- !!data
 get: !!null ""
@@ -480,7 +480,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164147911
 --- !!data
 entrySet: {
@@ -563,7 +563,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164154617
 --- !!data
 replaceForOld: {
@@ -588,7 +588,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164156854
 --- !!data
 keySet: {
@@ -630,7 +630,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164159098
 --- !!data
 entrySet: {
@@ -710,7 +710,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164159095
 --- !!data
 putAll: [
@@ -753,7 +753,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164163340
 --- !!data
 size: {
@@ -773,7 +773,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 --- !!data
 remove: 5
 ```
@@ -784,7 +784,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: //test?view=MAP
+csp: //test?view=Map
 tid: 1433164169816
 --- !!data
 values: {
@@ -820,3 +820,129 @@ receives:
 reply: 5
 ```
 
+## Publish / Subscription
+
+### Publish to a topic
+Publish is asynchronous by default. In future there might be a `syncPublish`
+
+sends asynchronously:
+
+```yaml
+--- !!meta-data
+csp: //group/topic-1?view=Publisher
+--- !!data
+publish: 42
+```
+
+sends asynchronously:
+
+```yaml
+--- !!meta-data
+csp: //group/topic-1?view=Publisher
+--- !!data
+publish: !mypackage.MyClass { field1: value1, field2: 2 }
+```
+
+### Publish to any topic
+
+sends asynchronously:
+
+```yaml
+--- !!meta-data
+csp: //group?view=TopicPublisher
+--- !!data
+publish: { topic: topic-1, message: 42 }
+```
+
+sends asynchronously:
+
+```yaml
+--- !!meta-data
+csp: //group?view=TopicPublisher
+--- !!data
+publish: { topic: topic-1, message: !mypackage.MyClass { field1: value1, field2: 2 } }
+```
+
+### Subscribe to a group of topics
+You need to subscribe with a `tid` and each message will have the same `tid`.
+
+sends:
+
+```yaml
+--- !!meta-data
+csp: //group?view=Subscription
+tid: 1433164169818
+--- !!data
+registerTopicSubscriber: { keyType: String, valueType: String }
+```
+
+receives a bootstrap message for the same `tid`.
+
+```yaml
+--- !!meta-data
+tid: 1433164169818
+--- !!data-not-ready
+reply: { topic: topic-1, message: 42 }
+```
+
+and a later message with the same `tid`.
+
+```yaml
+--- !!meta-data
+tid: 1433164169818
+--- !!data-not-ready
+reply: { topic: topic-1, message: 42 plus more }
+```
+
+finally the server ends the subscription, the last update 
+
+```yaml
+--- !!meta-data
+tid: 1433164169818
+--- !!data
+reply: { topic: topic-1, message: 42 and no more }
+```
+
+Note: the `!!data-not-ready` means this `tid` has not finished and there can be more data.  The `!!data` tag means this is the last piece of data and you can cleanup after this.
+
+### Subscribe to a specific topic
+You need to subscribe with a `tid` and each message will have the same `tid`.
+
+sends:
+
+```yaml
+--- !!meta-data
+csp: //group/topic-1?view=Subscription
+tid: 1433164169821
+--- !!data
+registerSubscriber: { type: String }
+```
+
+receives a bootstrap message for the same `tid`.
+
+```yaml
+--- !!meta-data
+tid: 1433164169821
+--- !!data-not-ready
+reply: 42
+```
+
+and a later message with the same `tid`.
+
+```yaml
+--- !!meta-data
+tid: 1433164169821
+--- !!data-not-ready
+reply: 42 plus more
+```
+
+finally the server ends the subscription, the last update 
+
+```yaml
+--- !!meta-data
+tid: 1433164169821
+--- !!data
+reply: 42 and no more
+```
+
+Note: the `!!data-not-ready` means this `tid` has not finished and there can be more data.  The `!!data` tag means this is the last piece of data and you can cleanup after this.
