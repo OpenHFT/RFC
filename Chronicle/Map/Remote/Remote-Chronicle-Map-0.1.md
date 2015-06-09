@@ -46,3 +46,42 @@ The following examples below are identical, showing the same examples in the sam
 | ---------------- | ---------------------------------------------------------------------------------------- |
 | Text Wire        | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Text-Wire-Examples-0.1.md    |
 | Binary Wire      | https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map/Remote/Binary-Wire-Examples-0.1.md  |
+
+
+### System Messages
+
+If the first message that is sent is a —!data, this is deemed to be a system information message, part of the hand shaking
+
+Also any message sent after a zero size --- !!meta-data is a system message.
+
+
+in this example below we first send the user name
+
+sends:
+
+```yaml
+--- !!data
+userid: robaustin
+```
+
+followed by the rest of the data
+
+
+sends:
+
+```yaml
+--- !!data
+userid: robaustin
+```
+sends:
+
+```yaml
+--- !!meta-data
+csp: /test?view=map&keyType=Integer&valueType=String
+--- !!data
+put: {
+  key: 1,
+  value: hello
+}
+```
+sends:
