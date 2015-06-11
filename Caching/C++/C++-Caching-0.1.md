@@ -22,7 +22,6 @@ An RFC for platform specific requirements for C++ Caching solutions. See the par
 ### Additional details
 {Additional Details}
 
-
 # ABNF description
 {Add an ABNF description if appropriate}
 

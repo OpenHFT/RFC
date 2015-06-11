@@ -97,7 +97,6 @@ unregisterTopicSubscriber: { }
 
 Note: you may get more data after this unregister, however you should soon get a message with a tag of `!!data` to confirm the subscription has concluded.
 
-
 ### Subscribe to a specific topic
 You need to subscribe with a `tid` and each message will have the same `tid`.
 

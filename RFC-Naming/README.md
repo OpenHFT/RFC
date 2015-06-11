@@ -13,5 +13,3 @@
 # Goals
 A guide to describing how the naming of RFCs, names of terms, and common words used in APIs
 
-
-

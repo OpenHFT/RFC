@@ -21,7 +21,6 @@ An RFC for Caching solutions in a platform neutral way.  Platform specific RFCs 
 ### Additional details
 {Additional Details}
 
-
 # ABNF description
 {Add an ABNF description if appropriate}
 

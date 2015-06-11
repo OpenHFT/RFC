@@ -20,7 +20,6 @@ receives:
 reply: !!null ""
 ```
 
-
 ### Contains Key _ Null Pointer Exception
 c.containsKey(null) will throw a NullPointerException
 
@@ -70,11 +69,8 @@ exception: !java.lang.NullPointerException {
 }
 ```
 
-
 ### Entry Set
 The client asks the server for the number of segments, the client will then ask for all the data in each segment calling iterator(), typically a server will have more than one segment however for this example we have simplified the server to a single segment.
-
-
 
 sends:
 
@@ -97,7 +93,6 @@ reply: !set-proxy {
 }
 ```
 
-
 sends:
 
 ```yaml
@@ -115,7 +110,6 @@ receives:
 --- !!data
 reply: 1
 ```
-
 
 sends:
 
@@ -155,7 +149,6 @@ reply: [
 ]
 ```
 
-
 ### Replace Value 2
 example of replace where the value is known
 
@@ -180,7 +173,6 @@ receives:
 reply: true
 ```
 
-
 ### Clear
 sends:
 
@@ -200,7 +192,6 @@ receives:
 reply: {
 }
 ```
-
 
 ### Size
 size on an empty map
@@ -223,7 +214,6 @@ receives:
 reply: 0
 ```
 
-
 size on a map with entries
 
 sends:
@@ -244,7 +234,6 @@ receives:
 reply: 5
 ```
 
-
 ### Contains Key
 example of containsKey(<key>) returning true
 
@@ -264,7 +253,6 @@ receives:
 --- !!data
 reply: true
 ```
-
 
 ### Put If Absent
 sends:
@@ -287,7 +275,6 @@ receives:
 reply: !!null ""
 ```
 
-
 ### Contains Value
 example of containsValue(<value>) returning true
 
@@ -307,7 +294,6 @@ receives:
 --- !!data
 reply: true
 ```
-
 
 Test 'net.openhft.chronicle.engine.map.RemoteChronicleMapTextWireTest.testValuesToArray' ignored
 ### Contains
@@ -330,7 +316,6 @@ receives:
 reply: true
 ```
 
-
 when it doesnt exist
 
 sends:
@@ -349,7 +334,6 @@ receives:
 --- !!data
 reply: false
 ```
-
 
 ### Replace 2
 example of replace where the value is known
@@ -374,7 +358,6 @@ receives:
 reply: A
 ```
 
-
 ### Put If Absent 2
 replace(notPresent, "A", null will throw a NullPointerException
 
@@ -398,7 +381,6 @@ receives:
 reply: A
 ```
 
-
 ### Replace
 example of replace where the value is not known
 
@@ -421,7 +403,6 @@ receives:
 --- !!data
 reply: !!null ""
 ```
-
 
 ### Get _ Null Pointer Exception
 get(null) returns a NullPointerException
@@ -472,7 +453,6 @@ exception: !java.lang.NullPointerException {
 }
 ```
 
-
 ### Entry Set To Array
 map.entrySet().toArray() first gets the entry set and then converts it to an array
 
@@ -497,7 +477,6 @@ reply: !set-proxy {
 }
 ```
 
-
 sends:
 
 ```yaml
@@ -515,7 +494,6 @@ receives:
 --- !!data
 reply: 1
 ```
-
 
 sends:
 
@@ -555,7 +533,6 @@ reply: [
 ]
 ```
 
-
 ### Replace Value
 example of when then value was not replaced
 
@@ -579,7 +556,6 @@ receives:
 --- !!data
 reply: false
 ```
-
 
 ### Key Set
 example of checking the size of a keyset
@@ -605,7 +581,6 @@ reply: !set-proxy {
 }
 ```
 
-
 sends:
 
 ```yaml
@@ -623,7 +598,6 @@ receives:
 --- !!data
 reply: 5
 ```
-
 
 ### Put All
 sends:
@@ -647,7 +621,6 @@ reply: !set-proxy {
 }
 ```
 
-
 sends:
 
 ```yaml
@@ -665,7 +638,6 @@ receives:
 --- !!data
 reply: 1
 ```
-
 
 sends:
 
@@ -704,7 +676,6 @@ reply: [
 }
 ]
 ```
-
 
 sends:
 
@@ -745,7 +716,6 @@ reply: {
 }
 ```
 
-
 ### Is Empty
 example of isEmpty() returning true, not it uses the size() method
 
@@ -766,7 +736,6 @@ receives:
 --- !!data
 reply: 0
 ```
-
 
 ### Remove
 sends:
@@ -800,7 +769,6 @@ reply: !set-proxy {
   cid: 1
 }
 ```
-
 
 sends:
 

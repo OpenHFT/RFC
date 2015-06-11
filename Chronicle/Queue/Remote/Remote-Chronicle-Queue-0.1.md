@@ -60,7 +60,6 @@ tid: 123456789
 lastWrittenIndex: { }  // gets the last index of the appender not the chronicle
 ```
 
-
 #### Appending the next
 If the client sends
 ```yaml

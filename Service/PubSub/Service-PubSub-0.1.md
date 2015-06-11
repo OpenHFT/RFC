@@ -384,6 +384,5 @@ Assert.AreEqual("[Message-1, Message-2]", values.ToString());
 Assert.AreEqual("[Message-1, Message-2]", values2.ToString());
 ```
 
-
 # References
 [URI Wikipedia](http://en.wikipedia.org/wiki/Uniform_resource_identifier)

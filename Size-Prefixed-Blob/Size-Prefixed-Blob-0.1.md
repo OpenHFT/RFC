@@ -81,7 +81,6 @@ When reading a blob, the reader can check the first 32-bit for the length.  The 
  - read every blob, waiting for it to be ready before reading.
  - read only meta-data or only non-meta data blobs.  This reader can skip blobs it is not reading even if the  blob is not ready (provided the length is known)
 
-
 ## TCP Connection Format bit
 In a TCP socket connection;
 

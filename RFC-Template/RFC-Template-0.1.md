@@ -20,7 +20,6 @@ The Template can be used as a template for new RFC's
 ### Additional details
 {Additional Details}
 
-
 # ABNF description
 {Add an ABNF description if appropriate}
 

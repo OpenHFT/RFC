@@ -18,7 +18,6 @@ receives:
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 BB             ······re ply·    
 ```
 
-
 ### Contains Key _ Null Pointer Exception
 c.containsKey(null) will throw a NullPointerException
 
@@ -208,7 +207,6 @@ receives:
 00000ab0 6F 6F 70 2E 6A 61 76 61  C4 6C 69 6E 65 5F       oop.java ·line_  
 ```
 
-
 ### Entry Set
 example of getting and entry set itterator
 
@@ -230,7 +228,6 @@ receives:
 00000030 72 79 53 65 74 B9 03 63  69 64 01                rySet··c id·     
 ```
 
-
 sends:
 
 ```yaml
@@ -245,7 +242,6 @@ receives:
 ```yaml
 00000000 07 00 00 00 C5 72 65 70  6C 79 01                ·····rep ly·     
 ```
-
 
 sends:
 
@@ -267,7 +263,6 @@ receives:
 00000060 00 C3 6B 65 79 E1 31 C5  76 61 6C 75 65 E1 41    ··key·1· value·A 
 ```
 
-
 ### Replace Value 2
 example of replace where the value is known
 
@@ -288,7 +283,6 @@ receives:
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 B1             ······re ply·    
 ```
 
-
 ### Clear
 sends:
 
@@ -304,7 +298,6 @@ receives:
 ```yaml
 00000000 0C 00 00 00 B9 05 72 65  70 6C 79 82 00 00 00 00 ······re ply·····
 ```
-
 
 ### Size
 size on an empty map
@@ -324,7 +317,6 @@ receives:
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 00             ······re ply·    
 ```
 
-
 size on a map with entries
 
 sends:
@@ -341,7 +333,6 @@ receives:
 ```yaml
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 05             ······re ply·    
 ```
-
 
 ### Contains Key
 example of containsKey(<key>) returning true
@@ -361,7 +352,6 @@ receives:
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 B1             ······re ply·    
 ```
 
-
 ### Put If Absent
 sends:
 
@@ -378,7 +368,6 @@ receives:
 ```yaml
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 BB             ······re ply·    
 ```
-
 
 ### Contains Value
 example of containsValue(<value>) returning true
@@ -416,7 +405,6 @@ receives:
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 B1             ······re ply·    
 ```
 
-
 when it doesnt exist
 
 sends:
@@ -433,7 +421,6 @@ receives:
 ```yaml
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 B0             ······re ply·    
 ```
-
 
 ### Replace 2
 example of replace where the value is known
@@ -454,7 +441,6 @@ receives:
 00000000 09 00 00 00 B9 05 72 65  70 6C 79 E1 41          ······re ply·A   
 ```
 
-
 ### Put If Absent 2
 replace(notPresent, "A", null will throw a NullPointerException
 
@@ -474,7 +460,6 @@ receives:
 00000000 09 00 00 00 B9 05 72 65  70 6C 79 E1 41          ······re ply·A   
 ```
 
-
 ### Replace
 example of replace where the value is not known
 
@@ -493,7 +478,6 @@ receives:
 ```yaml
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 BB             ······re ply·    
 ```
-
 
 ### Get _ Null Pointer Exception
 get(null) returns a NullPointerException
@@ -684,7 +668,6 @@ receives:
 00000ab0 4C 6F 6F 70 2E 6A 61 76  61 C4 6C 69 6E 65 5F    Loop.jav a·line_ 
 ```
 
-
 ### Entry Set To Array
 map.entrySet().toArray() first gets the entry set and then converts it to an array
 
@@ -706,7 +689,6 @@ receives:
 00000030 72 79 53 65 74 B9 03 63  69 64 01                rySet··c id·     
 ```
 
-
 sends:
 
 ```yaml
@@ -721,7 +703,6 @@ receives:
 ```yaml
 00000000 07 00 00 00 C5 72 65 70  6C 79 01                ·····rep ly·     
 ```
-
 
 sends:
 
@@ -743,7 +724,6 @@ receives:
 00000060 00 C3 6B 65 79 E1 31 C5  76 61 6C 75 65 E1 41    ··key·1· value·A 
 ```
 
-
 ### Replace Value
 example of when then value was not replaced
 
@@ -763,7 +743,6 @@ receives:
 ```yaml
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 B0             ······re ply·    
 ```
-
 
 ### Key Set
 example of checking the size of a keyset
@@ -786,7 +765,6 @@ receives:
 00000030 53 65 74 B9 03 63 69 64  01                      Set··cid ·       
 ```
 
-
 sends:
 
 ```yaml
@@ -800,7 +778,6 @@ receives:
 ```yaml
 00000000 07 00 00 00 C5 72 65 70  6C 79 05                ·····rep ly·     
 ```
-
 
 ### Put All
 sends:
@@ -821,7 +798,6 @@ receives:
 00000030 72 79 53 65 74 B9 03 63  69 64 01                rySet··c id·     
 ```
 
-
 sends:
 
 ```yaml
@@ -836,7 +812,6 @@ receives:
 ```yaml
 00000000 07 00 00 00 C5 72 65 70  6C 79 01                ·····rep ly·     
 ```
-
 
 sends:
 
@@ -857,7 +832,6 @@ receives:
 00000050 65 79 E1 33 C5 76 61 6C  75 65 E1 43 82 0E 00 00 ey·3·val ue·C····
 00000060 00 C3 6B 65 79 E1 31 C5  76 61 6C 75 65 E1 41    ··key·1· value·A 
 ```
-
 
 sends:
 
@@ -880,7 +854,6 @@ receives:
 00000000 0C 00 00 00 B9 05 72 65  70 6C 79 82 00 00 00 00 ······re ply·····
 ```
 
-
 ### Is Empty
 example of isEmpty() returning true, not it uses the size() method
 
@@ -898,7 +871,6 @@ receives:
 ```yaml
 00000000 08 00 00 00 B9 05 72 65  70 6C 79 00             ······re ply·    
 ```
-
 
 ### Remove
 sends:
@@ -928,7 +900,6 @@ receives:
 00000020 F2 2F 2F 74 65 73 74 3F  76 69 65 77 3D 76 61 6C ·//test? view=val
 00000030 75 65 73 B9 03 63 69 64  01                      ues··cid ·       
 ```
-
 
 sends:
 

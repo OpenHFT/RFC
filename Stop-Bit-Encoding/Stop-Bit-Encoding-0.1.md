@@ -41,7 +41,3 @@ e.g. "key" can be written as
 0x6B 0x65 0x79 - "key"
 ```
 
-
-
-
-

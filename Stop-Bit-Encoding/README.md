@@ -13,4 +13,3 @@
 # Goals
 Stop Bit Encoding compressed integer values with a minimum length.  It supports one byte per 7 bits, and short negative numbers with one extra byte.
 
-

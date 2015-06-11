@@ -22,7 +22,6 @@ An RFC for platform specific requirements for Java Caching solutions. See the pa
 ### Additional details
 {Additional Details}
 
-
 # ABNF description
 {Add an ABNF description if appropriate}
 

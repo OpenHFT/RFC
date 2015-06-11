@@ -11,7 +11,6 @@ For short fields, the first byte denotes the type of the field, for small number
 | top three bits denotes a three Type   | x   | x   | x   |  x  |     |     |     |    |
 | remaining bits denotes the size/value |     |     |     |     | x   | x  |  x   | x  |
 
-
 ## Types ( for small values )
 
 | type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
@@ -33,7 +32,6 @@ For short fields, the first byte denotes the type of the field, for small number
 | String (0-15)                         | 1   | 1   | 1   | 0   |     |     |     |    |
 | String (16-31)                        | 1   | 1   | 1   | 1   |     |     |     |    | 
 
-
 ### Definition of a field and a string
 
 In the following uri
@@ -45,8 +43,6 @@ csp: //a-uri?view=map
 'csp' is the Field. 
 
 And '//a-uri?view=map' is the String 
-
-
 
 ## Types ( for larger values )
 
@@ -60,7 +56,6 @@ the types use the Control Messages
 | (0x8D) - long[]                       | 1   | 0   | 0   | 0   | 1   | 1   | 0   |  1 | 
 | (0x8E) - paddding with 32bit length   | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  0 | 
 | (0x8E) - single padded byte           | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  1 | 
-
 
 ## Decimal
 
@@ -105,11 +100,8 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 | (0xBB) - NULL                               | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 | (0xBC) - Type                               | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
 
-
 ## Type
 0xBC <prefix len ecoded string, len is encoded using stop bits>  
-
-
 
 ## Sequences, Maps and Marshables
 
@@ -143,7 +135,6 @@ they as binary wire this would encode to
 | 0xE2 | next element is a string of len 2 |
 | 0x64 0x65 | 'de' |
 
-
 NOTE: althought YAML teats sequences or map diffently for binary wire we ue simualar encoding, its just they will hold diffent information
 
 ```yaml
@@ -167,9 +158,6 @@ they as binary wire this would encode to
 | 0x66 0x32 | 'f2' |
 | 0xE2 | next element is a string of len 2 |
 | 0x64 0x65 | 'de' |
-
-
-
 
 # Example
 
