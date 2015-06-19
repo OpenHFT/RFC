@@ -1,4 +1,4 @@
-### Un Subscribe Stop Events Being Published  
+### Unsubscribe to Map Events
 Sets up a subscription to listen to map events Then unsubscribes and demonstrates that further puts dont tigger  events.
 
 sends:
