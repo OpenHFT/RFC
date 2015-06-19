@@ -1,5 +1,5 @@
 ### Subscribe To Key Events [0]
-Sets up a subscription to listen to key events. And subsequently puts and entry into the map, notice that the InsertedEvent is received from the server
+Sets up a subscription to listen to key events. And subsequently puts and entry into the map, notice that the Key is subsequently received from the server
 
 sends:
 
