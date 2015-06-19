@@ -1,0 +1,125 @@
+### Un Subscribe To Key Events 
+Sets up a subscription to listen to key events. Then unsubscribes and puts and entry into the map, no subsequent event should be received from the server
+
+sends:
+
+```yaml
+--- !!meta-data
+csp: /test?view=map&keyType=java.lang.String&valueType=java.lang.String
+tid: 1434724266506
+--- !!data
+subscribe: !type String
+
+```
+sends:
+
+```yaml
+--- !!meta-data
+csp: /test?view=map&keyType=java.lang.String&valueType=java.lang.String
+tid: 1434724266506
+--- !!data
+unSubscribe: ""
+```
+puts an entry into the map so that an event will be triggered
+
+sends:
+
+```yaml
+--- !!meta-data
+csp: /test?view=map&keyType=java.lang.String&valueType=java.lang.String
+--- !!data
+put: {
+  key: Hello,
+  value: World
+}
+```
+
+receives:
+
+```yaml
+--- !!meta-data
+tid: 1434724266506
+```
+
+
+
+receives:
+
+```yaml
+--- !!not-ready-data!
+reply: Hello
+```
+
+
+
+receives:
+
+```yaml
+--- !!meta-data
+tid: 1434724266506
+```
+
+
+
+receives:
+
+```yaml
+--- !!data
+reply: !!null ""
+```
+
+
+sends:
+
+```yaml
+--- !!meta-data
+csp: /test?view=map&keyType=java.lang.String&valueType=java.lang.String
+tid: 1434724266996
+--- !!data
+size: {
+}
+```
+
+receives:
+
+```yaml
+--- !!meta-data
+tid: 1434724266996
+```
+
+
+
+receives:
+
+```yaml
+--- !!data
+reply: 1
+```
+
+
+sends:
+
+```yaml
+--- !!meta-data
+csp: /test?view=map&keyType=java.lang.String&valueType=java.lang.String
+tid: 1434724267009
+--- !!data
+size: {
+}
+```
+
+receives:
+
+```yaml
+--- !!meta-data
+tid: 1434724267009
+```
+
+
+
+receives:
+
+```yaml
+--- !!data
+reply: 1
+```
