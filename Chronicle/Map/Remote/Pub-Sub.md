@@ -26,6 +26,8 @@ publish: !mypackage.MyClass { field1: value1, field2: 2 }
 
 ### Publish to any topic
 
+--- we will do this later ---
+
 sends asynchronously:
 
 ```yaml
