@@ -1,6 +1,9 @@
 ## Publish / Subscription
 
 ### Publish to a topic
+
+ --- we will do this later ---
+
 Publish is asynchronous by default. In future there might be a `syncPublish`
 
 sends asynchronously:
