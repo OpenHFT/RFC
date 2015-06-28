@@ -62,7 +62,7 @@ exception: !java.lang.NullPointerException {
     { class: net.openhft.chronicle.network.WireTcpHandler, method: read, file: WireTcpHandler.java, line: 100 },
     { class: net.openhft.chronicle.network.WireTcpHandler, method: process, file: WireTcpHandler.java, line: 61 },
     { class: net.openhft.chronicle.network.TcpEventHandler, method: invokeHandler, file: TcpEventHandler.java, line: 91 },
-    { class: net.openhft.chronicle.network.TcpEventHandler, method: runOnce, file: TcpEventHandler.java, line: 79 },
+    { class: net.openhft.chronicle.network.TcpEventHandler, method: action, file: TcpEventHandler.java, line: 79 },
     { class: net.openhft.chronicle.network.event.VanillaEventLoop, method: runAllHighHandlers, file: VanillaEventLoop.java, line: 125 },
     { class: net.openhft.chronicle.network.event.VanillaEventLoop, method: run, file: VanillaEventLoop.java, line: 95 }
   ]
@@ -446,7 +446,7 @@ exception: !java.lang.NullPointerException {
     { class: net.openhft.chronicle.network.WireTcpHandler, method: read, file: WireTcpHandler.java, line: 100 },
     { class: net.openhft.chronicle.network.WireTcpHandler, method: process, file: WireTcpHandler.java, line: 61 },
     { class: net.openhft.chronicle.network.TcpEventHandler, method: invokeHandler, file: TcpEventHandler.java, line: 91 },
-    { class: net.openhft.chronicle.network.TcpEventHandler, method: runOnce, file: TcpEventHandler.java, line: 79 },
+    { class: net.openhft.chronicle.network.TcpEventHandler, method: action, file: TcpEventHandler.java, line: 79 },
     { class: net.openhft.chronicle.network.event.VanillaEventLoop, method: runAllHighHandlers, file: VanillaEventLoop.java, line: 125 },
     { class: net.openhft.chronicle.network.event.VanillaEventLoop, method: run, file: VanillaEventLoop.java, line: 95 }
   ]
