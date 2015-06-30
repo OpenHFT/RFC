@@ -30,6 +30,22 @@ Each piece of data is associated with a name, number or implicitly ordered field
 ## Data based encoding
 The primary goal of the wire format is to transfer data rather than attempt to be a faithful serialization format.
 
+# Text vs Binary resolution
+Where it is possible to write Bxt or Binary formats, the top bit of the first byte can used to resolve which type was used.  
+
+Each format supports padding and this can be used if the first byte would otherwise not be suitable.
+ 
+|  First byte     |  Wire format | Padding               |
+| -------------- | -------------- | ------------------- |
+| 0b0xxx_xxxx | TextWire      | \u000a (newline) |
+| 0b1xxx_xxxx | BinaryWire   | \u008F (padding) |
+
+This means;
+
+ - the first byte of TextWire must be an ASCII character, i.e. not a character > 127 and 
+ - the first byte of Binary must be a code, not the small int encoding for 0 to 127.
+ 
+ 
 # ABNF description
 
 ```
