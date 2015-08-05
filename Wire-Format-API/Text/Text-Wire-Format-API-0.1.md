@@ -48,3 +48,10 @@ To read or write this value, first the lock must be obtained by CAS on the `lock
 Once the lock is held the value can be read and optionally updated with a suitable level of padding.
 Finally the lock must be released with a CAS.
 
+## Snappy Compression
+```
+!!snappy KgB4ogEA
+```
+Any value contained in a !!snappy field is assumed to be compressed using the Snappy algorithm and then encoded using Base64.
+
+
