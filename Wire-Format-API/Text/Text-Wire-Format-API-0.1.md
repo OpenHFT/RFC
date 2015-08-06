@@ -54,4 +54,13 @@ Finally the lock must be released with a CAS.
 ```
 Any value contained in a !!snappy field is assumed to be compressed using the Snappy algorithm and then encoded using Base64.
 
+## Arrays
+```
+"": !String[] [
+  abc,
+  def,
+  ghi
+]
+```
+Note: String[] is aliased to java.lang.String[]. But any class could be an array with it's full class name.
 
