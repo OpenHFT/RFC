@@ -5,10 +5,10 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: /test?view=map&keyType=java.lang.String&valueType=java.lang.String
+csp: /test?view=map&keyType=String&valueType=String
 tid: 1434717981538
 --- !!data
-subscribe: !type net.openhft.chronicle.engine.api.map.MapEvent
+subscribe: !type MapEvent
 
 ```
 puts an entry into the map so that an event will be triggered
@@ -17,7 +17,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: /test?view=map&keyType=java.lang.String&valueType=java.lang.String
+csp: /test?view=map&keyType=String&valueType=String
 --- !!data
 put: {
   key: Hello,
