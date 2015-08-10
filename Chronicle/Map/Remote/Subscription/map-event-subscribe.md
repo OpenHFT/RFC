@@ -5,7 +5,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: /test?view=map&keyType=String&valueType=String
+csp: /test
 tid: 1434717981538
 --- !!data
 subscribe: !type MapEvent
@@ -17,7 +17,7 @@ sends:
 
 ```yaml
 --- !!meta-data
-csp: /test?view=map&keyType=String&valueType=String
+csp: /test
 --- !!data
 put: {
   key: Hello,
