@@ -55,16 +55,17 @@ The top bit of the floating point has the sign and the top of the exponent.
 
 ```
 0b0seeeeee - sign plus top 6 bits of the exponent.
-0b1seeeeee 0eeeeemm - sign plus 11 exponent bits plus top 2 bits of the mantissa.
-0b1seeeeee 1eeeeemm 0mmmmmmm - sign plus 11 exponent bits plus top 9 bits of the mantissa.
-0b1seeeeee 1eeeeemm 1mmmmmmm 0mmmmmmm - sign plus 11 exponent bits plus top 16 bits of the mantissa.
-0b1seeeeee 1eeeeemm 1mmmmmmm 1mmmmmmm 0mmmmmmm - sign plus 11 exponent bits plus top 23 bits of the mantissa.
-0b1seeeeee 1eeeeemm 1mmmmmmm x3 0mmmmmmm - sign plus 11 exponent bits plus top 30 bits of the mantissa.
-0b1seeeeee 1eeeeemm 1mmmmmmm x4 0mmmmmmm - sign plus 11 exponent bits plus top 37 bits of the mantissa.
-0b1seeeeee 1eeeeemm 1mmmmmmm x5 0mmmmmmm - sign plus 11 exponent bits plus top 44 bits of the mantissa.
-0b1seeeeee 1eeeeemm 1mmmmmmm x6 0mmmmmmm - sign plus 11 exponent bits plus top 51 bits of the mantissa.
-0b1seeeeee 1eeeeemm 1mmmmmmm x7 0mmmmmmm - sign plus 11 exponent bits plus top 52-58 bits of the mantissa.
+0b1seeeeee 0eeeeemm - sign,11 exponent bits, and top 2 bits of the mantissa.
+0b1seeeeee 1eeeeemm 0mmmmmmm - sign, 11 exponent bits, and top 9 bits of the mantissa.
+0b1seeeeee 1eeeeemm 1mmmmmmm 0mmmmmmm - sign,11 exponent bits, and top 16 bits of the mantissa.
+0b1seeeeee 1eeeeemm 1mmmmmmm 1mmmmmmm 0mmmmmmm - sign, 11 exponent, and top 23 bits of the mantissa.
+0b1seeeeee 1eeeeemm 1mmmmmmm x3 0mmmmmmm - sign, 11 exponent, and top 30 bits of the mantissa.
+0b1seeeeee 1eeeeemm 1mmmmmmm x4 0mmmmmmm - sign, 11 exponent, and top 37 bits of the mantissa.
+0b1seeeeee 1eeeeemm 1mmmmmmm x5 0mmmmmmm - sign, 11 exponent, and top 44 bits of the mantissa.
+0b1seeeeee 1eeeeemm 1mmmmmmm x6 0mmmmmmm - sign, 11 exponent, and top 51 bits of the mantissa.
+0b1seeeeee 1eeeeemm 1mmmmmmm x7 0mmmmmmm - sign, 11 exponent, and top 52-58 bits of the mantissa.
 ```
+All the trailing bits are assumed to be 0s.
 
 ### Examples
 
