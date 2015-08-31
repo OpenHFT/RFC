@@ -50,9 +50,14 @@ Finally the lock must be released with a CAS.
 
 ## Snappy Compression
 ```
-!!snappy KgB4ogEA
+!snappy KgB4ogEA=
 ```
-Any value contained in a !!snappy field is assumed to be compressed using the Snappy algorithm and then encoded using Base64.
+Any value contained in a !snappy field is assumed to be compressed using the Snappy algorithm and then encoded using Base64.
+
+For Binary mode the format looks like
+```
+TYPE_PREFIX "snappy" BYTES_LENGTH32 {length} U8_ARRAY [bytes]
+```
 
 ## Arrays
 ```
