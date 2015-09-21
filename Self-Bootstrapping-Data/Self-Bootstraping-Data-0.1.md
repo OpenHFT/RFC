@@ -58,6 +58,6 @@ The header might be in YAML or Binary YAML (or another Wire format) [Wire Format
 }
 ```
 
-After this point, the file may contain meta data, user data.  The actual data may reside in additional files in the same directory, or additional data could be in sub-directories of the directory which conatins the file.
+After this point, the file may contain meta data, user data.  The actual data may reside in additional files in the same directory, or additional data could be in sub-directories of the directory which contains the file.
 
 
