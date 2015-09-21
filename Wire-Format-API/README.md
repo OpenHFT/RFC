@@ -4,7 +4,7 @@
 |:------- | --------------------------------------------------------------- |
 | Title   | Wire Format API                                                 |
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/     |
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/WFA-0.1.md |
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Wire-Format-API-0.1.md |
 | Editor  | Peter Lawrey                                                    |
 | License | Apache 2.0                                                      |
 | Change Process | Users issue Pull Requests for the Editor's consideration.|

@@ -9,8 +9,19 @@ A guiding principle should be simplicity.  This makes it easier to understand an
 |:------------------------------------------------------------------------------------- | --------------------------------- |
 | [Caching](https://github.com/OpenHFT/RFC/blob/master/Caching)                         | Data Caching API                  |
 | [IPC-Executor](https://github.com/OpenHFT/RFC/blob/master/IPC-Executor)               | IPC Base Executor                 |
+| [PubSub Service](https://github.com/OpenHFT/RFC/blob/master/Service/PubSub)           | Publish/Subscribe Service         |
+| [Service URIs](https://github.com/OpenHFT/RFC/blob/master/Service/URI)                | Format for Service URIs           |
 | [Size Prefixed Blob](https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob)   | Messages with Size Prefix Blob    |
+| [Stop Bit Encoding](https://github.com/OpenHFT/RFC/blob/master/Stop-Bit-Encoding)     | Stop Bit Encoding                 |
 | [Wire Format API](https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API)         | Wire Format API                   |
+
+# Chronicle RFCs
+
+| RFC Code                                                                              | Description                       |
+|:------------------------------------------------------------------------------------- | --------------------------------- |
+| [Chronicle Engine](https://github.com/OpenHFT/RFC/blob/master/Chronicle/Engine)       | RFCs for Engine                   |
+| [Chronicle Map](https://github.com/OpenHFT/RFC/blob/master/Chronicle/Map)             | RFCs for Map                      |
+| [Chronicle Queue](https://github.com/OpenHFT/RFC/blob/master/Chronicle/Queue)         | RFCs for Queue                    |
 
 # Meta RFCs
 

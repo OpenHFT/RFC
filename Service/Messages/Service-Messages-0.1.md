@@ -18,6 +18,8 @@ All resource map to a URI.  This URI can be used to access any service if known.
 # Examples
 The following section includes example of how a destination and it's messages can be sent.
 
+[Self Bootstraping Data](https://github.com/OpenHFT/RFC/blob/master/Self-Bootstrapping-Data) uses this type of stream.
+
 ## Message representation
 Each message is prefixed by a length.  The length can include whether the content is meta data or data.
 Large blocks of data can be fragmented into multiple sections
