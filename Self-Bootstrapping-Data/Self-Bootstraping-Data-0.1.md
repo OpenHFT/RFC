@@ -48,7 +48,9 @@ In this example, the Journal has a "master file". The master file might be the o
 80 00 00 40 - start of the file with a 128 bytes header, and meta data bit set.
 ```
 
-The header might be in YAML or Binary YAML (or another Wire format) [Wire Format API](https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/) defines a strategy for detecting whether YAML or Binary YAML was used. For text the top bit of the first byte must be 0, for Bianry YAML the topi bit must be 1.
+The header might be in YAML or Binary YAML (or another Wire format)
+
+[Wire Format API](https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/) defines a strategy for detecting whether YAML or Binary YAML was used. For text the top bit of the first byte must be 0, for Binary YAML the top bit of the first byte must be 1.
 
 ```yaml
 !JournalOne {
