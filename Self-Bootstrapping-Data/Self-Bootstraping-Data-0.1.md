@@ -53,6 +53,8 @@ The header might be in YAML or Binary YAML (or another Wire format) [Wire Format
 ```yaml
 !JournalOne {
    buckets: 256
+   # may contain padding for future use.
+   # spaces for YAML and padding bytes for Binary YAML.
 }
 ```
 
