@@ -59,6 +59,17 @@ For Binary mode the format looks like
 TYPE_PREFIX "snappy" BYTES_LENGTH32 {length} U8_ARRAY [bytes]
 ```
 
+## GZIP Compression
+```
+!gzip KgB4ogEA=
+```
+Any value contained in a !snappy field is assumed to be compressed using the Snappy algorithm and then encoded using Base64.
+
+For Binary mode the format looks like
+```
+TYPE_PREFIX "gzip" BYTES_LENGTH32 {length} U8_ARRAY [bytes]
+```
+
 ## Arrays
 ```
 "": !String[] [
