@@ -68,7 +68,7 @@ The connection might have a short lived reader on the server side to set up the 
  which is bound to this connection.
  
 ## A combined RPC and Subscription
- The connection multi-plex both RPC and subscriptions.
+The connection multiplex both RPC and subscriptions.
  
 ## Heartbeats
 For asymmetric connections, the only assumed thread is a reading thread either for the client (Subscription), or server (RPC). 
