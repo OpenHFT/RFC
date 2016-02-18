@@ -24,7 +24,7 @@ A number of connections between two node can be bound together to make a meta co
 low priority and high priority, RPC and subscription. Binding is performed by providing a unique id such as a UUID or configured hostId. When multiple
 connections are identfied as coming from the same remote node, they can be bound together.
 
-If an initiator want isolated connections, theyc an prodive multiple ids.
+If an initiator want isolated connections, they can provide multiple ids.
  
 # Symmetric connections
 
@@ -54,14 +54,12 @@ In a symmetric connection heartbeats should go in both directions.  A heartbeat 
 # Asymmetric connections
 With asymmetric connections, one end acts as a server which provides a service to a client.  The connection exists to serve the client.
 
-Note: this is not the same as the initator which creates the connection and the acceptor which accept shte connection on a known port.  
+Note: this is not the same as the imitator which creates the connection and the acceptor which accept shte connection on a known port.  
 Typically the client initiates the connection to a server which accepts, however the connection could be created the other way around.
 
 ## Plain RPC handler.
 The simplest asymmetric connection is to have thread on the server side. This thread reads, processes the request and writes the response. This is the
   only thread which corrisponds with the thread.  Due to the locking model, this can be the lowest latency solution.
-  
-It is the clients respon
 
 ## Subscription handler
 For a subscription handling connection, the only thread required is the reading consumer.  
@@ -69,7 +67,22 @@ For a subscription handling connection, the only thread required is the reading 
 The connection might have a short lived reader on the server side to set up the subscription, or subscriptions could be managed by a seperate RPC connections
  which is bound to this connection.
  
+## A combined RPC and Subscription
+ The connection multi-plex both RPC and subscriptions.
+ 
 ## Heartbeats
 For asymmetric connections, the only assumed thread is a reading thread either for the client (Subscription), or server (RPC). 
 As such the heartbeat needs to be sent from the other end, or via another bound connection.
 
+# Explicit Flow control.
+In the case of either buffered message or stored content, explicit flow control could be employed, either in terms of MB/s or messages/s or some combination.  
+Before sending data, the other end requests 
+
+# Handshaking
+When an initator starts a connection it must provide
+
+- the type of connection expected
+   - Symmetric vs Asymmetric
+   - no thread, reader thread, reader & writer thread.
+- the unique id, if binding is required
+- the heartbeat interval it expects, if required.
