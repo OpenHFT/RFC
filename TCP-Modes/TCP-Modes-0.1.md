@@ -68,3 +68,8 @@ For a subscription handling connection, the only thread required is the reading 
 
 The connection might have a short lived reader on the server side to set up the subscription, or subscriptions could be managed by a seperate RPC connections
  which is bound to this connection.
+ 
+## Heartbeats
+For asymmetric connections, the only assumed thread is a reading thread either for the client (Subscription), or server (RPC). 
+As such the heartbeat needs to be sent from the other end, or via another bound connection.
+
