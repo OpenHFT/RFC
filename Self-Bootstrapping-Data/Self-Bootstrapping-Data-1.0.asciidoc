@@ -1,6 +1,6 @@
 .Specification
 |===
-| Title   | Data Bootstrap
+| Title   | Self Bootstrapping Data
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Self-Bootstrapping-Data
 | Editor  | Peter Lawrey
 | License | Apache 2.0
@@ -9,7 +9,7 @@
 |===
 
 = Goals
-Data Bootstrap describes how a file or TCP data stream can bootstrap itself.
+Self Bootstrapping Data describes how a file or TCP data stream can bootstrap itself.  This supports multiple versions for handlers and simplifies extensions.
 
 The header of a master file or start of a strap has a message containing a serializable object.  This object is deserialized
 and operation of the stream or files or directory is delegated to this deserialized object.
