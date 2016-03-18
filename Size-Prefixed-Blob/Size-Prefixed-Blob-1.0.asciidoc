@@ -1,19 +1,12 @@
 .Specification
 |===
 | Title   | Size Prefixed Blob format
-
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/
-
 | Latest  | https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/Size-Prefixed-Blob-1.0.asciidoc
- 
 | Editor  | Peter Lawrey
-
 | License | Apache 2.0
-
 | Change Process | Users issue Pull Requests for the Editor's consideration
-
 | Status  | Used in production code.
-
 |===
 
 = Goals
