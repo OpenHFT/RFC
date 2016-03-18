@@ -17,7 +17,7 @@ This format is intend to be used for streaming data such as TCP connections and 
 
 == Format description
 
-The file starts with a 64-bit value which can contain ASCII text and a version.  The value 0x0000000000000000 is defined to be invalid or unset.
+The file or TCP connection starts with a header.  This header is an object which controls how to handle the remaining content of the file.  This first 4 bytes are the Size Prefixed (See blow) followed by the content of the header.  The header is typically meta data.
 
 After the header, a series of messages are prefixed by a 32-bit value which contains a 30-bit size and two bits used to make parsing the stream easier.
 
@@ -35,6 +35,13 @@ In file format;
 .To send an empty message, send a zero length, ready, meta data message
 ----
 0x40000000
+----
+
+== End of stream or file message
+
+.To mark a stream as ended, set a zero length meta-data, not ready, meta data message
+----
+0xC0000000
 ----
 
 === Documentation of message headers
@@ -69,20 +76,30 @@ The following block is not-ready-data (See the ABNF section)
 --- !!not-ready-data
 ----
 
-=== handling of incomplete messages
+=== handling of incomplete messages in files.
 
-A message can start with two possible lengths as bits
+A message can start with either a known (length > 0) or unknown length (length == 0)
  
- - 0b1M00 0000 0000 0000 0000 0000 0000 0000 - the length is not yet known.
+ - 0b0000 0000 0000 0000 0000 0000 0000 0000 - no message is ready yet. This is useful in zero padded files.
+ - 0b0MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - a messages is ready, if M == 1, this is a meta-data message.
+ - 0b1000 0000 0000 0000 0000 0000 0000 0000 - the length is not yet known.
+ - 0b1100 0000 0000 0000 0000 0000 0000 0000 - the end of the stream has been reached.
  - 0b1MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - the message is not complete, however the length is known.   
+
+=== handling of messages in a TCP stream
+
+A message must always with written with a known length.  The not-ready flag can be used to inidicate whether there is any more data for the -sub-stream in the TCP connections.
+ 
+ - 0b00XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - a user driven messages, this is the last message for this transmission.
+ - 0b01XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - a session message such as where to send the next user driven message.
+ - 0b10XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - a user driven message is available, however more messages can be expected for this transmission.
 
 == Allocation and update lifecycle.
 
-==== Writing a blob
+==== Writing a blob to a file
 
 When appending a new entry, a writer must first find free space.
-It can scan the file, examining the length of each record until it find a 0x00000000 32-bit value.
-Using a CAS (Compare-And-Swap) it can reserve the use space.
+It can scan the file, examining the length of each record until it finds a 0x00000000 32-bit value, using a CAS (Compare-And-Swap) to  reserve the use space.
 
 The writer can use two approaches.
 - write the known length with the not ready flag set. In this case, a concurrent writer can skip to the end and try again.
@@ -91,9 +108,10 @@ The writer can use two approaches.
 After putting a place holder at the start of a blob, it can write the blob.
 Once it is finished it can go back and put the known length and clear the not ready flag.
 
-=== Reading a blob.
+=== Reading a blob from a file.
 
 When reading a blob, the reader can check the first 32-bit for the length.  The reader can either;
+
  - read every blob, waiting for it to be ready before reading.
  - read only meta-data or only non-meta data blobs.  This reader can skip blobs it is not reading even if the  blob is not ready (provided the length is known)
 
@@ -106,9 +124,7 @@ In a TCP socket connection;
 
 == Message length
 
-The message length is a 30-bit unsigned length from 1 to 1006632960 bytes.  The following lengths have a special meaning.
-
- - 0x3C000000 to 0x3FFFFFFF - reserved
+The message length is a 30-bit unsigned length from 1 to 2^30^-1 bytes. 
  
 = ABNF description
 
