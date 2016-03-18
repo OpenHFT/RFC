@@ -46,7 +46,7 @@ In file format;
 
 === Documentation of message headers
 
-For illustration in documentation and based on how [YAML](http://yaml.org/spec/1.2/spec.html) represents the start of a message, this header can be described in terms of the directive
+For illustration in documentation and based on how http://yaml.org/spec/1.2/spec.html[YAML 1.2] represents the start of a message, this header can be described in terms of the directive
 
 The following block is meta-data (See the ABNF section)
 
@@ -134,4 +134,4 @@ message-body        = *OCTET
 
 == References
 
-[ABNF Wikipedia](http://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_Form)
+http://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_Form[ABNF Wikipedia]
