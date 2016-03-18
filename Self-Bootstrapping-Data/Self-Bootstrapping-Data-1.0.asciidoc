@@ -11,7 +11,7 @@
 = Goals
 Self Bootstrapping Data describes how a file or TCP data stream can bootstrap itself.  This supports multiple versions for handlers and simplifies extensions.
 
-The header of a master file or start of a strap has a message containing a serializable object.  This object is deserialized
+The header of a master file or start of a file has a message containing a serializable object.  This object is deserialized
 and operation of the stream or files or directory is delegated to this deserialized object.
 
 For rewritable media such as files, the deserialized object can retain a reference to the location of the source of the data and alter it in place.
