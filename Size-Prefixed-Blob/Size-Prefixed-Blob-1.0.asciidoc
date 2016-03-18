@@ -22,6 +22,11 @@ SPB is designed to be a portable wire-framing format for opaque blobs of data ca
 
 This format is intend to be used for streaming data such as TCP connections and streaming files.
 
+
+== Related RFCs
+
+- https://github.com/OpenHFT/RFC/blob/master/Self-Bootstrapping-Data-1.0.asciidoc[Self Bootstrapping Data 1.0]
+
 == Format description
 
 The file starts with a 64-bit value which can contain ASCII text and a version.  The value 0x0000000000000000 is defined to be invalid or unset.

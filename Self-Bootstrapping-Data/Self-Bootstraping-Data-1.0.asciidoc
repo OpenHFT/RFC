@@ -1,15 +1,14 @@
-# Specification
+.Specification
+|===
+| Title   | Data Bootstrap
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Self-Bootstrapping-Data
+| Editor  | Peter Lawrey
+| License | Apache 2.0
+| Change Process | Users issue Pull Requests for the Editor's consideration
+| Status  | Used in released products
+|===
 
-|         |                                                                                         |
-|:------- | --------------------------------------------------------------------------------------- |
-| Title   | Data Bootstrap                                                                          |
-| URL     | https://github.com/OpenHFT/RFC/blob/master/Self-Bootstrapping-Data                      |
-| Editor  | Peter Lawrey                                                                            |
-| License | Apache 2.0                                                                              |
-| Change Process | Users issue Pull Requests for the Editor's consideration                         |
-| Status  | Raw.                                                                                    |
-
-# Goals
+= Goals
 Data Bootstrap describes how a file or TCP data stream can bootstrap itself.
 
 The header of a master file or start of a strap has a message containing a serializable object.  This object is deserialized
@@ -17,48 +16,51 @@ and operation of the stream or files or directory is delegated to this deseriali
 
 For rewritable media such as files, the deserialized object can retain a reference to the location of the source of the data and alter it inplace.
 
-# RFC parents
-[Service/Messages](https://github.com/OpenHFT/RFC/blob/master/Service/Messages/) defines how individual messages can be laid out.
+== RFC parents
 
-# Format
+https://github.com/OpenHFT/RFC/blob/master/Service/Messages/[Service/Messages] defines how individual messages can be laid out.
+
+== Format
+
 This RFC defined that the first message is meta data which contains the serialized form of an object which understand the rest of the data.  The rest of the data could be the rest of the stream, the rest of a file, or files in the same directory or sub-directory.
 
-## Reading a Self Bootstrapping Data files.
+== Reading a Self Bootstrapping Data files.
 
-The first 4 bytes of a file contains the length in little endian format with the meta data bit set.
+The first 4 bytes of a file contains the length in little endian format with the meta data bit set. 
 
 If the file is still being build, the not-ready bit will be set and the reader will need to wait or time out waiting for the no-ready flag to be clearer.
 
-## Initialisation.
+== Initialisation.
 Before delegation, the deserialized implementation will be passed any existing data structures such as memory mapped files, paths, or socket channels.
 
-## Delegating to the implementations.
+== Delegating to the implementations.
 Once the implementation specific object is loaded, as much functionlaity as possible should be delegated to this implementation.
 
-## Versioning.
+== Versioning.
 While we can store version numbers for different formats, we can also have a class which implements each version.  This implementation may shared a common parent class where each implementation has only subtle variations on a common usage.
 
-## Configuration.
+== Configuration.
 The delegated implementation can have configuration values or nested object structures which could be strategy patterns.
 
-# Sample
+= Sample
 In this example, the Journal has a "master file". The master file might be the only file, one of many files, or a file in a directory structure.
 
-```
+----
 80 00 00 40 - start of the file with a 128 bytes header, and meta data bit set.
-```
+----
 
 The header might be in YAML or Binary YAML (or another Wire format)
 
-[Wire Format API](https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/) defines a strategy for detecting whether YAML or Binary YAML was used. For text the top bit of the first byte must be 0, for Binary YAML the top bit of the first byte must be 1.
+https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/[Wire Format API] defines a strategy for detecting whether YAML or Binary YAML was used. For text the top bit of the first byte must be 0, for Binary YAML the top bit of the first byte must be 1.
 
-```yaml
+[source, yaml]
+----
 !JournalOne {
    buckets: 256
    # may contain padding for future use.
    # spaces for YAML and padding bytes for Binary YAML.
 }
-```
+-----
 
 After this point, the file may contain meta data, user data.  The actual data may reside in additional files in the same directory, or additional data could be in sub-directories of the directory which contains the file.
 
