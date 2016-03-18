@@ -80,19 +80,19 @@ The following block is not-ready-data (See the ABNF section)
 
 A message can start with either a known (length > 0) or unknown length (length == 0)
  
- - 0b0000 0000 0000 0000 0000 0000 0000 0000 - no message is ready yet. This is useful in zero padded files.
- - 0b0MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - a messages is ready, if M == 1, this is a meta-data message.
- - 0b1000 0000 0000 0000 0000 0000 0000 0000 - the length is not yet known.
- - 0b1100 0000 0000 0000 0000 0000 0000 0000 - the end of the stream has been reached.
- - 0b1MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - the message is not complete, however the length is known.   
+ - `0b0000 0000 0000 0000 0000 0000 0000 0000` - no message is ready yet. This is useful in zero padded files.
+ - `0b0MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a messages is ready, if M == 1, this is a meta-data message.
+ - `0b1000 0000 0000 0000 0000 0000 0000 0000` - the length is not yet known.
+ - `0b1100 0000 0000 0000 0000 0000 0000 0000` - the end of the stream has been reached.
+ - `0b1MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - the message is not complete, however the length is known.   
 
 === handling of messages in a TCP stream
 
 A message must always with written with a known length.  The not-ready flag can be used to inidicate whether there is any more data for the -sub-stream in the TCP connections.
  
- - 0b00XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - a user driven messages, this is the last message for this transmission.
- - 0b01XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - a session message such as where to send the next user driven message.
- - 0b10XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX - a user driven message is available, however more messages can be expected for this transmission.
+ - `0b00XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a user driven messages, this is the last message for this transmission.
+ - `0b01XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a session message such as where to send the next user driven message.
+ - `0b10XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a user driven message is available, however more messages can be expected for this transmission.
 
 == Allocation and update lifecycle.
 
