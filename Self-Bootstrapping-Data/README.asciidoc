@@ -19,3 +19,4 @@ For rewritable media such as files, the deserialized object can retain a referen
 
 == Related RFCs
 
+- https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/README.asciidoc[Size Prefixed Blob]

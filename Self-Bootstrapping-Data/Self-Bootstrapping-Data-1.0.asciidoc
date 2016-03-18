@@ -16,9 +16,9 @@ and operation of the stream or files or directory is delegated to this deseriali
 
 For rewritable media such as files, the deserialized object can retain a reference to the location of the source of the data and alter it in place.
 
-== RFC parents
+== Related RFCs
 
-https://github.com/OpenHFT/RFC/blob/master/Service/Messages/[Service/Messages] defines how individual messages can be laid out.
+- https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/Size-Prefixed-Blob-1.0.asciidoc[Size Prefixed Blob 1.0]
 
 == Format
 
