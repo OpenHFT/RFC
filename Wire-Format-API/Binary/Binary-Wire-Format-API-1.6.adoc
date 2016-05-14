@@ -139,7 +139,8 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 | (0xBE) - Comment  with stop bit length   | 1   | 0   | 1   | 1   | 1   | 1   | 1   |  0 |
 |===
 
-Version
+Version 1.6 added 0xBD
+
 ===  Sequences, Maps and Marshallables
 
 the sequence area encoded using 
