@@ -12,7 +12,7 @@ Peter Lawrey
 | Editor  | Peter Lawrey                                                                |
 | License | Apache 2.0                                                                  |
 | Change Process | Users issue Pull Requests for the Editor's consideration.            |
-| Status  | Raw.                                                                        |
+| Status  | In use                                                                        |
 |===
 
 === Goals
@@ -75,12 +75,12 @@ the types use the Control Messages
 |===
 | Control message                       | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ( all higher bits are the same )                   | 1   | 0   | 0   | 0   |     |     |     |    |
-| (0x81) - Nested Block 16bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0 |
+| (0x81) - Nested Block 16bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 0   |  1 |
 | (0x82) - Nested Block 32bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0 |
-| (0x8A) - byte[]                       | 1   | 0   | 0   | 0   | 1   | 0   | 1   |  0 | 
+| (0x8A) - byte[]                       | 1   | 0   | 0   | 0   | 1   | 0   | 1   |  0 |
 | (0x8D) - long[]                       | 1   | 0   | 0   | 0   | 1   | 1   | 0   |  1 | 
 | (0x8E) - paddding with 32bit length   | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  0 | 
-| (0x8E) - single padded byte           | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  1 | 
+| (0x8F) - single padded byte           | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  1 |
 |===
 
 Version 1.6 added 0x81
@@ -108,7 +108,12 @@ Version 1.6 added 0x81
 | (0xA5) - signed 16bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 0   |  1 |
 | (0xA6) - signed 32bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  0 |
 | (0xA7) - signed 64bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  1 |
+| (0xA8) - delta plus 8bit - reserved      | 1   | 0   | 1   | 0   | 1   | 0   | 0   |  0 |
+| (0xA9) - delta plus 16bit - reserved      | 1   | 0   | 1   | 0   | 1   | 0   | 0   |  1 |
+| (0xAF) - signed 64bit int in base 16  | 1   | 0   | 1   | 0   | 1   | 1   | 1   |  1 |
 |===
+
+Version 1.6 added 0xAF
 
 === Special
 
@@ -122,19 +127,19 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 | (0xB2) - time UTC (long)                    | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  0 |
 | (0xB3) - Date (joda UTF8-Str)               | 1   | 0   | 1   | 1   | 0   | 0   | 1   |  1 |
 | (0xB4) - DateTime (joda UTF8-Str)           | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  0 |
-| (0xB5) - ZonedDateTime (joda  \<string\>)   | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  1 |
-| (0xB6) - type ( \<type\> +  \<string\>)     | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  0 |
-| (0xB7) - field (\<field\> +  \<string\>)    | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  1 |
-| (0xB8) - string (\<string\> +   \<string\>) | 1   | 0   | 1   | 1   | 1   | 0   | 0   |  1 |
-| (0xB9) - eventname (\<eventname\> +  \<string\>)        | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  0 |
-| (0xBA) - fieldNumber (\<fieldNumber\> + stopbit encoded) | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
+| (0xB5) - ZonedDateTime (joda  {string})   | 1   | 0   | 1   | 1   | 0   | 1   | 0   |  1 |
+| (0xB6) - type ( {type} +  {object})     | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  0 |
+| (0xB7) - field of stop bit length    | 1   | 0   | 1   | 1   | 0   | 1   | 1   |  1 |
+| (0xB8) - string of stop bit encoded length | 1   | 0   | 1   | 1   | 1   | 0   | 0   |  1 |
+| (0xB9) - Event Name, String of stop bit length  | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  0 |
+| (0xBA) - Field Number stop bit encoded | 1   | 0   | 1   | 1   | 1   | 0   | 1   |  1 |
 | (0xBB) - NULL                               | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
-| (0xBC) - Type                               | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
+| (0xBC) - Type Literal with stop bit length | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  0 |
+| (0xBD) - Event which is an object           | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  1 |
+| (0xBE) - Comment  with stop bit length   | 1   | 0   | 1   | 1   | 1   | 1   | 1   |  0 |
 |===
 
-=== Type
-0xBC <prefix len ecoded string, len is encoded using stop bits>  
-
+Version
 ===  Sequences, Maps and Marshallables
 
 the sequence area encoded using 
