@@ -248,16 +248,16 @@ public void testSequence() {
 
 private void writeMessage(Wire wire) {
     wire.writeDocument(true, w -> w
-            .write(() -> "csp").text("//path/service")
-            .write(() -> "tid").int64(123456789));
+            .write("csp").text("//path/service")
+            .write("tid").int64(123456789));
     wire.writeDocument(false, w -> w
-            .write(() -> "entrySet").sequence(s -> {
+            .write("entrySet").sequence(s -> {
                 s.marshallable(m -> m
-                        .write(() -> "key").text("key-1")
-                        .write(() -> "value").text("value-1"));
+                        .write("key").text("key-1")
+                        .write("value").text("value-1"));
                 s.marshallable(m -> m
-                        .write(() -> "key").text("key-2")
-                        .write(() -> "value").text("value-2"));
+                        .write("key").text("key-2")
+                        .write("value").text("value-2"));
             }));
 }
 ----
