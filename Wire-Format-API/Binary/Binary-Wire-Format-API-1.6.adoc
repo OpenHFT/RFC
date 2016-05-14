@@ -75,6 +75,7 @@ the types use the Control Messages
 |===
 | Control message                       | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit  |
 | ( all higher bits are the same )                   | 1   | 0   | 0   | 0   |     |     |     |    |
+| (0x80) - Nested Block 8bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 0   |  0 |
 | (0x81) - Nested Block 16bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 0   |  1 |
 | (0x82) - Nested Block 32bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0 |
 | (0x8A) - byte[]                       | 1   | 0   | 0   | 0   | 1   | 0   | 1   |  0 |
