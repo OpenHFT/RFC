@@ -1,0 +1,30 @@
+= Documentation Driven Development
+Peter Lawrey
+
+=== Links
+
+https://24ways.org/2010/documentation-driven-design-for-apis[DDD for APIs by FRances Berriman]
+
+https://gist.github.com/zsup/9434452[DDD by zsup]
+
+http://thinkingphp.org/spliceit/docs/0.1_alpha/pages/ddd_info.html[DDD by SpliceIt]
+
+http://tom.preston-werner.com/2010/08/23/readme-driven-development.html[Readme DD by Tom Preston-Werner]
+
+https://blog.schwuk.com/2014/06/18/documentation-driven-development/[DDD by David Murphy]
+
+http://jkg3.com/Journal/documentation-driven-development-in-bbc-frameworks[DDD in BBC Frameworks by Jamie Knight]
+and https://skillsmatter.com/skillscasts/6412-documentation-driven-development[Presentation]
+
+https://blogs.msdn.microsoft.com/davidlem/2009/09/23/documentation-driven-development/[DDD by David L's Blog]
+
+https://blogs.msdn.microsoft.com/korbyp/2004/09/15/documentation-driven-development/[DDD by Korby Parnell]
+
+http://nordicapis.com/using-templates-for-documentation-driven-api-design/[Using Templates for DDD API design by Bruno Pedro]
+
+
+=== Presentations
+
+http://www.slideshare.net/coordt/documentation-driven-development[DDD by Corey Oordt]
+
+https://speakerdeck.com/rafaelfranca/documentation-driven-development[DDD by Rafael França]
