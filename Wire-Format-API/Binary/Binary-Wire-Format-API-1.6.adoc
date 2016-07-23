@@ -86,6 +86,8 @@ the types use the Control Messages
 
 Version 1.6 added 0x81
 
+0x87, 0x88, 0x89 are reserved
+
 === Decimal
 
 [options="header"]
@@ -109,8 +111,8 @@ Version 1.6 added 0x81
 | (0xA5) - signed 16bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 0   |  1 |
 | (0xA6) - signed 32bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  0 |
 | (0xA7) - signed 64bit int             | 1   | 0   | 1   | 0   | 0   | 1   | 1   |  1 |
-| (0xA8) - delta plus 8bit - reserved      | 1   | 0   | 1   | 0   | 1   | 0   | 0   |  0 |
-| (0xA9) - delta plus 16bit - reserved      | 1   | 0   | 1   | 0   | 1   | 0   | 0   |  1 |
+| (0xA8) - delta set low 8bit - reserved      | 1   | 0   | 1   | 0   | 1   | 0   | 0   |  0 |
+| (0xA9) - delta set low 16bit - reserved      | 1   | 0   | 1   | 0   | 1   | 0   | 0   |  1 |
 | (0xAF) - signed 64bit int in base 16  | 1   | 0   | 1   | 0   | 1   | 1   | 1   |  1 |
 |===
 
