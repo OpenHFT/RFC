@@ -246,11 +246,13 @@ and in delta wire :
 
 ==== Field Token Cache
 
-A Messages sent with a 'Field Anchor' should be cache locally the relationship between the field tag and its field
+A Messages sent with a 'Field Anchor', locally we  should always be cache relationship between the field token and its field.
 
-sp the following binary could be represent as follows :
+So when the following delta binary is received :
 
 87 00 05 68 65 6C 6C 6F
+
+we cache the following relationship
 
 .field tag cache
 [options="header"]
@@ -259,14 +261,14 @@ sp the following binary could be represent as follows :
 | 0   | hello
 |===
 
-==== Field Anchor
+each field is allocated a token, there is always a 1 to 1 relationship between the tokens and fields.
 
-field can be reused, so if you are reading delta wire and you receive
+so if the following binnary was received :
 
 [source]
-87 00 05 68 65 6C 6C 6F 01 87 01 05 77 6F 72 6C 64 01                                            d·
+87 00 05 68 65 6C 6C 6F 01 87 01 05 77 6F 72 6C 64 01
 
-then locally you should cache
+then we would cache
 
 .field tag cache
 [options="header"]
@@ -278,12 +280,10 @@ then locally you should cache
 
 ===== Overwriting of the Field Anchor
 
-lets assume later you may receive the following
+field tokens can be reused, so if we read delta wire
 
 [source]
 87 00 08 75 6E 69 76 65 72 73 65 01
-
-then you should overwrite the existing entry in our field cache
 
 .field tag cache
 |===
@@ -292,6 +292,19 @@ then you should overwrite the existing entry in our field cache
 | 1   | world
 |===
 
+and subsequently received
+
+[source]
+87 00 08 75 6E 69 76 65  72 73 65 01
+
+.field tag cache
+|===
+| field token   | field
+| 0   | hello
+| 1   | universe
+|===
+
+we overwrite the existing cache entry  1=world and replace it with 1=universe
 
 ===  Sequences, Maps and Marshallables
 
