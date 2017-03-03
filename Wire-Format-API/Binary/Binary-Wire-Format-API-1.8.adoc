@@ -233,9 +233,9 @@ and in Delta Wire :
 [options="header"]
 |===
 |hex | description
-| 0x87 |  Field Anchor -  control message to denote delta wire field
-| 0x00 |  field token - see section below on 'Field Token Cache'
-| 0x05 |  field length
+| 0x87 | field anchor -  control message to denote delta wire field
+| 0x00 | field token - see section below on 'Field Token Cache'
+| 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
 | 0x6C | ‘l’ as Ascii
@@ -319,6 +319,10 @@ for this reason its important that all DELTA wire messages are read in order and
 
 == Delta Wire Values
 
+=== Non typed object
+
+if we write a simple non typed object, only the keys are cached.
+
 [source]
 hello: {
   f1: hello,
@@ -328,7 +332,10 @@ hello: {
 in binary wire
 
 [source]
-C5 68 65 6C 6C 6F 82 12  00 00 00 C2 66 31 E5 68 65 6C 6C 6F C2 66 32 E5 77 6F 72 6C 64
+C5 68 65 6C 6C 6F 82 12
+00 00 00 C2 66 31 E5 68
+65 6C 6C 6F C2 66 32 E5
+77 6F 72 6C 64
 
 in delta wire
 
@@ -339,13 +346,12 @@ in delta wire
 87 02 02 66 32 E5 77 6F
 72 6C 64
 
-
 [options="header"]
 |===
 |hex | description
-| 0x87 |  field anchor -  control message to denote delta wire field
-| 0x00 |  field token - see section below on 'Field Token Cache'
-| 0x05 |  field length
+| 0x87 | field anchor -  control message to denote delta wire field
+| 0x00 | field token - see section below on 'Field Token Cache'
+| 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
 | 0x6C | ‘l’ as Ascii
@@ -354,8 +360,8 @@ in delta wire
 | |
 | 0x82 | Nested Block 32bit len
 | 0x16, 0x00,0x00,0x00 | 4 byte len=22
-| 0xBA | Field Number  - special message to denote the next value is a field token
-| 0x87 | Field Anchor -  control message to denote delta wire field
+| 0xBA | field number  - special message to denote the next value is a field token
+| 0x87 | field anchor -  control message to denote delta wire field
 | 0x01 | field token - see section below on 'Field Token Cache'
 | 0x02 | field len=2 of 'f1'
 | |
@@ -382,9 +388,12 @@ in delta wire
 | 0x64 | 'd' as Ascii
 |===
 
-in the example above we only tokenize the fields, but if we use typed object we tokenize the values as well by the user of the (0x88) tag
 
-if send the message of a known type for example "!MyType"
+=== Typed object
+
+in the example above we only tokenize the field names, but if we use typed object we can also tokenize the values by the use of the (0x88) anchor tag
+
+if send the message and give it a type "!MyType" then we are going to send an (0x88) anchor tag as well as a ( 0x87) field anchor like in the non typed example above
 
 hello: !MyType {
   f1: hello,
@@ -406,7 +415,7 @@ in Delta Wire
 |===
 |hex | description
 | 0x87 | Field Anchor -  control message to denote delta wire field
-| 0x00 | field token - see section below on 'Field Token Cache'
+| 0x00 | field token - see section below on 'Field Token Cache' to 0='hello'
 | 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -453,6 +462,9 @@ in Delta Wire
 |===
 
 
+because we have used the 0x88 anchor tag this means if we send the
+
+[source]
 hello: !MyType {
   f1: hello,
   f2: world
@@ -460,27 +472,53 @@ hello: !MyType {
 
 
 
+message again ( for a second time ) then we only have to send:
 
 
+BA 00 89 00
 
-if we send this message twice in delta wire
+[options="header"]
+|===
+|hex | description
+| 0xBA | field number  - special message to denote the next value is a field token
+| 0x00 | field token of 0 currently = 'hello'
+| 0x89 |
+| 0x00 |
 
-hello: {
-  f1: hello,
-  f2: world
-}
-hello: {
+==== changing just on field
+
+and if we were to resend the message again, but this time changed, the field f2 from 'world' to 'universe'
+
+[source]
+hello: !MyType {
   f1: hello,
   f2: universe
 }
 
+then only the change to the f2 field is sent
 
-[source]
+BA 00 89 00 80 0B BA 02 E8 75 6E 69  76 65 72 73 65
 
-87 00 05 68 65 6C 6C 6F 82 16 00 00 00 87 01 02 66 31 E5 68 65 6C 6C 6F 87 02 02 66 32 E5 77 6F 72 6C 64
-BA 00                   82 13 00 00 00 BA 01          E5 68 65 6C 6C 6F BA 02          E8 75 6E 69 76 65 72 73 65
-
-
+[options="header"]
+|===
+|hex | description
+| 0xBA | field number  - special message to denote the next value is a field token
+| 0x00 | field token of 0 currently = 'hello' 
+| 0x89 |
+| 0x00 |
+| 0x80 |
+| 0x0B |
+| 0xBA | field number  - special message to denote the next value is a field token
+| 0x02 | field token of 2 currently = 'f2'
+| 0xE8 | String of len=8
+| 0x75 | 'u' as Ascii
+| 0x6E | 'n' as Ascii
+| 0x69 | 'i' as Ascii
+| 0x76 | 'v' as Ascii
+| 0x65 | 'e' as Ascii
+| 0x72 | 'r' as Ascii
+| 0x73 | 's' as Ascii
+| 0x65 | 'e' as Ascii
 ===  Sequences, Maps and Marshallables
 
 the sequence area encoded using
