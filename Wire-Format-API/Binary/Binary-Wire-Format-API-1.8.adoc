@@ -165,7 +165,7 @@ Version 1.6 added 0xBD
 
 ===  Delta Wire
 
-DeltaWire is a compact form of binary wire, in fact its not a separate wire format at all, delta wire just makes use of some additional control codes that are available in the binary wire format.  As such, not all messages have to make use of the delta wire control codes, so its possible to mix between using delta wire and binary wire with in the same payload.  
+Delta Wire is a compact form of binary wire, in fact its not a separate wire format at all, delta wire just makes use of some additional control codes that are available in the binary wire format.  As such, not all messages have to make use of the delta wire control codes, so its possible to mix between using delta wire and binary wire with in the same payload.  
 
 
 ==== Field Cache
@@ -194,7 +194,7 @@ C5 68 65 6C 6C 6F 01
 | 0x01 | value of 1
 |===
 
-with delta wire this becomes:
+in Delta Wire this becomes:
 
 [source]
 87 00 05 68 65 6C 6C 6F 01
@@ -211,7 +211,8 @@ with delta wire this becomes:
 | 0x01 | value of 1
 |===
 
-If the same field is sent repeatably delta wire is a more compact format than Binary Wire, so the following :
+If the same field is sent repeatedly, delta wire is a more compact format than Binary Wire, so the following :
+
 [source]
 {
 	hello: 1,
@@ -220,11 +221,13 @@ If the same field is sent repeatably delta wire is a more compact format than Bi
 }
 
 
-this becomes -  in binary wire:
+becomes -  in Binary Wire:
+
 [source]
 C5 68 65 6C 6C 6F 01 C5  68 65 6C 6C 6F 01 C5  68 65 6C 6C 6F 01
 
-and in delta wire :
+and in Delta Wire :
+
 [source]
 87 00 05 68 65 6C 6C 6F  01 BA 00 01 BA 00 01
 
