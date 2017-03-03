@@ -8,7 +8,7 @@ Peter Lawrey
 | Title   | Binary Wire Format API                                                      
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/                 
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary           
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary/Binary-Wire-Format-API-1.9.adoc 
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary/Binary-Wire-Format-API-1.8.adoc 
 | Editor  | Peter Lawrey                                                                
 | License | Apache 2.0                                                                  
 | Change Process | Users issue Pull Requests for the Editor's consideration.            
@@ -155,14 +155,14 @@ Version 1.6 added 0xBD
 the sequence area encoded using 
 
 [source]
-0x82 <four byte unsigned len, this is the length in bytes of the encoded block of preceeing data>
+0x82 <four byte unsigned len, this is the length in bytes of the encoded block of preceding data>
 
 so if we were going to encode these simple 4 entries ( shown below in text yaml )
 
 [source]
 [a,b,c,de]
 
-they as binary wire this would encode to 
+ As binary wire this would encode to 
 
 [source]
 0x82 0x09 0x00 0x00 0x00 0xE1 0x61 0xE1 0x62 0xE1 0x63 0xE2 0x64 0x65
@@ -181,12 +181,12 @@ they as binary wire this would encode to
 | 0x64 0x65 | 'de' 
 |===
 
-NOTE: although YAML teats sequences or map differently for binary wire we use similar encoding, its just they will hold different information
+NOTE: although YAML treats sequences and maps differently, for binary wire we use similar encoding, its just they will hold different information
 
 [source, yaml]
 {f1: a, f2: de}
 
-they as binary wire this would encode to 
+as binary wire this would encode to 
 
 [source]
 0x82 0x0B 0x00 0x00 0x00 0xC2 0x66 0x31 0xE1 0x62 0xC2 0x66 0x32 0xE2 0x64 0x65
@@ -195,11 +195,11 @@ they as binary wire this would encode to
 | byte | description 
 | 0x82 | denoting a nested structure 
 | 0x0B 0x00 0x00 0x00 | the number of bytes of data to follow ( in little endian ) 
-| 0xC2 |  next element is a feild of len 2 
+| 0xC2 |  next element is a field of len 2 
 | 0x66 0x31 | 'f1' 
 | 0xE1 | next element is a string of len 1 
 | 0x62 | 'b' 
-| 0xC2 | next element is a feild of len 2 
+| 0xC2 | next element is a field of len 2 
 | 0x66 0x32 | 'f2' 
 | 0xE2 | next element is a string of len 2 
 | 0x64 0x65 | 'de' 
