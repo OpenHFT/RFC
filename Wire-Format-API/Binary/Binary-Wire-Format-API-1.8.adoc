@@ -248,7 +248,7 @@ and in delta wire :
 
 ==== Field Token Cache
 
-A messages sent with a 'Field Anchor', we should always cache the relationship between the field token and its field.
+When a messages sent with a 'Field Anchor', we should always cache the relationship between the field token and its field.
 
 So when the following delta binary is received :
 
@@ -263,7 +263,7 @@ we cache the following relationship
 | 0   | hello
 |===
 
-each field is allocated a token, there is always a 1 to 1 relationship between the tokens and fields.
+each field is allocated a token, there is always a one to one relationship between the tokens and fields.
 
 so if the following binary was received :
 
