@@ -247,7 +247,7 @@ and in delta wire :
 
 ==== Field Token Cache
 
-A Messages sent with a 'Field Anchor', locally we  should always be cache relationship between the field token and its field.
+A Messages sent with a 'Field Anchor', we should always be cache relationship between the field token and its field.
 
 So when the following delta binary is received :
 
