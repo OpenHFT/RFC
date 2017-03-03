@@ -150,6 +150,74 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 
 Version 1.6 added 0xBD
 
+===  Delta Wire
+
+If we had the following Text Yaml
+{hello: 1} 
+
+note: where the key is ‘hello’ as a field and the value is ‘1’ as and integer
+
+in Binary Wire this would encode to the following bytes
+
+[source]
+C5 68 65 6C 6C 6F 01
+
+|===
+| (0xC5) - Field of Len 5                    
+| (0x68) - ‘h’ as Ascii       
+| (0x65) - ‘e’ as Ascii       
+| (0x6C) - ‘l’ as Ascii       
+| (0x6C) - ‘l’ as Ascii       
+| (0x6F) - ‘o’ as Ascii                                  
+| (0x01) - value of 1
+|===
+
+however with DELTA binary this becomes
+
+[source]
+87 00 05 68 65 6C 6C 6F  01  
+
+|===
+| (0x87) -  FIELD_ANCHOR   - special tag to denote delta wire field    
+| (0x00) -  ?       
+| (0x05) -  field len    
+| (0x68) - ‘h’ as Ascii       
+| (0x65) - ‘e’ as Ascii       
+| (0x6C) - ‘l’ as Ascii       
+| (0x6C) - ‘l’ as Ascii       
+| (0x6F) - ‘o’ as Ascii                           
+| (0x01) - value of 1
+|===
+
+the delta wire is a more compact format once the message is sent a second time, for the same field.
+so the following
+
+{	
+	hello: 1,
+	hello: 1,
+        hello: 1
+} 
+
+would become this in binary wire 
+[source]
+C5 68 65 6C 6C 6F 01 C5  68 65 6C 6C 6F 01 C5  68 65 6C 6C 6F 01
+
+and this in delta wire
+[source]
+87 00 05 68 65 6C 6C 6F  01 BA 00 01 BA 00 01
+
+where this is the first ‘hello: 1’
+[source]
+87 00 05 68 65 6C 6C 6F  01 
+
+and the subsequent  ‘hello: 1, hello: 1’
+
+[source]
+BA 00 01 
+
+[source]
+BA 00 01
+
 ===  Sequences, Maps and Marshallables
 
 the sequence area encoded using 
