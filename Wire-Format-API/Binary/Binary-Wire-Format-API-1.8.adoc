@@ -297,19 +297,18 @@ we overwrite the existing cache entry  1=world and replace it with 1=universe
 
 It we subsequently receive a message that sets field token 1 to the value of 2
 
+[source]
 BA 01 02
 
 then this is setting the field universe to the value of 2
 
-.yaml
 [source]
 {universe:2}
 
 rather than
 
-.yaml
 [source]
-{universe:2}
+{world:2}
 
 for this reason its important that all DELTA wire messages are read in order and no messages are skipped.
 
