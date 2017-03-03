@@ -81,6 +81,7 @@ the types use the Control Messages
 | (0x82) - Nested Block 32bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0
 | (0x87) - Field Anchor                | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 1
 | (0x88) - Anchor                       | 1   | 0   | 0   | 0   | 1   | 0   | 0   |  0
+| (0x89) - Updated Alias                | 1   | 0   | 0   | 0   | 1   | 0   | 0   |  1
 | (0x8A) - byte[]                       | 1   | 0   | 0   | 0   | 1   | 0   | 1   |  0
 | (0x8D) - long[]                       | 1   | 0   | 0   | 0   | 1   | 1   | 0   |  1
 | (0x8E) - paddding with 32bit length   | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  0
@@ -199,9 +200,9 @@ in Delta Wire this becomes:
 87 00 05 68 65 6C 6C 6F 01
 
 |===
-| 0x87 |  Field Anchor - special control message to denote delta wire field
-| 0x00 |  field token - see section below on 'Field Token Cache'
-| 0x05 |  field len
+| 0x87 | field anchor - special control message to denote delta wire field
+| 0x00 | field token - see section below on 'Field Token Cache'
+| 0x05 | field len
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
 | 0x6C | ‘l’ as Ascii
@@ -470,10 +471,7 @@ hello: !MyType {
   f2: world
 }
 
-
-
 message again ( for a second time ) then we only have to send:
-
 
 BA 00 89 00
 
@@ -482,8 +480,8 @@ BA 00 89 00
 |hex | description
 | 0xBA | field number  - special message to denote the next value is a field token
 | 0x00 | field token of 0 currently = 'hello'
-| 0x89 |
-| 0x00 |
+| 0x89 | Updated Alias
+| 0x00 | Updated Alias token - this was set via the 0x88 anchor tag, currently 0 = {  f1: hello, f2: world }
 
 ==== changing just on field
 
@@ -504,10 +502,10 @@ BA 00 89 00 80 0B BA 02 E8 75 6E 69  76 65 72 73 65
 |hex | description
 | 0xBA | field number  - special message to denote the next value is a field token
 | 0x00 | field token of 0 currently = 'hello' 
-| 0x89 |
-| 0x00 |
-| 0x80 |
-| 0x0B |
+| 0x89 | Updated Alias
+| 0x00 | Updated Alias token - this was set via the 0x88 anchor tag, currently 0 = {  f1: hello, f2: world }
+| 0x80 | Nested Block 8bit len
+| 0x0B | len=11bytes
 | 0xBA | field number  - special message to denote the next value is a field token
 | 0x02 | field token of 2 currently = 'f2'
 | 0xE8 | String of len=8
