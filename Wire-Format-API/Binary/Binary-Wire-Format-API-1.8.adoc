@@ -210,7 +210,7 @@ with delta wire this becomes:
 | 0x01 | value of 1
 |===
 
-If the same field is sent repeatably DeltaWire becomes is a more compact format than Binary Wire, so the following :
+If the same field is sent repeatably delta wire is a more compact format than Binary Wire, so the following :
 [source]
 {
 	hello: 1,
