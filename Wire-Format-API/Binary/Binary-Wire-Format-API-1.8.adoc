@@ -195,7 +195,7 @@ C5 68 65 6C 6C 6F 01
 with DELTA binary this becomes:
 
 [source]
-87 00 05 68 65 6C 6C 6F  01
+87 00 05 68 65 6C 6C 6F 01
 
 |===
 | 0x87 |  Field Anchor - special control message to denote delta wire field
