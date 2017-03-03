@@ -401,7 +401,7 @@ in the example above we only tokenize the field names, but if we use typed objec
 | 0x89 | Updated Alias  | read/use the anchor from the anchor cache
 |===
 
-This anchor cache works exactly like the "field token cache" descibed above, however this cache is limited to an instance of the cache per object type per tcp/ip connection.
+This anchor cache works exactly like the "field token cache" descibed above, however this cache is limited to an instance per tcp/ip connection.
 
 if send the message and give it a type "!MyType" then we are going to send an (0x88) anchor tag as well as a ( 0x87) field anchor like in the non typed example above
 
