@@ -180,14 +180,16 @@ in Binary Wire this would encode to:
 [source]
 C5 68 65 6C 6C 6F 01
 
+[options="header"]
 |===
-| (0xC5) | Field of Len 5
-| (0x68) | ‘h’ as Ascii
-| (0x65) | ‘e’ as Ascii
-| (0x6C) | ‘l’ as Ascii
-| (0x6C) | ‘l’ as Ascii
-| (0x6F) | ‘o’ as Ascii
-| (0x01) | value of 1
+|hex | description |
+| 0xC5 | Field of Len 5
+| 0x68 | ‘h’ as Ascii
+| 0x65 | ‘e’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6F | ‘o’ as Ascii
+| 0x01 | value of 1
 |===
 
 with DELTA binary this becomes:
@@ -196,15 +198,15 @@ with DELTA binary this becomes:
 87 00 05 68 65 6C 6C 6F  01
 
 |===
-| (0x87) |  FIELD_ANCHOR   - special control message to denote delta wire field
-| (0x00) |  ?
-| (0x05) |  field len
-| (0x68) | ‘h’ as Ascii
-| (0x65) | ‘e’ as Ascii
-| (0x6C) | ‘l’ as Ascii
-| (0x6C) | ‘l’ as Ascii
-| (0x6F) | ‘o’ as Ascii
-| (0x01) | value of 1
+| 0x87 |  FIELD_ANCHOR   - special control message to denote delta wire field
+| 0x00 |  ?
+| 0x05 |  field len
+| 0x68 | ‘h’ as Ascii
+| 0x65 | ‘e’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6F | ‘o’ as Ascii
+| 0x01 | value of 1
 |===
 
 If the same Field is sent again DeltaWire is a more compact format than Binary Wire, so the following :
@@ -223,21 +225,23 @@ and in delta wire :
 [source]
 87 00 05 68 65 6C 6C 6F  01 BA 00 01 BA 00 01
 
+[options="header"]
 |===
-| (0x87) |  Field Anchor -  control message to denote delta wire field
-| (0x00) |  field number tag - see section below field tag
-| (0x05) |  field length
-| (0x68) | ‘h’ as Ascii
-| (0x65) | ‘e’ as Ascii
-| (0x6C) | ‘l’ as Ascii
-| (0x6C) | ‘l’ as Ascii
-| (0x6F) | ‘o’ as Ascii
-| (0xBA) | Field Number  - special message to denote the next value is a field number
-| (0x00) | field number tag
-| (0x01) | value of 1
-| (0xBA) | Field Number  - special message to denote the next value is a field number
-| (0x00) | field number tag
-| (0x01) | value of 1
+|hex | description |
+| 0x87 |  Field Anchor -  control message to denote delta wire field
+| 0x00 |  field number tag - see section below field tag
+| 0x05 |  field length
+| 0x68 | ‘h’ as Ascii
+| 0x65 | ‘e’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6F | ‘o’ as Ascii
+| 0xBA | Field Number  - special message to denote the next value is a field number
+| 0x00 | field number tag
+| 0x01 | value of 1
+| 0xBA | Field Number  - special message to denote the next value is a field number
+| 0x00 | field number tag
+| 0x01 | value of 1
 |===
 
 ==== Field Number Cache
@@ -300,7 +304,7 @@ the sequence area encoded using
 [source]
 0x82 <four byte unsigned len, this is the length in bytes of the encoded block of preceding data>
 
-so if we were going to encode these simple 4 entries ( shown below in text yaml )
+so if we were going to encode these simple 4 entries  shown below in text yaml )
 
 [source]
 {a,b,c,de}
