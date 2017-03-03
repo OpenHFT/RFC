@@ -1,6 +1,6 @@
 # Specification
 
-|         |                                                                             
+[options="header"]
 |===
 | Title   | Binary Wire Format API                                                      
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/                 
@@ -10,6 +10,7 @@
 | License | Apache 2.0                                                                  
 | Change Process | Users issue Pull Requests for the Editor's consideration.            
 | Status  | In Production.                                                                        
+|===
 
 # Goals
 The Binary Wire Format API is a binary one to one translation of the Text format.
