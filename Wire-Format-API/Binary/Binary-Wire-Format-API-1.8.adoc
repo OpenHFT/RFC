@@ -351,8 +351,8 @@ in delta wire
 [options="header"]
 |===
 |hex | description
-| 0x87 | field anchor -  control message to denote delta wire field
-| 0x00 | field token - see section below on 'Field Token Cache'
+| 0x87 | field anchor
+| 0x00 | field token - assign 0='hello'
 | 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -363,25 +363,25 @@ in delta wire
 | 0x82 | Nested Block 32bit len
 | 0x16, 0x00,0x00,0x00 | 4 byte len=22
 | 0xBA | field number  - special message to denote the next value is a field token
-| 0x87 | field anchor -  control message to denote delta wire field
-| 0x01 | field token - see section below on 'Field Token Cache'
+| 0x87 | field anchor
+| 0x01 |field token - assigns 1='f1: hello'
 | 0x02 | field len=2 of 'f1'
 | |
 | 0x66 | 'f' as Ascii
 | 0x31 | '1' as Ascii
-| 0xE5 | String of len=5
+| 0xE5 | String of len=5 of 'hello'
 | 0x68 | 'h' as Ascii
 | 0x65 | 'e' as Ascii
 | 0x6C | 'l' as Ascii
 | 0x6C | 'l' as Ascii
 | 0x6F | 'o' as Ascii
 | |
-| 0x87 | field anchor -  control message to denote delta wire field
-| 0x02 | field token - see section below on 'Field Token Cache'
+| 0x87 | field anchor
+| 0x02 | field token - assigns 2='f2: world'
 | 0x02 | field len=2 of 'f3'
 | 0x66 | 'f' as Ascii
 | 0x32 | '2' as Ascii
-| 0xE5 | String of len=5
+| 0xE5 | String of len=5 of 'world'
 | 0x77 | 'w' as Ascii
 | 0x6F | 'o' as Ascii
 | |
@@ -424,8 +424,8 @@ in Delta Wire
 [options="header"]
 |===
 |hex | description
-| 0x87 | Field Anchor -  control message to denote delta wire field
-| 0x00 | field token - see section below on 'Field Token Cache' to 0='hello'
+| 0x87 | field anchor
+| 0x00 | field token - assign 0='hello'
 | 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -434,7 +434,7 @@ in Delta Wire
 | 0x6F | ‘o’ as Ascii
 | |
 | 0x88 | anchor
-| 0x00 | anchor token
+| 0x00 | anchor token, assign 0='!MyType { f1: hello,  f2: world  }
 | 0x06 | 2 byte len=6 of 'MyType'
 | 0x4D | 'M' as Ascii
 | 0x79 | 'y' as Ascii
@@ -445,8 +445,8 @@ in Delta Wire
 | |
 | 0x82 | Nested Block 32bit len
 | 0x16,0x0 ,0x0 ,0x0 | len=22
-| 0x87 | Field Anchor -  control message to denote delta wire field
-| 0x01 | field token - see section below on 'Field Token Cache'
+| 0x87 | field anchor
+| 0x01 | field token - assign 0='f1'
 | |
 | 0x02 | field len=2 of 'f1'
 | 0x66 | 'f' as Ascii
@@ -458,8 +458,8 @@ in Delta Wire
 | 0x6C | 'l' as Ascii
 | |
 | 0x6F | 'o' as Ascii
-| 0x87 | Field Anchor -  control message to denote delta wire field
-| 0x02 | field token - see section below on 'Field Token Cache'
+| 0x87 |  field anchor
+| 0x02 | field token - assign 2='f2'
 | 0x02 | field len=2 of 'f3'
 | 0x66 | 'f' as Ascii
 | 0x32 | '2' as Ascii
@@ -488,9 +488,9 @@ BA 00 89 00
 |===
 |hex | description
 | 0xBA | field number  - special message to denote the next value is a field token
-| 0x00 | field token of 0 currently = 'hello'
+| 0x00 | field token of,  0='hello'
 | 0x89 | Updated Alias
-| 0x00 | Updated Alias token - this was set via the 0x88 anchor tag, currently 0 = {  f1: hello, f2: world }
+| 0x00 | Updated Alias token - this was set via the 0x88 anchor tag,   0 = {  f1: hello, f2: world }
 
 ==== changing just on field
 
