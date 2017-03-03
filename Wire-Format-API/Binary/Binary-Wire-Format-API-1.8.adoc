@@ -57,23 +57,6 @@ For short fields, the first byte denotes the type of the field, for small number
 | String (16-31)                        | 1   | 1   | 1   | 1   |     |     |     |
 |===
 
-==== Control Messages
-
-[options="header"]
-|===
-| type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
-| FieldAnchor ( 0x87 ) see examples on DeltaWire below                      | 1   | 0   | 0   | 0   | 0   | 0   | 1    |
-|===
-
-
-==== Special
-[options="header"]
-|===
-| type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
-| FieldNumber ( 0xBA ) see examples on DeltaWire below                       | 1   | 0   | 1   | 1   | 1   | 0   | 1    |  0  |
-|===
-
-
 ==== Definition of a field and a string
 
 In the following uri
@@ -143,7 +126,8 @@ Version 1.6 added 0xAF
 
 === Special
 
-Note for\<string\> the string encode by default is a stop bit encoded len folloed by a ISO-8851-9 string, see more on this at https://github.com/OpenHFT/RFC/blob/master/Stop-Bit-Encoding/
+[NOTE]
+For\<string\> the string encode by default is a stop bit encoded len folloed by a ISO-8851-9 string, see more on this at https://github.com/OpenHFT/RFC/blob/master/Stop-Bit-Encoding/
 
 |===
 | Special message                             | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
@@ -164,6 +148,18 @@ Note for\<string\> the string encode by default is a stop bit encoded len folloe
 | (0xBD) - Event which is an object           | 1   | 0   | 1   | 1   | 1   | 1   | 0   |  1
 | (0xBE) - Comment  with stop bit length   | 1   | 0   | 1   | 1   | 1   | 1   | 1   |  0
 |===
+
+[NOTE]
+( 0xBA ) - see examples on DeltaWire below
+
+=== Control Messages
+
+[options="header"]
+|===
+| type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
+| FieldAnchor ( 0x87 ) see examples on DeltaWire below                      | 1   | 0   | 0   | 0   | 0   | 0   | 1    |
+|===
+
 
 Version 1.6 added 0xBD
 
@@ -227,26 +223,78 @@ and in delta wire :
 [source]
 87 00 05 68 65 6C 6C 6F  01 BA 00 01 BA 00 01
 
-where this is the first ‘hello: 1’
-[source]
-87 00 05 68 65 6C 6C 6F  01
-
 |===
-| (0x87) -  FIELD_ANCHOR   - special control message to denote delta wire field
-| (0x00) -  field tag ( store tag to field locally, overwrite local cache is used by existing )
-| (0x05) -  field len
+| (0x87) -  Field Anchor -  control message to denote delta wire field
+| (0x00) -  field number tag - see section below field tag
+| (0x05) -  field length
 | (0x68) - ‘h’ as Ascii
 | (0x65) - ‘e’ as Ascii
 | (0x6C) - ‘l’ as Ascii
 | (0x6C) - ‘l’ as Ascii
 | (0x6F) - ‘o’ as Ascii
-| (0xBA) - ?
-| (0x00) - field tag
+| (0xBA) - Field Number  - special message to denote the next value is a field number
+| (0x00) - field number tag
 | (0x01) - value of 1
-| (0xBA) - value of 1
-| (0x00) - value of 1
+| (0xBA) - Field Number  - special message to denote the next value is a field number
+| (0x00) - field number tag
 | (0x01) - value of 1
 |===
+
+==== Field Tag Cache
+
+A Messages sent with a 'Field Anchor' should be cache locally the relationship between the field tag and its field
+
+sp the following binary could be represent as follows :
+
+87 00 05 68 65 6C 6C 6F
+
+.field tag cache
+[options="header"]
+|===
+| field number tag  | field
+| 0   | hello
+|===
+
+==== Field Anchor
+
+field can be reused, so if you are reading delta wire and you receive
+
+[source]
+87 00 05 68 65 6C 6C 6F  01 87 01 05 77 6F 72 6C 64 01                                            d·
+
+then locally you should cache
+
+.field tag cache
+[options="header"]
+|===
+| field number tag  | field
+| 0   | hello
+| 1   | world
+|===
+
+[NOTE]
+the value of '1' has been ignored in this example but is in the binary for completeness
+
+===== Overwriting of the Field Anchor
+
+lets assume later you may receive the following
+
+[source]
+87 00 08 75 6E 69 76 65  72 73 65 01
+
+then you should overwrite the existing entry in our field cache
+
+.field tag cache
+|===
+| field number tag  | field
+
+| 0   | hello
+| 1   | world
+|===
+
+
+
+
 
 ===  Sequences, Maps and Marshallables
 
@@ -279,7 +327,8 @@ so if we were going to encode these simple 4 entries ( shown below in text yaml 
 | 0x64 0x65 | 'de'
 |===
 
-NOTE: although YAML treats sequences and maps differently, for binary wire we use similar encoding, its just they will hold different information
+[NOTE]
+Although YAML treats sequences and maps differently, for binary wire we use similar encoding, its just they will hold different information
 
 [source, yaml]
 {f1: a, f2: de}
