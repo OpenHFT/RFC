@@ -316,6 +316,7 @@ rather than
 {world:2}
 
 for this reason its important that all DELTA wire messages are read in order and no messages are skipped.
+As such, There is a separtate instance of this field token cache per TCP/IP socket connection.
 
 
 == Delta Wire Values
@@ -390,9 +391,17 @@ in delta wire
 |===
 
 
-=== Typed object
+=== Typed Objects
 
 in the example above we only tokenize the field names, but if we use typed object we can also tokenize the values by the use of the (0x88) anchor tag
+
+|===
+| hex | name | descirption
+| 0x88 | anchor  | used to set the Anchor in the anchor cache
+| 0x89 | Updated Alias  | read/use the anchor from the anchor cache
+|===
+
+This anchor cache works exactly like the "field token cache" descibed above, however this cache is limited to an instance of the cache per object type per tcp/ip connection.
 
 if send the message and give it a type "!MyType" then we are going to send an (0x88) anchor tag as well as a ( 0x87) field anchor like in the non typed example above
 
