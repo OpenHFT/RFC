@@ -157,7 +157,7 @@ For <string> the string encode by default is a stop bit encoded len followed by 
 [options="header"]
 |===
 | type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
-| FieldAnchor ( 0x87 ) see examples on DeltaWire below                      | 1   | 0   | 0   | 0   | 0   | 0   | 1    |
+| FieldAnchor ( 0x87 ) see examples on DeltaWire below                      | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 1 |
 |===
 
 
