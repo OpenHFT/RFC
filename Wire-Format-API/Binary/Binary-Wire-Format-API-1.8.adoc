@@ -264,7 +264,7 @@ sp the following binary could be represent as follows :
 field can be reused, so if you are reading delta wire and you receive
 
 [source]
-87 00 05 68 65 6C 6C 6F  01 87 01 05 77 6F 72 6C 64 01                                            d·
+87 00 05 68 65 6C 6C 6F 01 87 01 05 77 6F 72 6C 64 01                                            d·
 
 then locally you should cache
 
@@ -281,7 +281,7 @@ then locally you should cache
 lets assume later you may receive the following
 
 [source]
-87 00 08 75 6E 69 76 65  72 73 65 01
+87 00 08 75 6E 69 76 65 72 73 65 01
 
 then you should overwrite the existing entry in our field cache
 
