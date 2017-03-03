@@ -169,7 +169,7 @@ DeltaWire is a compact form of binary wire.
 
 ==== Field Cache
 
-The following covers field caching, the first time a field is sent a token is sent along with the field name, subsequent updates of this field will refer to the field via the field token, it wont again send the field. In this document we refer to this field token as the 'field number'
+The following covers field caching, the first time a field is sent a token is sent along with the field name, subsequent updates of this field will refer to the field via the field token, it wont again send the field. In this document we refer to this field token as the 'field token'
 
 
 Assume we have the following Yaml
@@ -198,8 +198,8 @@ with DELTA binary this becomes:
 87 00 05 68 65 6C 6C 6F  01
 
 |===
-| 0x87 |  FIELD_ANCHOR   - special control message to denote delta wire field
-| 0x00 |  ?
+| 0x87 |  Field Anchor - special control message to denote delta wire field
+| 0x00 |  field token - see section below on 'Field Token Cache'
 | 0x05 |  field len
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -229,22 +229,22 @@ and in delta wire :
 |===
 |hex | description
 | 0x87 |  Field Anchor -  control message to denote delta wire field
-| 0x00 |  field number tag - see section below field tag
+| 0x00 |  field token - see section below on 'Field Token Cache'
 | 0x05 |  field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
 | 0x6C | ‘l’ as Ascii
 | 0x6C | ‘l’ as Ascii
 | 0x6F | ‘o’ as Ascii
-| 0xBA | Field Number  - special message to denote the next value is a field number
-| 0x00 | field number tag
+| 0xBA | Field Number  - special message to denote the next value is a field token
+| 0x00 | field token
 | 0x01 | value of 1
-| 0xBA | Field Number  - special message to denote the next value is a field number
-| 0x00 | field number tag
+| 0xBA | Field Number  - special message to denote the next value is a field token
+| 0x00 | field token
 | 0x01 | value of 1
 |===
 
-==== Field Number Cache
+==== Field Token Cache
 
 A Messages sent with a 'Field Anchor' should be cache locally the relationship between the field tag and its field
 
@@ -255,7 +255,7 @@ sp the following binary could be represent as follows :
 .field tag cache
 [options="header"]
 |===
-| field number  | field
+| field token  | field
 | 0   | hello
 |===
 
@@ -271,7 +271,7 @@ then locally you should cache
 .field tag cache
 [options="header"]
 |===
-| field number  | field
+| field token  | field
 | 0   | hello
 | 1   | world
 |===
@@ -287,8 +287,7 @@ then you should overwrite the existing entry in our field cache
 
 .field tag cache
 |===
-| field number   | field
-
+| field token   | field
 | 0   | hello
 | 1   | world
 |===
