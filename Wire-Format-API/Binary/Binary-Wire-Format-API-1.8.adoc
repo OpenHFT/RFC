@@ -62,7 +62,7 @@ For short fields, the first byte denotes the type of the field, for small number
 [options="header"]
 |===
 | type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
-| FieldAnchor ( 0x87 ) see exampled on DeltaWire below                      | 1   | 0   | 0   | 0   | 0   | 0   | 1    |
+| FieldAnchor ( 0x87 ) see examples on DeltaWire below                      | 1   | 0   | 0   | 0   | 0   | 0   | 1    |
 |===
 
 
@@ -70,7 +70,7 @@ For short fields, the first byte denotes the type of the field, for small number
 [options="header"]
 |===
 | type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
-| FieldNumber ( 0xBA ) see exampled on DeltaWire below                       | 1   | 0   | 1   | 1   | 1   | 0   | 1    |  0  |
+| FieldNumber ( 0xBA ) see examples on DeltaWire below                       | 1   | 0   | 1   | 1   | 1   | 0   | 1    |  0  |
 |===
 
 
