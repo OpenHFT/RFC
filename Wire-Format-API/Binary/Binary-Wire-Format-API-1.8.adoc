@@ -240,7 +240,7 @@ and in delta wire :
 | (0x01) - value of 1
 |===
 
-==== Field Tag Cache
+==== Field Number Cache
 
 A Messages sent with a 'Field Anchor' should be cache locally the relationship between the field tag and its field
 
