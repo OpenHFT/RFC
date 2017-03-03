@@ -160,7 +160,7 @@ the sequence area encoded using
 so if we were going to encode these simple 4 entries ( shown below in text yaml )
 
 [source]
-[a,b,c,de]
+{a,b,c,de}
 
  As binary wire this would encode to 
 
