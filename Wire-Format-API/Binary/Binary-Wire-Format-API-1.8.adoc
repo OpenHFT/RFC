@@ -127,7 +127,7 @@ Version 1.6 added 0xAF
 === Special
 
 [NOTE]
-For\<string\> the string encode by default is a stop bit encoded len folloed by a ISO-8851-9 string, see more on this at https://github.com/OpenHFT/RFC/blob/master/Stop-Bit-Encoding/
+For <string> the string encode by default is a stop bit encoded len followed by a ISO-8851-9 string, see more on this at https://github.com/OpenHFT/RFC/blob/master/Stop-Bit-Encoding/
 
 |===
 | Special message                             | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
