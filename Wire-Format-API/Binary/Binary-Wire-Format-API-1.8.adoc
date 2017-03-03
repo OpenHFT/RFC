@@ -247,7 +247,7 @@ and in delta wire :
 
 ==== Field Token Cache
 
-A Messages sent with a 'Field Anchor', we should always be cache relationship between the field token and its field.
+A Messages sent with a 'Field Anchor', we should always cache relationship between the field token and its field.
 
 So when the following delta binary is received :
 
@@ -255,7 +255,7 @@ So when the following delta binary is received :
 
 we cache the following relationship
 
-.field tag cache
+.field token cache
 [options="header"]
 |===
 | field token  | field
@@ -264,14 +264,14 @@ we cache the following relationship
 
 each field is allocated a token, there is always a 1 to 1 relationship between the tokens and fields.
 
-so if the following binnary was received :
+so if the following binary was received :
 
 [source]
 87 00 05 68 65 6C 6C 6F 01 87 01 05 77 6F 72 6C 64 01
 
 then we would cache
 
-.field tag cache
+.field token cache
 [options="header"]
 |===
 | field token  | field
@@ -281,24 +281,24 @@ then we would cache
 
 ===== Overwriting of the Field Anchor
 
-field tokens can be reused, so if we read delta wire
+field tokens can be reused, so assume we had already received the following :
 
 [source]
 87 00 08 75 6E 69 76 65 72 73 65 01
 
-.field tag cache
+.field token cache
 |===
 | field token   | field
 | 0   | hello
 | 1   | world
 |===
 
-and subsequently received
+if we then subsequently receive
 
 [source]
 87 01 08 75 6E 69 76 65  72 73 65 01
 
-.field tag cache
+.field token cache
 |===
 | field token   | field
 | 0   | hello
