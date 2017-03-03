@@ -1,7 +1,7 @@
 # Specification
 
 |         |                                                                             
-|:------- | --------------------------------------------------------------------------- | 
+|===
 | Title   | Binary Wire Format API                                                      
 | Parent  | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/                 
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/Binary           
