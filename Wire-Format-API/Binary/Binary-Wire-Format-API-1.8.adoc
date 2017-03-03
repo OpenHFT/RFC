@@ -68,7 +68,7 @@ csp: //a-uri?view=map
 
 And '//a-uri?view=map' is the String
 
-=== Types ( for larger values )
+=== Types / Control Messages ( for larger values )
 
 the types use the Control Messages
 
@@ -79,15 +79,22 @@ the types use the Control Messages
 | (0x80) - Nested Block 8bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 0   |  0
 | (0x81) - Nested Block 16bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 0   |  1
 | (0x82) - Nested Block 32bit len     | 1   | 0   | 0   | 0   | 0   | 0   | 1   |  0
+| (0x87) - Field Anchor                | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 1
+| (0x88) - Anchor                       | 1   | 0   | 0   | 0   | 1   | 0   | 0   |  0
 | (0x8A) - byte[]                       | 1   | 0   | 0   | 0   | 1   | 0   | 1   |  0
 | (0x8D) - long[]                       | 1   | 0   | 0   | 0   | 1   | 1   | 0   |  1
 | (0x8E) - paddding with 32bit length   | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  0
 | (0x8F) - single padded byte           | 1   | 0   | 0   | 0   | 1   | 1   | 1   |  1
+| FieldAnchor ( 0x87 ) see examples on DeltaWire below                      | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 1 |
 |===
 
 Version 1.6 added 0x81
 
-0x87, 0x88, 0x89 are reserved
+
+
+[NOTE]
+0x88, 0x89 are reserved. 0x87 and 0x88 is used for Delta Wire see examples below
+
 
 === Decimal
 
@@ -151,14 +158,6 @@ For <string> the string encode by default is a stop bit encoded len followed by 
 
 [NOTE]
 ( 0xBA ) - see examples on DeltaWire below
-
-=== Control Messages
-
-[options="header"]
-|===
-| type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
-| FieldAnchor ( 0x87 ) see examples on DeltaWire below                      | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 1 |
-|===
 
 
 Version 1.6 added 0xBD
@@ -316,6 +315,170 @@ rather than
 {world:2}
 
 for this reason its important that all DELTA wire messages are read in order and no messages are skipped.
+
+
+== Delta Wire Values
+
+[source]
+hello: {
+  f1: hello,
+  f2: world
+}
+
+in binary wire
+
+[source]
+C5 68 65 6C 6C 6F 82 12  00 00 00 C2 66 31 E5 68 65 6C 6C 6F C2 66 32 E5 77 6F 72 6C 64
+
+in delta wire
+
+[source]
+87 00 05 68 65 6C 6C 6F
+82 16 00 00 00 87 01 02
+66 31 E5 68 65 6C 6C 6F
+87 02 02 66 32 E5 77 6F
+72 6C 64
+
+
+[options="header"]
+|===
+|hex | description
+| 0x87 |  field anchor -  control message to denote delta wire field
+| 0x00 |  field token - see section below on 'Field Token Cache'
+| 0x05 |  field length
+| 0x68 | ‘h’ as Ascii
+| 0x65 | ‘e’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6F | ‘o’ as Ascii
+| |
+| 0x82 | Nested Block 32bit len
+| 0x16, 0x00,0x00,0x00 | 4 byte len=22
+| 0xBA | Field Number  - special message to denote the next value is a field token
+| 0x87 | Field Anchor -  control message to denote delta wire field
+| 0x01 | field token - see section below on 'Field Token Cache'
+| 0x02 | field len=2 of 'f1'
+| |
+| 0x66 | 'f' as Ascii
+| 0x31 | '1' as Ascii
+| 0xE5 | String of len=5
+| 0x68 | 'h' as Ascii
+| 0x65 | 'e' as Ascii
+| 0x6C | 'l' as Ascii
+| 0x6C | 'l' as Ascii
+| 0x6F | 'o' as Ascii
+| |
+| 0x87 | field anchor -  control message to denote delta wire field
+| 0x02 | field token - see section below on 'Field Token Cache'
+| 0x02 | field len=2 of 'f3'
+| 0x66 | 'f' as Ascii
+| 0x32 | '2' as Ascii
+| 0xE5 | String of len=5
+| 0x77 | 'w' as Ascii
+| 0x6F | 'o' as Ascii
+| |
+| 0x72 | 'r' as Ascii
+| 0x6C | 'l' as Ascii
+| 0x64 | 'd' as Ascii
+|===
+
+in the example above we only tokenize the fields, but if we use typed object we tokenize the values as well by the user of the (0x88) tag
+
+if send the message of a known type for example "!MyType"
+
+hello: !MyType {
+  f1: hello,
+  f2: world
+}
+
+
+in Delta Wire
+
+[source]
+87 00 05 68 65 6C 6C 6F
+88 00 06 4D 79 54 79 70
+65 82 16 00 00 00 87 01
+02 66 31 E5 68 65 6C 6C
+6F 87 02 02 66 32 E5 77
+6F 72 6C 64
+
+[options="header"]
+|===
+|hex | description
+| 0x87 | Field Anchor -  control message to denote delta wire field
+| 0x00 | field token - see section below on 'Field Token Cache'
+| 0x05 | field length
+| 0x68 | ‘h’ as Ascii
+| 0x65 | ‘e’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6C | ‘l’ as Ascii
+| 0x6F | ‘o’ as Ascii
+| |
+| 0x88 | anchor
+| 0x00 | anchor token
+| 0x06 | 2 byte len=6 of 'MyType'
+| 0x4D | 'M' as Ascii
+| 0x79 | 'y' as Ascii
+| 0x54 | 'T' as Ascii
+| 0x79 | 'y' as Ascii
+| 0x70 | 'p' as Ascii
+| 0x65 | 'e' as Ascii
+| |
+| 0x82 | Nested Block 32bit len
+| 0x16,0x0 ,0x0 ,0x0 | len=22
+| 0x87 | Field Anchor -  control message to denote delta wire field
+| 0x01 | field token - see section below on 'Field Token Cache'
+| |
+| 0x02 | field len=2 of 'f1'
+| 0x66 | 'f' as Ascii
+| 0x31 | '1' as Ascii
+| 0xE5 | String of len=5
+| 0x68 | 'h' as Ascii
+| 0x65 | 'e' as Ascii
+| 0x6C | 'l' as Ascii
+| 0x6C | 'l' as Ascii
+| |
+| 0x6F | 'o' as Ascii
+| 0x87 | Field Anchor -  control message to denote delta wire field
+| 0x02 | field token - see section below on 'Field Token Cache'
+| 0x02 | field len=2 of 'f3'
+| 0x66 | 'f' as Ascii
+| 0x32 | '2' as Ascii
+| 0xE5 | String of len=5
+| 0x77 | 'w' as Ascii
+| 0x6F | 'o' as Ascii
+| 0x72 | 'r' as Ascii
+| 0x6C | 'l' as Ascii
+| 0x64 | 'd' as Ascii
+|===
+
+
+hello: !MyType {
+  f1: hello,
+  f2: world
+}
+
+
+
+
+
+
+if we send this message twice in delta wire
+
+hello: {
+  f1: hello,
+  f2: world
+}
+hello: {
+  f1: hello,
+  f2: universe
+}
+
+
+[source]
+
+87 00 05 68 65 6C 6C 6F 82 16 00 00 00 87 01 02 66 31 E5 68 65 6C 6C 6F 87 02 02 66 32 E5 77 6F 72 6C 64
+BA 00                   82 13 00 00 00 BA 01          E5 68 65 6C 6C 6F BA 02          E8 75 6E 69 76 65 72 73 65
 
 
 ===  Sequences, Maps and Marshallables
