@@ -66,15 +66,12 @@ For short fields, the first byte denotes the type of the field, for small number
 |===
 
 
-===== Special
+==== Special
 [options="header"]
 |===
 | type   | 7bit   | 6bit   | 5bit   | 4bit   | 3bit   | 2bit   | 1bit   | 0bit
 | FieldNumber ( 0xBA ) see example on DeltaWire                       | 1   | 0   | 1   | 1   | 1   | 0   | 1    |  0  |
 |===
-
-
-
 
 
 ==== Definition of a field and a string
