@@ -182,7 +182,7 @@ C5 68 65 6C 6C 6F 01
 
 [options="header"]
 |===
-|hex | description |
+|hex | description
 | 0xC5 | Field of Len 5
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -227,7 +227,7 @@ and in delta wire :
 
 [options="header"]
 |===
-|hex | description |
+|hex | description
 | 0x87 |  Field Anchor -  control message to denote delta wire field
 | 0x00 |  field number tag - see section below field tag
 | 0x05 |  field length
@@ -292,9 +292,6 @@ then you should overwrite the existing entry in our field cache
 | 0   | hello
 | 1   | world
 |===
-
-
-
 
 
 ===  Sequences, Maps and Marshallables
