@@ -170,10 +170,10 @@ DeltaWire is a compact form of binary wire, in fact its not a separate wire form
 
 ==== Field Cache
 
-The following covers field caching, the first time a field is sent a token is sent along with the field name, subsequent updates of this field will refer to the field via the field token, it wont again send the field. In this document we refer to this field token as the 'field token'
+The following covers field caching, the first time a field is sent a token is sent along with the field name, subsequent updates of this field will refer to the field via the field token, it wont again send the field.
 
+Assume we have the following message :
 
-Assume we have the following Yaml
 [source]
 {hello: 1}
 
