@@ -173,6 +173,7 @@ The following covers field caching, the first time a field is sent a token is se
 
 
 Assume we have the following Yaml
+[source]
 {hello: 1}
 
 in Binary Wire this would encode to:
@@ -210,7 +211,7 @@ with DELTA binary this becomes:
 |===
 
 If the same Field is sent again DeltaWire is a more compact format than Binary Wire, so the following :
-
+[source]
 {
 	hello: 1,
 	hello: 1,
@@ -305,6 +306,16 @@ and subsequently received
 |===
 
 we overwrite the existing cache entry  1=world and replace it with 1=universe
+
+It we subsequentlyreceive
+
+BA 00 02
+
+then this is setting the field universe to the value of 2.
+
+.yaml
+[source]
+{universe:2}
 
 ===  Sequences, Maps and Marshallables
 
