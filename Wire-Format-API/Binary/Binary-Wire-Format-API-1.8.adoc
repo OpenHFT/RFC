@@ -322,7 +322,7 @@ As such, There is a separtate instance of this field token cache per TCP/IP sock
 
 == Delta Wire Values
 
-=== Non typed object
+=== Non Typed Object Values
 
 if we write a simple non typed object ( like the message below ), then only the keys are cached, we conver the deltaing of non typed objects in more detail in this section.
 
@@ -394,7 +394,7 @@ in delta wire this decodes to :
 |===
 
 
-=== Typed Objects
+=== Typed Object Values
 
 When using typed object we able able to apply full deltaing for the values, this is unlike the example above which just tokenizes the field names. In this example you will see the user of the (0x88) anchor tag, it works in conjunction with (0x89) Updated Alias which is used for reading the anchors. see table below :
 
@@ -406,13 +406,13 @@ When using typed object we able able to apply full deltaing for the values, this
 
 This anchor cache works exactly like the "field token cache" descibed above, it also has its own cache per tcp/ip connection.
 
-If send a typed message, for example a message of type "!MyType" then we are also going to send an (0x88) anchor tag as well as a ( 0x87) field anchor as we did in the section on non typed messages above.
+If send a typed message, for example a message of type "!MyType" then we are also going to send an (0x88) anchor tag as well as a ( 0x87) field anchor as we did in the section on "non typed object values" above.
 
+[source]
 hello: !MyType {
   f1: hello,
   f2: world
 }
-
 
 in Delta Wire
 
@@ -449,7 +449,7 @@ in Delta Wire
 | 0x82 | Nested Block 32bit len
 | 0x16,0x0 ,0x0 ,0x0 | len=22
 | 0x87 | field anchor
-| 0x01 | field token - assign 0='f1'
+| 0x01 | field token - assign 1='f1'
 | |
 | 0x02 | field len=2 of 'f1'
 | 0x66 | 'f' as Ascii
@@ -494,6 +494,7 @@ BA 00 89 00
 | 0x00 | field token of,  0='hello'
 | 0x89 | Updated Alias
 | 0x00 | Updated Alias token - this was set via the 0x88 anchor tag,   0 = {  f1: hello, f2: world }
+|===
 
 ==== changing just on field
 
