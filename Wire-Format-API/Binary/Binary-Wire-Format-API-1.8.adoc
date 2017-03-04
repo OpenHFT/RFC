@@ -90,7 +90,7 @@ the types use the Control Messages
 |===
 
 Version 1.6 added 0x81
-
+Version 1.8 added 0x87, 0x88
 
 
 [NOTE]
@@ -157,6 +157,8 @@ For <string> the string encode by default is a stop bit encoded len followed by 
 | (0xBE) - Comment  with stop bit length   | 1   | 0   | 1   | 1   | 1   | 1   | 1   |  0
 |===
 
+Version 1.8 added 0xBA
+
 [NOTE]
 ( 0xBA ) - see examples on DeltaWire below
 
@@ -200,8 +202,8 @@ in Delta Wire this becomes:
 87 00 05 68 65 6C 6C 6F 01
 
 |===
-| 0x87 | field anchor - special control message to denote delta wire field
-| 0x00 | field token - see section below on 'Field Token Cache'
+| 0x87 | field anchor - special code to denote the next byte is a field token
+| 0x00 | field token - assign 0='hello'
 | 0x05 | field len
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -224,7 +226,7 @@ If the same field is sent repeatedly, delta wire is a more compact format than B
 becomes -  in Binary Wire:
 
 [source]
-C5 68 65 6C 6C 6F 01 C5  68 65 6C 6C 6F 01 C5  68 65 6C 6C 6F 01
+C5 68 65 6C 6C 6F 01 C5 68 65 6C 6C 6F 01 C5 68 65 6C 6C 6F 01
 
 and in Delta Wire :
 
@@ -234,19 +236,19 @@ and in Delta Wire :
 [options="header"]
 |===
 |hex | description
-| 0x87 | field anchor -  control message to denote delta wire field
-| 0x00 | field token - see section below on 'Field Token Cache'
+| 0x87 | field anchor -  special code to denote the next byte is a field token
+| 0x00 | field token - assign 0='hello'
 | 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
 | 0x6C | ‘l’ as Ascii
 | 0x6C | ‘l’ as Ascii
 | 0x6F | ‘o’ as Ascii
-| 0xBA | Field Number  - special message to denote the next value is a field token
-| 0x00 | field token
+| 0xBA | Field Number  - special code to denote the next byte is a field token
+| 0x00 | field token, 0='hello'
 | 0x01 | value of 1
-| 0xBA | Field Number  - special message to denote the next value is a field token
-| 0x00 | field token
+| 0xBA | Field Number  - special code to denote the next byte is a field token
+| 0x00 | field token, 0='hello'
 | 0x01 | value of 1
 |===
 
@@ -284,9 +286,9 @@ then we would cache
 | 1   | world
 |===
 
-===== Overwriting of the Field Anchor
+==== Overwriting of the Field Anchor
 
-field tokens can be reused, so if we then subsequently receive
+Field tokens can be reused, so if we then subsequently receive
 
 [source]
 87 01 08 75 6E 69 76 65  72 73 65 01
@@ -298,14 +300,14 @@ field tokens can be reused, so if we then subsequently receive
 | 1   | universe
 |===
 
-we overwrite the existing cache entry  1=world and replace it with 1=universe
+we overwrite the existing cache entry  1='world' and replace it with 1='universe'
 
-It we subsequently receive a message that sets field token 1 to the value of 2
+It we subsequently receive a message that sets field token 1 to the value of 2, like below :
 
 [source]
 BA 01 02
 
-then this is setting the field universe to the value of 2
+then this is sets the field universe to the value of 2
 
 [source]
 {universe:2}
@@ -315,15 +317,14 @@ rather than
 [source]
 {world:2}
 
-for this reason its important that all DELTA wire messages are read in order and no messages are skipped.
+for this reason it's important that all DELTA wire messages are read in order and no messages are skipped.
 As such, There is a separtate instance of this field token cache per TCP/IP socket connection.
-
 
 == Delta Wire Values
 
 === Non typed object
 
-if we write a simple non typed object, only the keys are cached.
+if we write a simple non typed object ( like the message below ), then only the keys are cached, we conver the deltaing of non typed objects in more detail in this section.
 
 [source]
 hello: {
@@ -331,7 +332,7 @@ hello: {
   f2: world
 }
 
-in binary wire
+in binary wire ( formatted into blocks of 8 bytes for better readablity )
 
 [source]
 C5 68 65 6C 6C 6F 82 12
@@ -347,6 +348,8 @@ in delta wire
 66 31 E5 68 65 6C 6C 6F
 87 02 02 66 32 E5 77 6F
 72 6C 64
+
+in delta wire this decodes to :
 
 [options="header"]
 |===
@@ -369,7 +372,7 @@ in delta wire
 | |
 | 0x66 | 'f' as Ascii
 | 0x31 | '1' as Ascii
-| 0xE5 | String of len=5 of 'hello'
+| 0xE5 | String of len=5  ( from 'hello' )
 | 0x68 | 'h' as Ascii
 | 0x65 | 'e' as Ascii
 | 0x6C | 'l' as Ascii
@@ -381,7 +384,7 @@ in delta wire
 | 0x02 | field len=2 of 'f3'
 | 0x66 | 'f' as Ascii
 | 0x32 | '2' as Ascii
-| 0xE5 | String of len=5 of 'world'
+| 0xE5 | String of len=5 ( from  'world' )
 | 0x77 | 'w' as Ascii
 | 0x6F | 'o' as Ascii
 | |
@@ -393,7 +396,7 @@ in delta wire
 
 === Typed Objects
 
-in the example above we only tokenize the field names, but if we use typed object we can also tokenize the values by the use of the (0x88) anchor tag
+In the example above we only tokenize the field names, but if we use typed object we can also tokenize the values by the use of the (0x88) anchor tag
 
 |===
 | hex | name | descirption
