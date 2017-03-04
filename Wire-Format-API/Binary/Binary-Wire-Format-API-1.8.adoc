@@ -167,7 +167,7 @@ Version 1.6 added 0xBD
 
 Version 1.8 added 
 
-Delta Wire is a compact form of binary wire, in fact its not a separate wire format at all, delta wire just makes use of some additional control codes that are available in the binary wire format. As such, not all messages have to make use of the delta wire control codes, so its possible to mix between using delta wire and binary wire with in the same payload. We refer to a message being send via delta wire when then message is a binarry wire message that is using these delta wire control code. Delta Wire add just 4 control codes these are :
+Delta Wire is a compact form of binary wire, in fact its not a separate wire format at all, delta wire just makes use of some additional control codes that are available in the binary wire format. As such, not all messages have to make use of the delta wire control codes, so its possible to mix between using delta wire and binary wire with in the same payload. We refer to a message being "send via delta wire" when it is in fact a binarry wire message that is using these delta wire control code. DeltaWire introduces 4 addional code, see below: 
 
 [options="header"]
 |===
