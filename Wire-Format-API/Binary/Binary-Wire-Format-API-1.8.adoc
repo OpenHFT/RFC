@@ -496,9 +496,9 @@ BA 00 89 00
 | 0x00 | Updated Alias token - this was set via the 0x88 anchor tag,   0 = {  f1: hello, f2: world }
 |===
 
-==== changing just on field
+==== Changing just a single field
 
-and if we were to resend the message again, but this time changed, the field f2 from 'world' to 'universe'
+If we were to resend the message again, but this time changed, the field f2 from 'world' to 'universe'
 
 [source]
 hello: !MyType {
@@ -514,13 +514,13 @@ BA 00 89 00 80 0B BA 02 E8 75 6E 69  76 65 72 73 65
 |===
 |hex | description
 | 0xBA | field number  - special message to denote the next value is a field token
-| 0x00 | field token of 0 currently = 'hello' 
+| 0x00 | field token of, 0 = 'hello' 
 | 0x89 | Updated Alias
-| 0x00 | Updated Alias token - this was set via the 0x88 anchor tag, currently 0 = {  f1: hello, f2: world }
+| 0x00 | Updated Alias token - this was set via the 0x88 anchor tag,  0 = {  f1: hello, f2: world }
 | 0x80 | Nested Block 8bit len
 | 0x0B | len=11bytes
 | 0xBA | field number  - special message to denote the next value is a field token
-| 0x02 | field token of 2 currently = 'f2'
+| 0x02 | field token of, 2 = 'f2'
 | 0xE8 | String of len=8
 | 0x75 | 'u' as Ascii
 | 0x6E | 'n' as Ascii
@@ -530,6 +530,8 @@ BA 00 89 00 80 0B BA 02 E8 75 6E 69  76 65 72 73 65
 | 0x72 | 'r' as Ascii
 | 0x73 | 's' as Ascii
 | 0x65 | 'e' as Ascii
+|===
+
 ===  Sequences, Maps and Marshallables
 
 the sequence area encoded using
@@ -542,7 +544,7 @@ so if we were going to encode these simple 4 entries  shown below in text yaml )
 [source]
 {a,b,c,de}
 
- As binary wire this would encode to
+As binary wire this would encode to
 
 [source]
 0x82 0x09 0x00 0x00 0x00 0xE1 0x61 0xE1 0x62 0xE1 0x63 0xE2 0x64 0x65
