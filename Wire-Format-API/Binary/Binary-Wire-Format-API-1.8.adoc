@@ -367,7 +367,7 @@ in delta wire this decodes to :
 | 0x16, 0x00,0x00,0x00 | 4 byte len=22
 | 0xBA | field number  - special message to denote the next value is a field token
 | 0x87 | field anchor
-| 0x01 |field token - assigns 1='f1: hello'
+| 0x01 | field token - assigns 1='f1: hello'
 | 0x02 | field len=2 of 'f1'
 | |
 | 0x66 | 'f' as Ascii
@@ -401,7 +401,7 @@ When using typed object we able able to apply full deltaing for the values, this
 |===
 | hex | name | descirption
 | 0x88 | Anchor  | used to set the Anchor in the anchor cache
-| 0x89 | Updated Alias  | read/use the anchor from the anchor cache
+| 0x89 | Updated Alias  | read/use the anchor from the anchor cache, This is also used when a field is being re-assinged a new value with a data structure, see example below on "Changing just a single field"
 |===
 
 This anchor cache works exactly like the "field token cache" descibed above, it also has its own cache per tcp/ip connection.
