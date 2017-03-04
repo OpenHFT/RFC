@@ -92,10 +92,8 @@ the types use the Control Messages
 Version 1.6 added 0x81
 Version 1.8 added 0x87, 0x88
 
-
 [NOTE]
 0x88, 0x89 are reserved. 0x87 and 0x88 is used for Delta Wire see examples below
-
 
 === Decimal
 
@@ -169,8 +167,16 @@ Version 1.6 added 0xBD
 
 Version 1.8 added 
 
-Delta Wire is a compact form of binary wire, in fact its not a separate wire format at all, delta wire just makes use of some additional control codes that are available in the binary wire format.  As such, not all messages have to make use of the delta wire control codes, so its possible to mix between using delta wire and binary wire with in the same payload.  
+Delta Wire is a compact form of binary wire, in fact its not a separate wire format at all, delta wire just makes use of some additional control codes that are available in the binary wire format. As such, not all messages have to make use of the delta wire control codes, so its possible to mix between using delta wire and binary wire with in the same payload. We refer to a message being send via delta wire when then message is a binarry wire message that is using these delta wire control code. Delta Wire add just 4 control codes these are :
 
+[options="header"]
+|===
+| Code                     | Used for 
+| (0x87) - Field Anchor                | Setting Field
+| (0x88) - Anchor                       | Reading Field
+| (0xBA) - Field Number stop bit encoded | Setting  Value 
+| (0x89 ) Updated Alias | Reading/modifying existing Value
+|===
 
 ==== Field Cache
 
