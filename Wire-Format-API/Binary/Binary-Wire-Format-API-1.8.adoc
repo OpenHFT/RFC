@@ -375,7 +375,7 @@ in delta wire this decodes to :
 | 0x16, 0x00,0x00,0x00 | 4 byte len=22
 | 0xBA | field number  - special message to denote the next value is a field token
 | 0x87 | field anchor
-| 0x01 | field token - assigns 1='f1: hello'
+| 0x01 | field token - assigns 1='f1'
 | 0x02 | field len=2 of 'f1'
 | |
 | 0x66 | 'f' as Ascii
@@ -388,7 +388,7 @@ in delta wire this decodes to :
 | 0x6F | 'o' as Ascii
 | |
 | 0x87 | field anchor
-| 0x02 | field token - assigns 2='f2: world'
+| 0x02 | field token - assigns 2='f2'
 | 0x02 | field len=2 of 'f3'
 | 0x66 | 'f' as Ascii
 | 0x32 | '2' as Ascii
