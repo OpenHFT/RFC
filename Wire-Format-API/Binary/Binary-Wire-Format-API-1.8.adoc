@@ -180,7 +180,7 @@ Delta Wire is a compact form of binary wire, in fact its not a separate wire for
 
 ==== Field Cache
 
-The following covers field caching, the first time a field is sent a token is sent along with the field name, subsequent updates of this field will refer to the field via the field token, it wont again send the field.
+The following covers field caching, the first time a field is sent a token is sent along with the field name, subsequent updates of this field will refer to the field via the field token (stopbit encoded), it wont again send the field.
 
 Assume we have the following message :
 
