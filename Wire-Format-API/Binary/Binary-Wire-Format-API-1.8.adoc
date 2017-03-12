@@ -245,7 +245,7 @@ and in Delta Wire :
 |===
 |hex | description
 | 0x87 | field anchor -  special code to denote the next byte is a field token
-| 0x00 | field token - assign 0='hello'
+| 0x00 | field token (stopbit encoded)- assign 0='hello'
 | 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -253,10 +253,10 @@ and in Delta Wire :
 | 0x6C | ‘l’ as Ascii
 | 0x6F | ‘o’ as Ascii
 | 0xBA | Field Number  - special code to denote the next byte is a field token
-| 0x00 | field token, 0='hello'
+| 0x00 | field token (stopbit encoded), 0='hello'
 | 0x01 | value of 1
 | 0xBA | Field Number  - special code to denote the next byte is a field token
-| 0x00 | field token, 0='hello'
+| 0x00 | field token (stopbit encoded), 0='hello'
 | 0x01 | value of 1
 |===
 
@@ -363,7 +363,7 @@ in delta wire this decodes to :
 |===
 |hex | description
 | 0x87 | field anchor
-| 0x00 | field token - assign 0='hello'
+| 0x00 | field token (stopbit encoded) - assign 0='hello'
 | 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -375,7 +375,7 @@ in delta wire this decodes to :
 | 0x16, 0x00,0x00,0x00 | 4 byte len=22
 | 0xBA | field number  - special message to denote the next value is a field token
 | 0x87 | field anchor
-| 0x01 | field token - assigns 1='f1'
+| 0x01 | field token (stopbit encoded) - assigns 1='f1'
 | 0x02 | field len=2 of 'f1'
 | |
 | 0x66 | 'f' as Ascii
@@ -388,7 +388,7 @@ in delta wire this decodes to :
 | 0x6F | 'o' as Ascii
 | |
 | 0x87 | field anchor
-| 0x02 | field token - assigns 2='f2'
+| 0x02 | field token (stopbit encoded) - assigns 2='f2'
 | 0x02 | field len=2 of 'f3'
 | 0x66 | 'f' as Ascii
 | 0x32 | '2' as Ascii
@@ -436,7 +436,7 @@ in Delta Wire
 |===
 |hex | description
 | 0x87 | field anchor
-| 0x00 | field token - assign 0='hello'
+| 0x00 | field token (stopbit encoded) - assign 0='hello'
 | 0x05 | field length
 | 0x68 | ‘h’ as Ascii
 | 0x65 | ‘e’ as Ascii
@@ -445,7 +445,7 @@ in Delta Wire
 | 0x6F | ‘o’ as Ascii
 | |
 | 0x88 | anchor
-| 0x00 | anchor token, assign 0='!MyType { f1: hello,  f2: world  }
+| 0x00 | anchor token (stopbit encoded), assign 0='!MyType { f1: hello,  f2: world  }
 | 0x06 | 2 byte len=6 of 'MyType'
 | 0x4D | 'M' as Ascii
 | 0x79 | 'y' as Ascii
@@ -457,7 +457,7 @@ in Delta Wire
 | 0x82 | Nested Block 32bit len
 | 0x16,0x0 ,0x0 ,0x0 | len=22
 | 0x87 | field anchor
-| 0x01 | field token - assign 1='f1'
+| 0x01 | field token (stopbit encoded) - assign 1='f1'
 | |
 | 0x02 | field len=2 of 'f1'
 | 0x66 | 'f' as Ascii
@@ -470,7 +470,7 @@ in Delta Wire
 | |
 | 0x6F | 'o' as Ascii
 | 0x87 |  field anchor
-| 0x02 | field token - assign 2='f2'
+| 0x02 | field token (stopbit encoded) - assign 2='f2'
 | 0x02 | field len=2 of 'f3'
 | 0x66 | 'f' as Ascii
 | 0x32 | '2' as Ascii
@@ -499,9 +499,9 @@ BA 00 89 00
 |===
 |hex | description
 | 0xBA | field number  - special message to denote the next value is a field token
-| 0x00 | field token of,  0='hello'
+| 0x00 | field token (stopbit encoded),  0='hello'
 | 0x89 | Updated Alias
-| 0x00 | Updated Alias token - this was set via the 0x88 anchor tag,   0 = {  f1: hello, f2: world }
+| 0x00 | Updated Alias token (stopbit encoded) - this was set via the 0x88 anchor tag,   0 = {  f1: hello, f2: world }
 |===
 
 ==== Changing just a single field
@@ -522,13 +522,13 @@ BA 00 89 00 80 0B BA 02 E8 75 6E 69  76 65 72 73 65
 |===
 |hex | description
 | 0xBA | field number  - special message to denote the next value is a field token
-| 0x00 | field token of, 0 = 'hello' 
+| 0x00 | field token (stopbit encoded), 0 = 'hello' 
 | 0x89 | Updated Alias
-| 0x00 | Updated Alias token - this was set via the 0x88 anchor tag,  0 = {  f1: hello, f2: world }
+| 0x00 | Updated Alias token (stopbit encoded) - this was set via the 0x88 anchor tag,  0 = {  f1: hello, f2: world }
 | 0x80 | Nested Block 8bit len
 | 0x0B | len=11bytes
 | 0xBA | field number  - special message to denote the next value is a field token
-| 0x02 | field token of, 2 = 'f2'
+| 0x02 | field token (stopbit encoded), 2 = 'f2'
 | 0xE8 | String of len=8
 | 0x75 | 'u' as Ascii
 | 0x6E | 'n' as Ascii
