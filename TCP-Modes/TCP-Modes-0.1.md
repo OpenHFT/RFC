@@ -2,9 +2,9 @@
 
 |         |                                                                                         |
 |:------- | --------------------------------------------------------------------------------------- |
-| Title   | TCP Connection Modes                                                      |
-| URL  | https://github.com/OpenHFT/RFC/blob/master/TCP-Modes/TCP-Modes-0.1.md |
-| Editor  | Peter Lawrey                                                                            |
+| Title   | TCP Connection Modes                                                                    |
+| URL     | https://github.com/OpenHFT/RFC/blob/master/TCP-Modes/TCP-Modes-0.1.md                   |
+| Editor  | Peter Lawrey. Full edit by Neil Clifford 26/07/2017                                     |
 | License | Apache 2.0                                                                              |
 | Change Process | Users issue Pull Requests for the Editor's consideration                         |
 | Status  | Raw.                                                                                    |
