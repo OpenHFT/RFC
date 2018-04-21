@@ -81,4 +81,3 @@ All the trailing bits are assumed to be 0s.
 |          0.1       | 9F EE B3 99 CC E6 B3 99  4D        |
 | Double.NaN    | BF 7E                                         |
 
-

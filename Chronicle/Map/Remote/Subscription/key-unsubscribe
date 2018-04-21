@@ -41,16 +41,12 @@ receives:
 tid: 1434724266506
 ```
 
-
-
 receives:
 
 ```yaml
 --- !!not-ready-data!
 reply: Hello
 ```
-
-
 
 receives:
 
@@ -59,15 +55,12 @@ receives:
 tid: 1434724266506
 ```
 
-
-
 receives:
 
 ```yaml
 --- !!data
 reply: !!null ""
 ```
-
 
 sends:
 
@@ -86,8 +79,6 @@ receives:
 --- !!meta-data
 tid: 1434724266996
 ```
-
-
 
 receives:
 
@@ -96,7 +87,6 @@ receives:
 reply: 1
 ```
 
-
 sends:
 
 ```yaml
@@ -114,8 +104,6 @@ receives:
 --- !!meta-data
 tid: 1434724267009
 ```
-
-
 
 receives:
 

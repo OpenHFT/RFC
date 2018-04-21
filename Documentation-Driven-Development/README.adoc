@@ -22,7 +22,6 @@ https://blogs.msdn.microsoft.com/korbyp/2004/09/15/documentation-driven-developm
 
 http://nordicapis.com/using-templates-for-documentation-driven-api-design/[Using Templates for DDD API design by Bruno Pedro]
 
-
 === Presentations
 
 http://www.slideshare.net/coordt/documentation-driven-development[DDD by Corey Oordt]

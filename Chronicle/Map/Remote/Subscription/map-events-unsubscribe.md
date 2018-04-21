@@ -37,7 +37,6 @@ receives:
 reply: !!null ""
 ```
 
-
 sends:
 
 ```yaml

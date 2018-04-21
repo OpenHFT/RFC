@@ -41,8 +41,6 @@ receives:
 tid: 1434725375948
 ```
 
-
-
 receives:
 
 ```yaml
@@ -54,16 +52,12 @@ reply: !InsertedEvent {
 }
 ```
 
-
-
 receives:
 
 ```yaml
 --- !!meta-data
 tid: 1434725375948
 ```
-
-
 
 receives:
 

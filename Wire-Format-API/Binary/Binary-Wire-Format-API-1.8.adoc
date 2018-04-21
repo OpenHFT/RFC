@@ -160,7 +160,6 @@ Version 1.8 added 0xBA
 [NOTE]
 ( 0xBA ) - see examples on DeltaWire below
 
-
 Version 1.6 added 0xBD
 
 ===  Delta Wire
@@ -229,7 +228,6 @@ If the same field is sent repeatedly, delta wire is a more compact format than B
 	hello: 1,
 	hello: 1
 }
-
 
 becomes -  in Binary Wire:
 
@@ -401,7 +399,6 @@ in delta wire this decodes to :
 | 0x64 | 'd' as Ascii
 |===
 
-
 === Typed Object Values
 
 When using typed object we able able to apply full deltaing for the values, this is unlike the example above which just tokenizes the field names. In this example you will see the user of the (0x88) anchor tag, it works in conjunction with (0x89) Updated Alias which is used for reading the anchors. see table below :
@@ -482,7 +479,6 @@ in Delta Wire
 | 0x64 | 'd' as Ascii
 |===
 
-
 because we have used the 0x88 anchor tag this means if we send the
 
 [source]
@@ -551,7 +547,6 @@ hello: !MyType {
   },
   f2: world
 }
-
 
 [source]
 00000000 44 00 00 00 87 00 05 68  65 6C 6C 6F 88 00 06 4D D······h ello···M

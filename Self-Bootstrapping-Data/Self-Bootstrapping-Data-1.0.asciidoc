@@ -64,4 +64,3 @@ https://github.com/OpenHFT/RFC/blob/master/Wire-Format-API/[Wire Format API] def
 
 After this point, the file may contain meta data, user data.  The actual data may reside in additional files in the same directory, or additional data could be in sub-directories of the directory which contains the file.
 
-

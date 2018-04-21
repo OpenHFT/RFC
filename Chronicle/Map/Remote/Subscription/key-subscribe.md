@@ -32,8 +32,6 @@ receives:
 tid: 1434723217160
 ```
 
-
-
 receives:
 
 ```yaml
