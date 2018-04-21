@@ -1,4 +1,6 @@
-# Specification
+= Binary Wire Format API
+
+== Specification
 
 [options="header"]
 |===
@@ -12,12 +14,12 @@
 | Status  | In Production.                                                                        
 |===
 
-# Goals
+== Goals
 The Binary Wire Format API is a binary one to one translation of the Text format.
 
 WFA is designed to be high level description for Wire Formats to comply with.  Any Wire Format which complies with this RFC can be accessed through the same API.
 
 This format should be automatically translatable to the Text (human readable) format.
 
-# Schema changes
+== Schema changes
 The Binary WFA should be able to handle all schema changes in the WFA document.
