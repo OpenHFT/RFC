@@ -4,7 +4,7 @@
 
 | URL     | https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/
 
-| Latest  | https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/Size-Prefixed-Blob-1.0.asciidoc
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/Size-Prefixed-Blob-1.0.asciidoc \ https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/Simple-Size-Prefixed-Blob-1.0.adoc
  
 | Editor  | Peter Lawrey
 

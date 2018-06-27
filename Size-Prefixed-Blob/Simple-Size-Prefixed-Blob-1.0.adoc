@@ -1,0 +1,54 @@
+.Specification
+|===
+| Title   | Size Prefixed Blob format
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/Simple-Size-Prefixed-Blob-1.0.asciidoc
+| Editor  | Peter Lawrey
+| License | Apache 2.0
+| Change Process | Users issue Pull Requests for the Editor's consideration
+| Status  | Used in production code.
+|===
+
+= Goals
+
+SPB is designed to be a portable wire-framing format for opaque blobs of data carried over streaming protocols such as TCP/IP.
+
+This format is intend to be used for streaming data such as TCP connections and streaming files.
+
+== Related RFCs
+
+- https://github.com/OpenHFT/RFC/blob/master/Self-Bootstrapping-Data-1.0.asciidoc[Self Bootstrapping Data 1.0]
+
+== Format description
+
+The file or TCP connection starts with a header.  This header is an object which controls how to handle the remaining content of the file.
+This first 4 bytes are the Size Prefixed (See blow) followed by the content of the header.  The header is typically meta data.
+
+After the header, a series of messages are prefixed by a 32-bit value which contains a 31-bit size.
+
+A length 32-bit word of 0x00000000 is defined as unset or invalid. To send a zero length message it must be a meta data message of 0 length.
+
+== Message length
+
+The length **includes the 4 byte header** This means a length of 0 is invalid, and lengths of 1, 2, 3 are reserved for future use.
+
+Negative lengths (with a high bit set) are also reserved for future use.
+
+This means the longest message supported without a header is 2147483643 bytes (2^31-5)
+
+NOTE: A length of 0 is chosen to be invalid to avoid accepting random data (which is most likely 0) as a header.
+
+
+== Empty message
+
+.To send an empty message, send a length of 4
+----
+0x04 00 00 00
+----
+
+== Message with 4 bytes
+
+.To send a message with 4 bytes of data, send a length of 8
+----
+0x08 00 00 00 01 02 03 04
+----
