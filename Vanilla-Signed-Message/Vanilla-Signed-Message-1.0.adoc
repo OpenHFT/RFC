@@ -20,8 +20,8 @@ A simple signed message of any format
 |   0 -   3 | 31-bit length (Size Prefixed Blob)
 |   4 -   7 | Format magic number (See below)
 |   8 -  71 | 64 byte signature using (Ed25519)
-|  72 - 103 | 32 byte destination public key (Ed25519)
-| 104 - 135 | 32 byte source public key (Ed25519)
+|  72 - 103 | 32 byte source public key (Ed25519)
+| 104 - 135 | 32 byte destination public key (Ed25519)
 | 136 - 143 | 8 byte unique timestamp in microseconds since epoch
 | 144 - nnn | message contents
 |===
@@ -29,7 +29,7 @@ A simple signed message of any format
 === Magic numbers
 
 ----
-26 73 6D 30 &sm0 - Simple signed message in binary format version 0
+26 76 73 6D &vsm - Simple signed message in binary format
 26 79 6D 6C &yml - Simple signed message in YAML format
 ----
 
