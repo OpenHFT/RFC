@@ -1,0 +1,24 @@
+= Goals
+Peter Lawrey
+
+A simple signed message of any format
+
+.Specification
+|===
+| Title   | Signature Prefixed Message
+
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Vanilla-Signed-Message/
+
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Vanilla-Signed-Message/Vanilla-Signed-Message-1.0.adoc
+ 
+| Editor  | Peter Lawrey
+
+| License | Apache 2.0
+
+| Change Process | Users issue Pull Requests for the Editor's consideration
+
+| Status  | Used in production code.
+
+|===
+
+

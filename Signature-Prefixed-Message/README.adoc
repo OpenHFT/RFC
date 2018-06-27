@@ -1,0 +1,23 @@
+= Goals
+
+This describe how a signature can be attached to the start of a message.
+
+.Specification
+|===
+| Title   | Signature Prefixed Message
+
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Signature-Prefixed-Message/
+
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Signature-Prefixed-Message/Signature-Prefixed-Message-1.0.adoc
+ 
+| Editor  | Peter Lawrey
+
+| License | Apache 2.0
+
+| Change Process | Users issue Pull Requests for the Editor's consideration
+
+| Status  | Used in production code.
+
+|===
+
+

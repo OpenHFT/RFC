@@ -1,0 +1,45 @@
+.Specification
+|===
+| Title   | 4 byte Magic Number
+
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Magic-Number/
+
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Magic-Number/Magic-Number-1.0.adoc
+ 
+| Editor  | Peter Lawrey
+
+| License | Apache 2.0
+
+| Change Process | Users issue Pull Requests for the Editor's consideration
+
+| Status  | Used in production code.
+
+|===
+
+= Goals
+
+The purpose of the 4 byte Magic Number is to be able to determine the format of a message or file by reading the first 4 bytes.
+
+== Files/message with magic numbers shorter than 4 bytes
+
+File with 1, 2 or 3 bytes notionally have a wide range of possible 4 bytes values which could start the file.
+
+Form the purposes of this specification as long as the file is at least 4 bytes long, the range check is appropriate.
+
+== File/messages with magic numbers longer than 4 bytes
+
+For the purposes of this specification, the first four bytes can be checked and additional bytes might also need to be
+read to confirm the format is valid or there might be multiple possible formats it could be
+
+== Recommendation
+
+The magic number should be:
+
+ - always 4 bytes long for simplicity.
+ - not conflict with the first 4 bytes of any known file format where possible.
+
+== File format reference
+
+https://www.garykessler.net/library/file_sigs.html?utm_source=tool.lu
+
+

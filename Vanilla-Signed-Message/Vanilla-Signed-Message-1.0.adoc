@@ -1,0 +1,51 @@
+= Goals
+Peter Lawrey
+
+A simple signed message of any format
+
+.Specification
+|===
+| Title   | Vanilla Signed Message
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Vanilla-Signed-Message/
+| Editor  | Peter Lawrey
+| License | Apache 2.0
+| Change Process | Users issue Pull Requests for the Editor's consideration
+| Status  | Used in production code.
+|===
+
+== Message Format
+
+|===
+|   Bytes   | Description
+|   0 -   3 | 31-bit length (Size Prefixed Blob)
+|   4 -   7 | Format magic number (See below)
+|   8 -  71 | 64 byte signature using (Ed25519)
+|  72 - 103 | 32 byte destination public key (Ed25519)
+| 104 - 135 | 32 byte source public key (Ed25519)
+| 136 - 143 | 8 byte unique timestamp in microseconds since epoch
+| 144 - nnn | message contents
+|===
+
+=== Magic numbers
+
+----
+26 73 6D 30 &sm0 - Simple signed message in binary format version 0
+26 79 6D 6C &yml - Simple signed message in YAML format
+----
+
+=== Unique timestamp in micro-seconds
+
+The timestamp must be in micro-seconds except it also must be at least 1 more than any previous timestamp sent.
+
+It might be only accurate to a millisecond in which case the lowest 3 digits will increment to ensure each message in a given milli-second is unique.
+
+NOTE: This limits the sustained rate to one million per second for any given private key.
+
+== Related RFC
+
+https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/Simple-Size-Prefixed-Blob-1.0.adoc[Simple Size Prefixed Blob 1.0]
+
+https://github.com/OpenHFT/RFC/blob/master/Magic-Number/Magic-Number-1.0.adoc[Format Magic Numbers]
+
+https://github.com/OpenHFT/RFC/blob/master/Signature-Prefixed-Message/Signature-Prefixed-Message-1.0.adoc[Signature Prefixed Message]
+

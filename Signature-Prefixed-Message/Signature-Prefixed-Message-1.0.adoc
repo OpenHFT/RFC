@@ -1,0 +1,30 @@
+= Goals
+
+This describe how a signature can be attached to the start of a message.
+
+.Specification
+|===
+| Title   | Signature Prefixed Message
+
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Signature-Prefixed-Message/
+
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Signature-Prefixed-Message/Signature-Prefixed-Message-1.0.adoc
+ 
+| Editor  | Peter Lawrey
+
+| License | Apache 2.0
+
+| Change Process | Users issue Pull Requests for the Editor's consideration
+
+| Status  | Used in production code.
+
+|===
+
+
+== The signature placement
+
+The signature is placed at the start of the message and adds to it's length.
+
+e.g. if the signature is 64 bytes long, it will add 64-bytes to the start of the message. To read the original message, skip the first 64 bytes.
+
+

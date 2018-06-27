@@ -1,0 +1,27 @@
+.Specification
+|===
+| Title   | 4 byte Magic Number
+
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Magic-Number/
+
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Magic-Number/Magic-Number-1.0.adoc
+ 
+| Editor  | Peter Lawrey
+
+| License | Apache 2.0
+
+| Change Process | Users issue Pull Requests for the Editor's consideration
+
+| Status  | Used in production code.
+
+|===
+
+= Goals
+
+The purpose of the 4 byte Magic Number is to be able to determine the format of a message or file by reading the first 4 bytes.
+
+== File format reference
+
+https://www.garykessler.net/library/file_sigs.html?utm_source=tool.lu
+
+
