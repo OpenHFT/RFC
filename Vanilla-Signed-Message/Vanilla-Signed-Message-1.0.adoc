@@ -29,8 +29,8 @@ A simple signed message of any format
 === Magic numbers
 
 ----
-26 76 73 6D &vsm - Simple signed message in binary format
-26 79 6D 6C &yml - Simple signed message in YAML format
+26 76 73 6D &vsm - Vanilla signed message in binary format
+26 79 6D 6C &yml - Vanilla signed message in YAML format
 ----
 
 === Unique timestamp in micro-seconds
