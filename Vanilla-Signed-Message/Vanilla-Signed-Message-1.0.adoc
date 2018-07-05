@@ -20,10 +20,33 @@ A simple signed message of any format
 |   0 -   3 | 31-bit length (Size Prefixed Blob)
 |   4 -   7 | Format magic number (See below)
 |   8 -  71 | 64 byte signature using (Ed25519)
-|  72 - 103 | 32 byte source public key (Ed25519)
-| 104 - 135 | 32 byte destination public key (Ed25519)
-| 136 - 143 | 8 byte unique timestamp in microseconds since epoch
-| 144 - nnn | message contents
+|  72 -  79 | 8 byte unique timestamp in microseconds since epoch
+|  80 - nnn | message contents
+|===
+
+=== Message Format with full public keys
+
+|===
+|   Bytes   | Description
+|   0 -   3 | 31-bit length (Size Prefixed Blob)
+|   4 -   7 | Format magic number (See below)
+|   8 -  71 | 64 byte signature using (Ed25519)
+|  72 -  79 | 8 byte unique timestamp in microseconds since epoch
+|  80 - 111 | 32 byte source public key (Ed25519)
+| 112 - 133 | 32 byte destination public key (Ed25519)
+|===
+
+=== Message Format with 64-bit public ids
+
+|===
+|   Bytes   | Description
+|   0 -   3 | 31-bit length (Size Prefixed Blob)
+|   4 -   7 | Format magic number (See below)
+|   8 -  71 | 64 byte signature using (Ed25519)
+|  72 -  79 | 8 byte unique timestamp in microseconds since epoch
+|  80 -  87 | 8 byte source public key (Ed25519)
+|  88 -  95 | 8 byte destination public key (Ed25519)
+|  96 - nnn | rest of message
 |===
 
 === Magic numbers
