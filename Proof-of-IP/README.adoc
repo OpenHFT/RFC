@@ -1,0 +1,25 @@
+= Proof of IP
+Peter Lawrey
+
+== Specification
+
+|===
+| Title   | Proof of IP
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Proof-of-IP/
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Proof-of-IP/Proof-of-IP-0.1.adoc
+| Editor  | Peter Lawrey
+| License | Apache 2.0
+| Change Process | Users issue Pull Requests for the Editor's consideration
+| Status  | Raw.
+|===
+
+== Goals
+A measure to ensure a decentralised ledger doesn't gravitate to
+a small number of providers in a small number of regions.
+
+=== Proof of IP
+This strategy records the proof that a server is verified by a range of IP addresses.
+
+This verified address can be used to ensure fairness across the internet
+and give little incentive to one provider running up tens of thousands of servers.
+
