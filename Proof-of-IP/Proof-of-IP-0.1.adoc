@@ -66,3 +66,10 @@ To reduce the risk of the chain being re-ordered,
 a round should only include a block if a majority
 of possible IP regions have included it.
 
+=== Verification expiry
+
+Once a node has been verified, this verification last forever.
+However, for a node to appear to be running, it should periodically verify other node.
+
+A node should attempt to verify a server in all known /16 domains once per day.
+
