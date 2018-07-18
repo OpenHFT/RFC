@@ -1,0 +1,68 @@
+= Proof of IP
+Peter Lawrey
+
+== Specification
+
+|===
+| Title   | Proof of IP
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Proof-of-IP/
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Proof-of-IP/Proof-of-IP-0.1.adoc
+| Editor  | Peter Lawrey
+| License | Apache 2.0
+| Change Process | Users issue Pull Requests for the Editor's consideration
+| Status  | Raw.
+|===
+
+== Goals
+A measure to ensure a decentralised ledger doesn't gravitate to
+a small number of providers in a small number of regions.
+
+=== Proof of IP
+This strategy records the proof that a node running on a server is verified by a range of IP addresses.
+
+This verified address can be used to ensure fairness across the internet
+and give little incentive to one provider running up tens of thousands of servers.
+
+=== Outline
+
+Each node generates a public key containing their IP address and port using Ed25519.
+
+This takes around 30 minutes for a modest sized server.
+
+The node can contact a list of known nodes.
+When contact is made it verifies that node and adds itself to the list of known (but not yet verified nodes)
+In turn other nodes can contact your node and verify it.
+
+Each of these records is added to a block chain.
+
+Each node then has score of the number of /16 domains
+where at least one node has verified it.
+If someone buys a /16 domain and uses every address on it to verify a node
+ it still only has a score of 1.
+
+Once a node has a high enough verification count, it can run the blockchain which records the verifications.
+
+The maximum score a node can have is around 222*254 or 56,388.
+The threshold for verification might need to be 256
+e.g. the square root of the number of /16 domains seen.
+
+=== Concurrent block generation
+
+In each round, every node can generate a block.
+If there have been network delays, multiple blocks could be added in a round.
+Every transaction within a node is ordered and timestampped.
+
+The purpose of consensus is to determine which transactions have been recognised as attempted
+and in what order do they occur relative to transactions in blocks from other nodes.
+
+=== Consensus
+
+In each round, all the nodes vote on which blocks should be added to the round.
+
+The top N bits of the address are used to determine votes. e.g. if the top 8 bit are used, there is 222 possible votes.
+Within that address range, the node which matches the hash of the previous round is the winning vote for that range of nodes.
+
+To reduce the risk of the chain being re-ordered,
+a round should only include a block if a majority
+of possible IP regions have included it.
+
