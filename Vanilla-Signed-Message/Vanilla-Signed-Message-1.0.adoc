@@ -33,7 +33,6 @@ A simple signed message of any format
 |   8 -  71 | 64 byte signature using (Ed25519)
 |  72 -  79 | 8 byte unique timestamp in microseconds since epoch
 |  80 - 111 | 32 byte source public key (Ed25519)
-| 112 - 133 | 32 byte destination public key (Ed25519)
 |===
 
 === Message Format with 64-bit public ids
@@ -45,8 +44,7 @@ A simple signed message of any format
 |   8 -  71 | 64 byte signature using (Ed25519)
 |  72 -  79 | 8 byte unique timestamp in microseconds since epoch
 |  80 -  87 | 8 byte source public id
-|  88 -  95 | 8 byte destination public id
-|  96 - nnn | rest of message
+|  88 - nnn | rest of message
 |===
 
 === Message Format with 32-bit public ids
@@ -58,8 +56,7 @@ A simple signed message of any format
 |   8 -  71 | 64 byte signature using (Ed25519)
 |  72 -  79 | 8 byte unique timestamp in microseconds since epoch
 |  80 -  83 | 4 byte source public id
-|  84 -  87 | 4 byte destination public id
-|  88 - nnn | rest of message
+|  84 - nnn | rest of message
 |===
 
 === Magic numbers
