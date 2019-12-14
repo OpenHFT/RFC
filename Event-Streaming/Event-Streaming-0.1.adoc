@@ -76,7 +76,7 @@ serviceLookup.lookup("/service/name1")
                             .field2("Hello"));
 ----
 
-The context of the event starts witht he service or service lookup object.
+The context of the event starts with the service or service lookup object.
 
 For flow style events, a method may either.
 
