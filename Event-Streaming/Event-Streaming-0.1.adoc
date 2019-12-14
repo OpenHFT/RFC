@@ -1,0 +1,77 @@
+= Specification
+Peter Lawrey
+
+|===
+| Title   | Event Streaming description
+| URL    | https://github.com/OpenHFT/RFC/blob/master/Event-Streaming/Event-Streaming-0.1.adoc
+| Editor  | Peter Lawrey
+| License | Apache 2.0
+| Change Process | Users issue Pull Requests for the Editor's consideration.
+| Status  | Raw.
+|===
+
+== Goals
+
+A method of describing, recording and replaying events.
+
+== Single events
+
+Each event corresponds to a method call.
+Each method call is either
+
+- an asynchronous call without a return or runtime exception
+- a flow style call to set up context.
+
+=== Single event examples
+
+Data in YAML form can be turned into method calls in Java and visa-versa.
+
+.Events in YAML
+[source,yaml]
+----
+eventWithNumber: 123456789
+---
+eventWithText: Hello World
+---
+eventWithDTO: {
+   field1: 12345,
+   field2: Hello
+}
+---
+----
+
+.Events in Java
+[source,java]
+----
+service.eventWithNumber(123456789);
+
+service.eventWithText("Hello World");
+
+service.eventWithDTO(new DTO()
+                     .field1(12345)
+                     .field2("Hello"));
+----
+
+=== Flow style events
+
+This style can be used to call multiple service handlers
+
+.Events in YAML
+[source,yaml]
+----
+lookup: /service/name1
+eventWithDTO: {
+   field1: 12345,
+   field2: Hello
+}
+---
+----
+
+.Events in Java
+[source,java]
+----
+serviceLookup.lookup("/service/name1")
+             .eventWithDTO(new DTO()
+                            .field1(12345)
+                            .field2("Hello"));
+----

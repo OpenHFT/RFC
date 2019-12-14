@@ -1,0 +1,16 @@
+= Specification
+Peter Lawrey
+
+|===
+| Title   | Event Streaming description
+| URL     | https://github.com/OpenHFT/RFC/blob/master/Event-Streaming/
+| Latest  | https://github.com/OpenHFT/RFC/blob/master/Event-Streaming/Event-Streaming-0.1.adoc
+| Editor  | Peter Lawrey
+| License | Apache 2.0
+| Change Process | Users issue Pull Requests for the Editor's consideration.
+| Status  | Raw.
+|===
+
+== Goals
+
+A method of describing, recording and replaying events.
