@@ -1,7 +1,7 @@
 = Documentation Driven Development
 Peter Lawrey
 
-=== Links
+== Links
 
 https://24ways.org/2010/documentation-driven-design-for-apis[DDD for APIs by FRances Berriman]
 
