@@ -75,3 +75,12 @@ serviceLookup.lookup("/service/name1")
                             .field1(12345)
                             .field2("Hello"));
 ----
+
+The context of the event starts witht he service or service lookup object.
+
+For flow style events, a method may either.
+
+- return null in which case the context isn't changed.
+- return a non `Marshallable` object to replace the context object
+
+If the resulting context object is Marshallable it is returned with an event name of `event`
