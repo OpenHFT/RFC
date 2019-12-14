@@ -27,10 +27,12 @@ Large blocks of data can be fragmented into multiple sections
 
 === ABNF representation
 See [Size Prefixed Blob RFC](https://github.com/OpenHFT/RFC/blob/master/Size-Prefixed-Blob/)
-```abnf
+
+[source,abnf]
+----
 stream              = *messages
 messages            = meta-data *(*not-ready-data data)
-```
+----
 
 == Message dump representation
 A typical message contains `meta-data` followed by a stream of `data` messages.

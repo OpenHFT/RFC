@@ -1,3 +1,6 @@
+= Size Prefixed Blob
+Peter Lawrey
+
 .Specification
 |===
 | Title   | Size Prefixed Blob format
@@ -9,7 +12,7 @@
 | Status  | Used in production code.
 |===
 
-= Goals
+== Goals
 
 SPB is designed to be a portable wire-framing format for opaque blobs of data carried over streaming protocols such as TCP/IP.
 
@@ -21,18 +24,18 @@ This format is intend to be used for streaming data such as TCP connections and 
 
 == Format description
 
-The file or TCP connection starts with a header.  This header is an object which controls how to handle the remaining content of the file.  This first 4 bytes are the Size Prefixed (See blow) followed by the content of the header.  The header is typically meta data.
+The file or TCP connection starts with a header.This header is an object which controls how to handle the remaining content of the file.This first 4 bytes are the Size Prefixed (See blow) followed by the content of the header.The header is typically meta data.
 
 After the header, a series of messages are prefixed by a 32-bit value which contains a 30-bit size and two bits used to make parsing the stream easier.
 
-A length 32-bit word of 0x00000000 is defined as unset or invalid. To send a zero length message it must be a meta data message of 0 length.
+A length 32-bit word of 0x00000000 is defined as unset or invalid.To send a zero length message it must be a meta data message of 0 length.
 
 == File Format bits
 
 In file format;
- 
- - the bit 31 indicates whether the current size is ready, 0 = ready, 1 = not ready.  
- - the bit 30 indicates the message contains meta data. 0 = user data, 1 = meta data,
+
+- the bit 31 indicates whether the current size is ready, 0 = ready, 1 = not ready.
+- the bit 30 indicates the message contains meta data. 0 = user data, 1 = meta data,
 
 == Empty message
 
@@ -54,28 +57,28 @@ For illustration in documentation and based on how http://yaml.org/spec/1.2/spec
 
 The following block is meta-data (See the ABNF section)
 
-[source, yaml]
+[source,yaml]
 ----
 --- !!meta-data
 ----
 
 The following block is not-ready-meta-data (See the ABNF section)
 
-[source, yaml]
+[source,yaml]
 ----
 --- !!not-ready-meta-data
 ----
 
 The following block is data (See the ABNF section)
 
-[source, yaml]
+[source,yaml]
 ----
 --- !!data
 ----
 
 The following block is not-ready-data (See the ABNF section)
 
-[source, yaml]
+[source,yaml]
 ----
 --- !!not-ready-data
 ----
@@ -83,56 +86,56 @@ The following block is not-ready-data (See the ABNF section)
 === handling of incomplete messages in files.
 
 A message can start with either a known (length > 0) or unknown length (length == 0)
- 
- - `0b0000 0000 0000 0000 0000 0000 0000 0000` - no message is ready yet. This is useful in zero padded files.
- - `0b0MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a messages is ready, if M == 1, this is a meta-data message.
- - `0b1000 0000 0000 0000 0000 0000 0000 0000` - the length is not yet known.
- - `0b1100 0000 0000 0000 0000 0000 0000 0000` - the end of the stream has been reached.
- - `0b1MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - the message is not complete, however the length is known.   
+
+- `0b0000 0000 0000 0000 0000 0000 0000 0000` - no message is ready yet.This is useful in zero padded files.
+- `0b0MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a messages is ready, if M == 1, this is a meta-data message.
+- `0b1000 0000 0000 0000 0000 0000 0000 0000` - the length is not yet known.
+- `0b1100 0000 0000 0000 0000 0000 0000 0000` - the end of the stream has been reached.
+- `0b1MXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - the message is not complete, however the length is known.
 
 === handling of messages in a TCP stream
 
-A message must always with written with a known length.  The not-ready flag can be used to inidicate whether there is any more data for the -sub-stream in the TCP connections.
- 
- - `0b00XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a user driven messages, this is the last message for this transmission.
- - `0b01XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a session message such as where to send the next user driven message.
- - `0b10XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a user driven message is available, however more messages can be expected for this transmission.
+A message must always with written with a known length.The not-ready flag can be used to inidicate whether there is any more data for the -sub-stream in the TCP connections.
+
+- `0b00XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a user driven messages, this is the last message for this transmission.
+- `0b01XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a session message such as where to send the next user driven message.
+- `0b10XX XXXX XXXX XXXX XXXX XXXX XXXX XXXX` - a user driven message is available, however more messages can be expected for this transmission.
 
 == Allocation and update lifecycle.
 
 ==== Writing a blob to a file
 
 When appending a new entry, a writer must first find free space.
-It can scan the file, examining the length of each record until it finds a 0x00000000 32-bit value, using a CAS (Compare-And-Swap) to  reserve the use space.
+It can scan the file, examining the length of each record until it finds a 0x00000000 32-bit value, using a CAS (Compare-And-Swap) to reserve the use space.
 
 The writer can use two approaches.
-- write the known length with the not ready flag set. In this case, a concurrent writer can skip to the end and try again.
-- write a length of 0 with the not ready flag set. In this case, a concurrent writer must wait until the length is known.
+- write the known length with the not ready flag set.In this case, a concurrent writer can skip to the end and try again.
+- write a length of 0 with the not ready flag set.In this case, a concurrent writer must wait until the length is known.
 
 After putting a place holder at the start of a blob, it can write the blob.
 Once it is finished it can go back and put the known length and clear the not ready flag.
 
 === Reading a blob from a file.
 
-When reading a blob, the reader can check the first 32-bit for the length.  The reader can either;
+When reading a blob, the reader can check the first 32-bit for the length.The reader can either;
 
- - read every blob, waiting for it to be ready before reading.
- - read only meta-data or only non-meta data blobs.  This reader can skip blobs it is not reading even if the  blob is not ready (provided the length is known)
+- read every blob, waiting for it to be ready before reading.
+- read only meta-data or only non-meta data blobs.This reader can skip blobs it is not reading even if the blob is not ready (provided the length is known)
 
 == TCP Connection Format bit
 
 In a TCP socket connection;
 
- - the bit 31 indicates whether there is more data, 0 = no more data for this action, 1 = more data needs to be read.
- - the bit 30 indicates the message contains meta data. 0 = user data, 1 = meta data.
+- the bit 31 indicates whether there is more data, 0 = no more data for this action, 1 = more data needs to be read.
+- the bit 30 indicates the message contains meta data. 0 = user data, 1 = meta data.
 
 == Message length
 
-The message length is a 30-bit unsigned length from 1 to 2^30^-1 bytes. 
- 
-= ABNF description
+The message length is a 30-bit unsigned length from 1 to 2^30^-1 bytes.
 
-[source, abnf]
+== ABNF description
+
+[source,abnf]
 ----
 stream              = header *blobs-with-length
 header              = 8OCTET
