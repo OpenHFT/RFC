@@ -1,4 +1,4 @@
-# Specification
+Specification
 
 |         |                                                             |
 |:------- | ----------------------------------------------------------- |
@@ -10,7 +10,8 @@
 | Change Process | Users issue Pull Requests for the Editor's consideration. |
 | Status  | Raw.                                                        |
 
-# Goals
+ Goals
+
 An RFC which embraces the need for a JEP-383 savvy equivalent of the j.u.c.l.StampedLock API.
 A new ChronicleStampedLock capability will greatly empower capital markets
 Java technologists to (on HPC platforms like
